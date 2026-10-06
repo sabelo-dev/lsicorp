@@ -15,19 +15,47 @@ mkdir -p "$tools"
 #   xz, bzip2            Emscripten ships its tools as .tar.xz archives
 #   libGL, xkbcommon...  Qt's own build tools are ordinary Linux programs that link to these
 install_packages() {
+  # Build machines usually run as an ordinary user that may use sudo without a password.
+  local as_root=""
+  if [ "$(id -u)" -ne 0 ]; then
+    if sudo -n true 2>/dev/null; then as_root="sudo"; else echo "not root and no passwordless sudo" >&2; return 1; fi
+  fi
   if command -v dnf >/dev/null 2>&1; then
-    dnf install -y -q xz bzip2 tar gzip git which mesa-libGL libxkbcommon fontconfig
+    $as_root dnf install -y -q xz bzip2 mesa-libGL libxkbcommon fontconfig
   elif command -v yum >/dev/null 2>&1; then
-    yum install -y -q xz bzip2 tar gzip git which mesa-libGL libxkbcommon fontconfig
+    $as_root yum install -y -q xz bzip2 mesa-libGL libxkbcommon fontconfig
   elif command -v apt-get >/dev/null 2>&1; then
-    apt-get update -qq
-    apt-get install -y -qq xz-utils bzip2 tar gzip git libgl1 libxkbcommon0 libfontconfig1
+    $as_root apt-get update -qq
+    $as_root apt-get install -y -qq xz-utils bzip2 libgl1 libxkbcommon0 libfontconfig1
   else
-    echo "No supported package manager (dnf, yum or apt-get) found." >&2
+    echo "no supported package manager (dnf, yum or apt-get)" >&2
     return 1
   fi
 }
-install_packages || echo "warning: could not install system packages; continuing with what the image has" >&2
+install_packages || echo "note: system packages could not be installed; continuing with what the image has" >&2
+
+# Without xz, tar cannot unpack the .tar.xz archives Emscripten downloads.
+# Python can, so stand in for it: tar only ever asks xz to decompress a stream.
+mkdir -p "$tools/bin"
+if ! command -v xz >/dev/null 2>&1; then
+  if ! python3 -c "import lzma" 2>/dev/null; then
+    echo "error: neither 'xz' nor Python's lzma module is available, so Emscripten cannot be unpacked." >&2
+    exit 1
+  fi
+  cat > "$tools/bin/xz" <<'SHIM'
+#!/usr/bin/env python3
+# Minimal stand-in for "xz -d": decompresses standard input to standard output.
+import lzma
+import shutil
+import sys
+
+with lzma.open(sys.stdin.buffer) as source:
+    shutil.copyfileobj(source, sys.stdout.buffer)
+SHIM
+  chmod +x "$tools/bin/xz"
+  echo "note: 'xz' is not installed; using a Python stand-in for it"
+fi
+export PATH="$tools/bin:$PATH"
 
 # Fail here, with a clear reason, rather than deep inside a download step.
 for tool in xz tar git python3; do
