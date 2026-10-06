@@ -68,18 +68,24 @@
     window.addEventListener(
       'wheel',
       (event) => {
-        // Leave alone: events re-sent below, line or page steps, and pinch-zoom (Ctrl + wheel).
-        if (!event.isTrusted || event.deltaMode !== WheelEvent.DOM_DELTA_PIXEL || event.ctrlKey) return;
-        if (Number.isInteger(event.deltaX) && Number.isInteger(event.deltaY) && rest.x === 0 && rest.y === 0) return;
+        // Leave alone: events re-sent below, and pinch-zoom (Ctrl + wheel).
+        if (!event.isTrusted || event.ctrlKey) return;
+
+        // Some browsers (Firefox with a mouse wheel) report lines or pages instead
+        // of pixels. Convert, so that every browser scrolls the same distance.
+        const unit = event.deltaMode === WheelEvent.DOM_DELTA_LINE ? 100 / 3 : event.deltaMode === WheelEvent.DOM_DELTA_PAGE ? window.innerHeight * 0.85 : 1;
+        const dx = event.deltaX * unit;
+        const dy = event.deltaY * unit;
+        if (unit === 1 && Number.isInteger(dx) && Number.isInteger(dy) && rest.x === 0 && rest.y === 0) return;
 
         event.stopImmediatePropagation();
         event.preventDefault();
 
         // A pause or a change of direction starts a new gesture; stale fractions are dropped.
-        if (event.timeStamp - last > 250 || rest.x * event.deltaX < 0 || rest.y * event.deltaY < 0) rest.x = rest.y = 0;
+        if (event.timeStamp - last > 250 || rest.x * dx < 0 || rest.y * dy < 0) rest.x = rest.y = 0;
         last = event.timeStamp;
-        rest.x += event.deltaX;
-        rest.y += event.deltaY;
+        rest.x += dx;
+        rest.y += dy;
         const deltaX = Math.trunc(rest.x);
         const deltaY = Math.trunc(rest.y);
         if (deltaX === 0 && deltaY === 0) return;

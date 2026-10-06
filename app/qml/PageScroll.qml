@@ -54,12 +54,75 @@ Item {
             policy: ScrollBar.AsNeeded
             minimumSize: 0.08
 
+            // Always faintly visible on a page that scrolls, so there is something to
+            // see and grab; stronger while the page is moving or the bar is in use.
             contentItem: Rectangle {
                 implicitWidth: bar.hovered || bar.pressed ? 10 : 6
                 radius: width / 2
                 color: Theme.muted
-                opacity: bar.pressed ? 0.9 : bar.active ? 0.6 : 0
+                opacity: bar.pressed ? 0.9 : bar.hovered || bar.active || wheelIdle.running ? 0.65 : 0.3
+
+                Behavior on opacity {
+                    NumberAnimation {
+                        duration: Theme.fast
+                    }
+                }
             }
+        }
+
+        // Wheel and touchpad scrolling, handled here instead of by the Flickable.
+        // The Flickable treats every wheel event as a flick with a velocity, which
+        // suits the large steps of a mouse wheel but makes the stream of small
+        // movements from a touchpad sluggish and uneven. Here the page moves by
+        // exactly the distance reported: small movements at once, so it tracks the
+        // fingers, and large steps (a wheel notch) eased over a moment.
+        property real wheelTarget: 0
+
+        function wheelBy(pixels) {
+            const limit = Math.max(0, contentHeight - height);
+            const from = wheelEase.running ? wheelTarget : contentY;
+            wheelTarget = Math.max(0, Math.min(limit, from + pixels));
+            toTop.stop();
+            jump.stop();
+            cancelFlick();
+            if (Math.abs(pixels) < 40 || !Theme.motion) {
+                wheelEase.stop();
+                contentY = wheelTarget;
+            } else {
+                wheelEase.to = wheelTarget;
+                wheelEase.restart();
+            }
+            wheelIdle.restart();
+        }
+
+        WheelHandler {
+            acceptedDevices: PointerDevice.Mouse | PointerDevice.TouchPad
+            target: null
+            onWheel: event => {
+                // In a browser the amount arrives in pixels. On the desktop a wheel
+                // reports notches (120 units each), taken here as 100 pixels.
+                let pixels = event.pixelDelta.y;
+                if (pixels === 0)
+                    pixels = Platform.browser ? event.angleDelta.y : event.angleDelta.y / 120 * 100;
+                // Shift + wheel, or a sideways swipe, is not vertical scrolling.
+                if (pixels !== 0 && !(event.modifiers & Qt.ShiftModifier))
+                    flick.wheelBy(-pixels);
+                event.accepted = true;
+            }
+        }
+
+        NumberAnimation {
+            id: wheelEase
+            target: flick
+            property: "contentY"
+            duration: 130
+            easing.type: Easing.OutCubic
+        }
+
+        // Keeps the scrollbar prominent for a moment after the wheel stops.
+        Timer {
+            id: wheelIdle
+            interval: 700
         }
 
         /// Scrolls just far enough to show `item`. Called when a control gains keyboard focus.
