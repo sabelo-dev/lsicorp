@@ -27,7 +27,8 @@ PageScroll {
 
     H {
         level: 1
-        text: page.product.public_name + " " + page.release.version + " for " + page.platformName
+        text: page.release.destination_type === "web-app" ? page.product.public_name + " on the web"
+                                                             : page.product.public_name + " " + page.release.version + " for " + page.platformName
     }
 
     Notice {

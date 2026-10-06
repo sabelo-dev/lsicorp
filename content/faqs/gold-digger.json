@@ -2,20 +2,44 @@
   "items": [
     {
       "question": "Does LSI Gold Digger tell me what to trade?",
-      "answer": "No. It is a research and analysis tool. It does not give financial advice, and its analysis does not guarantee returns.",
+      "answer": "It produces BUY, SELL or WAIT signals and shows every condition and reason behind them, but it is a research and analysis tool. It does not give financial advice, its strategies are not a proven edge, and its analysis does not guarantee returns.",
       "category": "Risk",
       "visible": true
     },
     {
-      "question": "Can it connect to my XM account or place trades?",
-      "answer": "No. XM connectivity and trade execution are not implemented and not approved. They will only be shown as available if that changes.",
-      "category": "Account connection",
+      "question": "Can it place trades on my broker account?",
+      "answer": "Yes, through a MetaTrader 5 account at any broker, including XM, but not by default. The connection starts read-only and the app trades on a paper account. Sending real orders needs you to enable order commands, choose MT5 as the venue and, for a live account, unlock live trading with a typed confirmation every session. Every order must still pass the risk engine.",
+      "category": "Broker connection",
+      "visible": true
+    },
+    {
+      "question": "Do I need a broker account to try it?",
+      "answer": "No. It opens on simulated data with a paper account, and everything works without a MetaTrader 5 terminal.",
+      "category": "Getting started",
+      "visible": true
+    },
+    {
+      "question": "Why does Windows warn me about the installer?",
+      "answer": "The installer is not yet code-signed, so Windows shows an unknown-publisher warning. Before choosing More info and Run anyway, compare the SHA-256 checksum of your download with the one shown on this site. If they differ, do not run the file.",
+      "category": "Installation",
+      "visible": true
+    },
+    {
+      "question": "Why does it reject almost every trade on my small account?",
+      "answer": "On a standard gold contract the smallest position can risk more than the limits allow on a small balance, so the risk engine refuses. That is intended. The app shows how much the broker's contract needs under Trading, Can it trade now.",
+      "category": "Risk",
       "visible": true
     },
     {
       "question": "Where does the market data come from?",
-      "answer": "Data sources, timestamps and refresh intervals will be documented before the first release.",
+      "answer": "Prices come from your MetaTrader 5 terminal, or from a built-in simulator when no broker is connected. Macro data comes from FRED, news from RSS feeds, and the economic calendar from a public weekly export.",
       "category": "Data",
+      "visible": true
+    },
+    {
+      "question": "Can the AI assistant trade for me?",
+      "answer": "No. The AI Gold Analyst can only read the app's data. It has no ability to place, change or close an order.",
+      "category": "Safety",
       "visible": true
     }
   ]

@@ -14,6 +14,22 @@ Item {
     default property alias content: column.data
     /// Optional band shown edge to edge above the content.
     property Component hero: null
+    /// How far down the page the reader is, from 0 to 1.
+    readonly property real progress: flick.contentHeight > flick.height ? Math.min(1, flick.contentY / (flick.contentHeight - flick.height)) : 0
+
+    /// Scrolls so that `item` (for example a section heading) is at the top.
+    function scrollToItem(item) {
+        const y = item.mapToItem(flick.contentItem, 0, 0).y - Theme.s4;
+        jump.to = Math.max(0, Math.min(Math.max(0, flick.contentHeight - flick.height), y));
+        jump.duration = Theme.medium;
+        jump.restart();
+    }
+
+    Binding {
+        target: Theme
+        property: "scrolled"
+        value: flick.contentY > 6
+    }
 
     Flickable {
         id: flick
@@ -66,7 +82,14 @@ Item {
             target: flick
             property: "contentY"
             to: 0
-            duration: 220
+            duration: Theme.medium
+            easing.type: Easing.OutCubic
+        }
+
+        NumberAnimation {
+            id: jump
+            target: flick
+            property: "contentY"
             easing.type: Easing.OutCubic
         }
 
@@ -115,8 +138,17 @@ Item {
 
         function onPathChanged() {
             toTop.stop();
+            jump.stop();
             flick.contentY = 0;
         }
+    }
+
+    // Reading progress on long pages.
+    Rectangle {
+        width: parent.width * root.progress
+        height: 3
+        color: Theme.gold
+        visible: flick.contentHeight > flick.height * 1.8
     }
 
     // Back to top, once the reader is well down a long page.

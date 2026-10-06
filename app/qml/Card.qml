@@ -21,17 +21,26 @@ Rectangle {
     border.width: 1
     radius: Theme.radius
 
-    // Soft shadow: a blurred-looking offset plate behind the card.
-    Rectangle {
-        z: -1
-        anchors.fill: parent
-        anchors.topMargin: card.lifted ? 8 : 3
-        anchors.bottomMargin: card.lifted ? -8 : -3
-        anchors.leftMargin: 2
-        anchors.rightMargin: 2
+    Shadow {
         radius: card.radius
-        color: Theme.shadow
-        opacity: card.lifted ? 1 : 0.6
+        elevation: card.lifted ? 2.2 : 1
+    }
+
+    transform: Translate {
+        y: card.lifted ? -3 : 0
+
+        Behavior on y {
+            NumberAnimation {
+                duration: Theme.fast
+                easing.type: Easing.OutCubic
+            }
+        }
+    }
+
+    Behavior on border.color {
+        ColorAnimation {
+            duration: Theme.fast
+        }
     }
 
     HoverHandler {

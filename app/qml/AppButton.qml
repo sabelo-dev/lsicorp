@@ -37,7 +37,7 @@ T.AbstractButton {
 
     Behavior on scale {
         NumberAnimation {
-            duration: 80
+            duration: Theme.motion ? 80 : 0
         }
     }
 

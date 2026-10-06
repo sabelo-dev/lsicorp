@@ -8,10 +8,12 @@ Facts {
 
     model: {
         const r = release;
+        const web = r.destination_type === "web-app";
         const facts = [
-            { label: "Version", value: r.version + " (" + Rules.CHANNELS[r.channel] + ")" },
+            web ? { label: "Version", value: "Always the current version" }
+                : { label: "Version", value: r.version + " (" + Rules.CHANNELS[r.channel] + ")" },
             { label: "Platform", value: Rules.PLATFORMS[r.platform] },
-            { label: "Released", value: Rules.formatDate(r.release_date) + " (" + Store.site.date_timezone + ")" },
+            { label: web ? "Listed here" : "Released", value: Rules.formatDate(r.release_date) + " (" + Store.site.date_timezone + ")" },
             { label: "Status", value: Rules.RELEASE_STATUSES[r.status] },
             { label: "Requires", value: r.compat_minimum },
             { label: "Devices", value: r.compat_device_class }

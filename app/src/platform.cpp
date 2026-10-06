@@ -14,6 +14,7 @@ using emscripten::val;
 #endif
 
 QString Platform::initialRoute = QStringLiteral("/");
+QString Platform::initialAction;
 
 namespace {
 
@@ -98,6 +99,15 @@ bool Platform::browser() const
     return true;
 #else
     return false;
+#endif
+}
+
+bool Platform::reducedMotion() const
+{
+#ifdef Q_OS_WASM
+    return val::global("window").call<val>("matchMedia", std::string("(prefers-reduced-motion: reduce)"))["matches"].as<bool>();
+#else
+    return qEnvironmentVariableIsSet("LSI_REDUCED_MOTION");
 #endif
 }
 

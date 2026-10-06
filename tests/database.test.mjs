@@ -1,4 +1,4 @@
-// Runs the real migrations and seed in an in-process Postgres (PGlite) and
+﻿// Runs the real migrations and seed in an in-process Postgres (PGlite) and
 // exercises row-level security and the release workflow as different users.
 // Supabase's own pieces (auth schema, roles, storage tables) are stubbed in
 // tests/supabase-stub.sql, so this checks our SQL, not Supabase itself.
@@ -100,7 +100,7 @@ test('the seed loads once and visitors can read published content', async () => 
   await as(null, async (tx) => {
     assert.equal((await rows(tx, 'select slug from lsicorp.products')).length, 4);
     assert.equal((await rows(tx, 'select 1 from lsicorp.doc_pages')).length, 14);
-    assert.equal((await rows(tx, 'select 1 from lsicorp.faqs')).length, 12);
+    assert.equal((await rows(tx, 'select 1 from lsicorp.faqs')).length, 18);
     assert.equal((await rows(tx, 'select 1 from lsicorp.pages')).length, 4);
     assert.equal((await rows(tx, 'select 1 from lsicorp.site_settings')).length, 1);
     assert.equal((await rows(tx, 'select 1 from lsicorp.services')).length, 4);
@@ -136,10 +136,10 @@ test('an editor edits content but not releases, settings or roles', async () => 
 });
 
 test('unpublished documentation and hidden FAQs are visible to staff only', async () => {
-  await as(EDITOR, (tx) => tx.query(`update lsicorp.doc_pages set status = 'draft' where product_slug = '1145' and slug = 'modules'`));
+  await as(EDITOR, (tx) => tx.query(`update lsicorp.doc_pages set status = 'draft' where product_slug = '1145' and slug = 'services'`));
   await as(null, async (tx) => assert.equal((await rows(tx, `select 1 from lsicorp.doc_pages where product_slug = '1145'`)).length, 2));
   await as(EDITOR, async (tx) => assert.equal((await rows(tx, `select 1 from lsicorp.doc_pages where product_slug = '1145'`)).length, 3));
-  await as(EDITOR, (tx) => tx.query(`update lsicorp.doc_pages set status = 'published' where product_slug = '1145' and slug = 'modules'`));
+  await as(EDITOR, (tx) => tx.query(`update lsicorp.doc_pages set status = 'published' where product_slug = '1145' and slug = 'services'`));
 });
 
 test('a release destination must be an allowlisted https URL', async () => {

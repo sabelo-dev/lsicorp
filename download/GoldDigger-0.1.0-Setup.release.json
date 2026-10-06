@@ -1,0 +1,16 @@
+﻿{
+    "product_slug":  "gold-digger",
+    "platform":  "windows",
+    "version":  "0.1.0",
+    "destination_type":  "file",
+    "artifact_filename":  "GoldDigger-0.1.0-Setup.exe",
+    "artifact_file_type":  "exe",
+    "artifact_size_bytes":  17340160,
+    "artifact_sha256":  "32e552427518831b1fdd244d7c65a4feb4ba482fc08dbe645c3a7a295e952fa8",
+    "compat_minimum":  "Windows 10 64-bit",
+    "compat_device_class":  "Desktop / laptop PC",
+    "compat_dependencies":  [
+                                "MetaTrader 5 terminal (to connect a broker)",
+                                "Python 3.10+ with bridge/requirements.txt (to connect a broker)"
+                            ]
+}

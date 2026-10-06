@@ -28,8 +28,10 @@ ColumnLayout {
         visible: root.live
         small: true
         muted: true
-        text: "Version " + root.release.version + " (" + Rules.CHANNELS[root.release.channel] + ") for "
-              + Rules.PLATFORMS[root.release.platform] + ". " + Rules.DESTINATION_TYPES[root.release.destination_type]
+        // A web app is always the current version, so no version number is quoted for it.
+        text: (root.release.destination_type === "web-app" ? "Runs in your browser. "
+               : "Version " + root.release.version + " (" + Rules.CHANNELS[root.release.channel] + ") for " + Rules.PLATFORMS[root.release.platform] + ". ")
+              + Rules.DESTINATION_TYPES[root.release.destination_type]
               + ": this link leaves the LSI website and opens " + Rules.hostOf(root.release.destination_url) + "."
     }
 

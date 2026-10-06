@@ -8,3 +8,6 @@ aqtinstall.log
 /config.json
 dist/
 .toolchain/
+# Release binaries are uploaded to storage, not committed.
+download/*.exe
+download/*.zip

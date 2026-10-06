@@ -26,6 +26,12 @@ T.AbstractButton {
         color: control.current ? Theme.primarySoft : control.hovered || control.down ? Theme.surfaceAlt : "transparent"
         border.width: control.visualFocus ? 3 : 0
         border.color: Theme.focus
+
+        Behavior on color {
+            ColorAnimation {
+                duration: Theme.fast
+            }
+        }
     }
 
     contentItem: Text {

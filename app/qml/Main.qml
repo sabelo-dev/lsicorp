@@ -87,7 +87,11 @@ ApplicationWindow {
     }
 
     onTitleChanged: Platform.setTitle(title)
-    Component.onCompleted: Platform.setTitle(title)
+    Component.onCompleted: {
+        Platform.setTitle(title);
+        if (Platform.devAction === "search")
+            search.open();
+    }
 
     Binding {
         target: Theme
@@ -112,11 +116,39 @@ ApplicationWindow {
         implicitHeight: 68
         color: Theme.surface
 
+        z: 2
+
         Rectangle {
             anchors.bottom: parent.bottom
             width: parent.width
             height: 1
             color: Theme.border
+        }
+
+        // Once the page is scrolled, the header lifts off it.
+        Rectangle {
+            anchors.top: parent.bottom
+            width: parent.width
+            height: 10
+            opacity: Theme.scrolled ? 1 : 0
+
+            gradient: Gradient {
+                GradientStop {
+                    position: 0
+                    color: Theme.shadow
+                }
+
+                GradientStop {
+                    position: 1
+                    color: "transparent"
+                }
+            }
+
+            Behavior on opacity {
+                NumberAnimation {
+                    duration: Theme.fast
+                }
+            }
         }
 
         RowLayout {
@@ -197,6 +229,83 @@ ApplicationWindow {
                     to: modelData.to
                     current: window.isCurrent(modelData.to)
                 }
+            }
+
+            // Search: a labelled field-like button on wide screens, an icon on small ones.
+            T.AbstractButton {
+                id: searchButton
+
+                visible: !window.compact
+                Layout.leftMargin: Theme.s2
+                implicitWidth: searchRow.implicitWidth + 2 * Theme.s3
+                implicitHeight: 44
+                focusPolicy: Qt.StrongFocus
+                Accessible.role: Accessible.Button
+                Accessible.name: "Search the site"
+                onClicked: search.open()
+                Keys.onReturnPressed: click()
+                Keys.onEnterPressed: click()
+
+                background: Rectangle {
+                    radius: height / 2
+                    color: searchButton.hovered ? Theme.surfaceAlt : Theme.bg
+                    border.width: searchButton.visualFocus ? 3 : 1
+                    border.color: searchButton.visualFocus ? Theme.focus : Theme.border
+                }
+
+                contentItem: Row {
+                    id: searchRow
+                    spacing: Theme.s2
+
+                    Icon {
+                        anchors.verticalCenter: parent.verticalCenter
+                        name: "search"
+                        size: 18
+                        color: Theme.muted
+                    }
+
+                    Text {
+                        anchors.verticalCenter: parent.verticalCenter
+                        text: "Search"
+                        color: Theme.muted
+                        font.pixelSize: Theme.small
+                    }
+
+                    Rectangle {
+                        anchors.verticalCenter: parent.verticalCenter
+                        width: hint.implicitWidth + 12
+                        height: 22
+                        radius: 6
+                        color: Theme.surface
+                        border.color: Theme.border
+
+                        Text {
+                            id: hint
+                            anchors.centerIn: parent
+                            text: "Ctrl K"
+                            color: Theme.muted
+                            font.pixelSize: 11
+                            font.weight: Font.DemiBold
+                        }
+                    }
+                }
+
+                HoverHandler {
+                    cursorShape: Qt.PointingHandCursor
+                }
+            }
+
+            IconButton {
+                visible: window.compact
+                glyph: "search"
+                label: "Search the site"
+                onClicked: search.open()
+            }
+
+            IconButton {
+                glyph: Theme.mode === "system" ? "auto" : Theme.mode === "dark" ? "moon" : "sun"
+                label: "Colour scheme: " + ({ system: "follows your device", light: "light", dark: "dark" })[Theme.mode] + ". Activate to change."
+                onClicked: Theme.cycleMode()
             }
 
             // Menu button, small screens only.
@@ -317,9 +426,57 @@ ApplicationWindow {
         }
     }
 
+    SearchOverlay {
+        id: search
+    }
+
+    Shortcut {
+        sequences: ["Ctrl+K", "/"]
+        enabled: !search.opened && !(window.activeFocusItem && window.activeFocusItem.cursorPosition !== undefined)
+        onActivated: search.open()
+    }
+
     Loader {
+        id: pageLoader
+
         anchors.fill: parent
         source: window.page.file
         focus: true
+        onLoaded: arrive.restart()
+
+        transform: Translate {
+            id: shift
+        }
+    }
+
+    // Each page fades and rises slightly into place. Skipped under reduced motion.
+    ParallelAnimation {
+        id: arrive
+
+        NumberAnimation {
+            target: pageLoader
+            property: "opacity"
+            from: Theme.motion ? 0 : 1
+            to: 1
+            duration: Theme.medium
+            easing.type: Easing.OutCubic
+        }
+
+        NumberAnimation {
+            target: shift
+            property: "y"
+            from: Theme.motion ? 14 : 0
+            to: 0
+            duration: Theme.medium
+            easing.type: Easing.OutCubic
+        }
+    }
+
+    Connections {
+        target: Nav
+
+        function onPathChanged() {
+            arrive.restart();
+        }
     }
 }

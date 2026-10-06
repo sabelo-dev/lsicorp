@@ -35,9 +35,11 @@ int main(int argc, char *argv[])
         { QStringLiteral("screenshot"), QStringLiteral("Save a PNG of the window to <file> and exit."), QStringLiteral("file") },
         { QStringLiteral("size"), QStringLiteral("Window size as WIDTHxHEIGHT."), QStringLiteral("size"), QStringLiteral("1200x800") },
         { QStringLiteral("dark"), QStringLiteral("Use the dark colour scheme.") },
+        { QStringLiteral("action"), QStringLiteral("Do something once loaded: search (open the search panel)."), QStringLiteral("name") },
     });
     parser.process(app);
     Platform::initialRoute = parser.value(QStringLiteral("route"));
+    Platform::initialAction = parser.value(QStringLiteral("action"));
     if (parser.isSet(QStringLiteral("dark")))
         QGuiApplication::styleHints()->setColorScheme(Qt::ColorScheme::Dark);
 #endif

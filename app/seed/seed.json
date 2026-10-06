@@ -81,70 +81,90 @@
    "public_name": "1145 Lifestyle",
    "internal_name": "1145 Lifestyle",
    "mark": "1145",
-   "tagline": "A connected lifestyle and commerce platform.",
-   "summary": "Connected commerce platform spanning customer shopping, merchant tools, logistics and related financial services.",
+   "tagline": "Shop, ride and earn in one connected commerce platform.",
+   "summary": "1145 is LSI's flagship: a connected marketplace that brings branded online shopping together with the services needed to complete a transaction, from product discovery and merchant storefronts to delivery, rides and digital financial tools.",
    "category": "Commerce",
    "sort_order": 1,
-   "status": "in-development",
-   "status_note": "1145 Lifestyle is being built. No public web app or store listing has been published on this site yet.",
+   "status": "available",
+   "status_note": "1145 Lifestyle is live as a web app at 1145.io. It runs in your browser, so there is nothing to download.",
    "audiences": [
     {
      "name": "Consumers",
-     "description": "People who want to browse, order and pay for goods and services in one place."
+     "description": "People who want to discover, buy and receive products, and use related services, in one place."
     },
     {
      "name": "Merchants and brand owners",
-     "description": "Businesses that want to list products, manage orders and reach customers."
+     "description": "Businesses that want their own storefront, with tools to list products, manage orders and reach customers."
     },
     {
-     "name": "Delivery partners",
-     "description": "Drivers and couriers who fulfil deliveries for orders placed on the platform."
+     "name": "Delivery partners and drivers",
+     "description": "People who fulfil deliveries and rides through the platform."
     }
    ],
    "capabilities": [
     {
-     "name": "Marketplace",
+     "name": "Marketplace and brand storefronts",
      "group": "Customer shopping",
-     "availability": "planned",
-     "description": "Browse products from participating merchants, place orders and follow them to delivery."
+     "availability": "available",
+     "description": "Browse categories, deals and new arrivals from many sellers, each with their own storefront."
     },
     {
      "name": "Merchant tools",
      "group": "Merchants",
-     "availability": "planned",
-     "description": "List products, manage stock and orders, and see how a store is performing."
+     "availability": "available",
+     "description": "Register as a merchant, set up a store, list products, manage stock and orders, and see how the store is performing."
     },
     {
-     "name": "Delivery",
+     "name": "Secure checkout and payments",
+     "group": "Payments",
+     "availability": "available",
+     "description": "Pay for an order through an integrated, encrypted checkout."
+    },
+    {
+     "name": "Order tracking and delivery",
      "group": "Logistics",
-     "availability": "planned",
-     "description": "Assign, track and complete deliveries for marketplace orders."
+     "availability": "available",
+     "description": "Follow an order from purchase to delivery, with the logistics layer connecting merchants to drivers."
     },
     {
      "name": "Rides",
      "group": "Logistics",
-     "availability": "planned",
+     "availability": "available",
      "description": "Request and manage rides through the same account."
     },
     {
-     "name": "Financial services",
+     "name": "Wallet and rewards",
      "group": "Payments",
+     "availability": "available",
+     "description": "A wallet and rewards connected to activity on the platform. The terms on 1145.io apply to any financial feature."
+    },
+    {
+     "name": "Mobile apps",
+     "group": "Platforms",
      "availability": "planned",
-     "description": "Wallet and payment features related to shopping on the platform. Details will be published only once a service is released and approved."
+     "description": "Android and iOS apps are planned. Until they are released, use the web app in your phone’s browser."
+    },
+    {
+     "name": "Product recommendations",
+     "group": "Customer shopping",
+     "availability": "planned",
+     "description": "AI-assisted recommendations are on the roadmap."
+    },
+    {
+     "name": "More languages and currencies",
+     "group": "Platforms",
+     "availability": "planned",
+     "description": "Multi-language and multi-currency support is on the roadmap."
     }
    ],
    "requirements": [
     {
-     "label": "Devices",
-     "detail": "Not confirmed yet. Supported devices will be listed with the first release."
+     "label": "Device",
+     "detail": "Any phone, tablet or computer with a current web browser. The web app adapts to the screen."
     },
     {
      "label": "Account",
-     "detail": "A 1145 Lifestyle account, created on the product's own domain. This website never asks for your product sign-in details."
-    },
-    {
-     "label": "Permissions",
-     "detail": "Not confirmed yet. Any permission a module needs will be explained before you are asked to grant it."
+     "detail": "A 1145 account, created on 1145.io. This website never asks for your 1145 sign-in or payment details."
     },
     {
      "label": "Connectivity",
@@ -157,15 +177,14 @@
     "financial-technology"
    ],
    "platforms": [
-    "android",
-    "ios",
     "web"
    ],
-   "platform_note": "Each module is documented separately and may reach different platforms at different times.",
-   "getting_started": "There is nothing to install or open yet. When the first module is released, account setup and onboarding steps will be published here.",
+   "platform_note": "1145 is a web app for now. There are no downloadable apps; mobile apps are planned.",
+   "getting_started": "Open 1145 in your browser and create an account. You can start shopping straight away, or register as a merchant to open a store.",
    "limitations": [
-    "No module has been released, so nothing described on this page can be used yet.",
-    "Payment and wallet guidance will only be published for services that have actually been released."
+    "There are no mobile apps to download yet. Use the web app in your phone’s browser.",
+    "Which services are offered can differ by location.",
+    "Payments, wallet and rewards are governed by the terms published on 1145.io, not by this website."
    ],
    "notice_title": null,
    "notice_body": null,
@@ -252,93 +271,134 @@
    "public_name": "LSI Gold Digger",
    "internal_name": "LSI Gold Digger",
    "mark": "GD",
-   "tagline": "Gold market research and analysis with risk-aware decision support.",
-   "summary": "Gold market research and analysis project with market context, technical inputs and risk-aware decision support.",
+   "tagline": "A gold (XAU/USD) research terminal with a risk engine that has the final say.",
+   "summary": "LSI Gold Digger is a desktop research terminal, analysis engine and risk engine for gold (XAU/USD). It brings market data, macro context, news and technical analysis together, explains every signal it produces, and can place trades through a MetaTrader 5 account only after its risk engine approves them.",
    "category": "Market research",
    "sort_order": 4,
-   "status": "in-development",
-   "status_note": "LSI Gold Digger is being built. No release has been published.",
+   "status": "available",
+   "status_note": "Version 0.1 for Windows is available as a preview. It is a foundation release: it starts on simulated data with a paper account, and live-account trading stays locked until you unlock it yourself.",
    "audiences": [
     {
      "name": "People researching the gold market",
-     "description": "Anyone who wants structured market context and technical inputs to inform their own decisions."
+     "description": "Anyone who wants structured market context and transparent technical analysis to inform their own decisions."
+    },
+    {
+     "name": "Traders testing a disciplined process",
+     "description": "People who want to backtest and paper-trade a rules-based approach, with enforced risk limits, before considering a demo or live account."
     }
    ],
    "capabilities": [
     {
-     "name": "Macro-regime view",
-     "group": "Market context",
-     "availability": "planned",
-     "description": "A summary of the wider economic conditions that tend to influence gold."
+     "name": "Market data",
+     "group": "Data",
+     "availability": "available",
+     "description": "Live prices and closed bars from a MetaTrader 5 terminal, or a built-in simulator when no broker is connected. Simulated data is clearly labelled."
     },
     {
-     "name": "Daily bias",
-     "group": "Market context",
-     "availability": "planned",
-     "description": "A stated directional lean for the day, with the inputs behind it."
+     "name": "Technical analysis and market structure",
+     "group": "Analysis",
+     "availability": "available",
+     "description": "Moving averages, RSI, MACD, ATR, Bollinger Bands and ADX, plus swing structure, breaks of structure, support and resistance, regression channels, Double Bollinger Bands and liquidity pools. No value depends on future bars."
     },
     {
-     "name": "Market structure",
-     "group": "Technical analysis",
-     "availability": "planned",
-     "description": "Trend, swing highs and lows, and where structure has changed."
+     "name": "Market regime and macro view",
+     "group": "Analysis",
+     "availability": "available",
+     "description": "A regime label from strongly bullish to strongly bearish with high-volatility and event-risk overlays, and a rule-based macro score that lists the reason for every point. The macro view needs a free FRED API key."
     },
     {
-     "name": "Liquidity",
-     "group": "Technical analysis",
-     "availability": "planned",
-     "description": "Price areas where resting orders are likely to cluster."
+     "name": "News and economic calendar",
+     "group": "Analysis",
+     "availability": "available",
+     "description": "Gold-relevant news scored by transparent keyword rules, and a weekly economic calendar. High-impact US events trigger a trading blackout."
     },
     {
-     "name": "Regression",
-     "group": "Technical analysis",
-     "availability": "planned",
-     "description": "A regression view of where price sits relative to its recent trend."
+     "name": "Signals with reasons",
+     "group": "Decision support",
+     "availability": "available",
+     "description": "Four strategies (trend pullback, confluence, ensemble and adaptive) that output BUY, SELL or WAIT with every condition, reason and risk listed. No AI model produces or edits a score."
     },
     {
-     "name": "Double Bollinger Bands",
-     "group": "Technical analysis",
-     "availability": "planned",
-     "description": "Two sets of Bollinger Bands used together to describe momentum and range."
+     "name": "Weekly Focus",
+     "group": "Decision support",
+     "availability": "available",
+     "description": "A weekly thesis: bias, key levels, bullish and bearish scenarios, what would invalidate them, and the events to watch."
     },
     {
-     "name": "XM connectivity and trade execution",
-     "group": "Account connection",
+     "name": "Risk engine",
+     "group": "Risk",
+     "availability": "available",
+     "description": "The final authority on every order: a mandatory stop loss, a minimum reward-to-risk of 1:2, one position at a time, no averaging into a loss, daily and weekly loss limits, and drawdown tiers that reduce risk after losses. Hard ceilings cannot be raised by any setting."
+    },
+    {
+     "name": "Paper trading, backtesting and journal",
+     "group": "Testing",
+     "availability": "available",
+     "description": "A paper account, bar-by-bar backtests and walk-forward tests that run through the same signal, risk and execution code as live analysis, and a journal of every proposal, rejection and trade with performance statistics."
+    },
+    {
+     "name": "MetaTrader 5 connection and trade execution",
+     "group": "Broker connection",
+     "availability": "available",
+     "description": "Connects to an MT5 account at any broker, including XM. The connection is read-only by default. Sending orders needs three separate opt-ins, and a live account must be unlocked with a typed confirmation every session.",
+     "platformNote": "Needs a MetaTrader 5 terminal and Python 3.10 or newer on the same PC, or on another machine you control."
+    },
+    {
+     "name": "AI Gold Analyst",
+     "group": "Decision support",
+     "availability": "available",
+     "description": "A chat assistant that can read the app's market, signal, macro, news, journal and performance data. It has no ability to place, change or close an order. Needs your own Anthropic API key; usage is billed to you."
+    },
+    {
+     "name": "Macro and news in backtests",
+     "group": "Testing",
      "availability": "planned",
-     "description": "Not implemented and not approved. It will only be shown as available if it is built and approved by LSI."
+     "description": "Backtests are technical-only in this version, because point-in-time macro and news history is not yet included."
+    },
+    {
+     "name": "Signed installer",
+     "group": "Distribution",
+     "availability": "planned",
+     "description": "The installer is not yet code-signed, so Windows shows an unknown-publisher warning."
     }
    ],
    "requirements": [
     {
-     "label": "Devices",
-     "detail": "Not confirmed yet."
+     "label": "Operating system",
+     "detail": "Windows 10 or 11, 64-bit. No administrator rights are needed to install."
     },
     {
-     "label": "Account",
-     "detail": "Not confirmed yet. No trading account connection is offered."
+     "label": "To connect a broker",
+     "detail": "A MetaTrader 5 terminal (your broker's download) and Python 3.10 or newer. Not needed to run on simulated data."
     },
     {
-     "label": "Data",
-     "detail": "Data sources, timestamps and refresh intervals will be documented before release."
+     "label": "Optional keys",
+     "detail": "A free FRED API key for the macro view, and an Anthropic API key for the AI Gold Analyst. Keys and passwords are stored in Windows Credential Manager, never in files or logs."
     },
     {
      "label": "Connectivity",
-     "detail": "An internet connection for market data."
+     "detail": "An internet connection for live market data, news, the calendar and the optional services."
     }
    ],
    "services": [
     "market-intelligence"
    ],
-   "platforms": [],
-   "platform_note": null,
-   "getting_started": "There is nothing to install or open yet. Setup steps will be published with the first release.",
+   "platforms": [
+    "windows"
+   ],
+   "platform_note": "Windows only in this version.",
+   "getting_started": "Download the installer, check its SHA-256 checksum against the one shown on this site, and run it. The app opens on simulated data with a paper account, so you can explore everything before connecting a broker.",
    "limitations": [
-    "No release exists, so nothing described on this page can be used yet.",
-    "Analysis can be wrong, late or based on incomplete data.",
+    "The strategies are explainable starting points, not a proven edge. Validation on real broker history is not complete.",
+    "Backtests are technical-only: macro and news are not included in them.",
+    "The economic calendar comes from an unofficial public export and can have missing values.",
+    "News sentiment is based on keyword rules: transparent, but coarse.",
+    "On a very small account the risk engine will reject almost every trade, because the broker's minimum position exceeds the permitted risk. That is intended.",
+    "The installer is not code-signed, so Windows warns that the publisher is unknown.",
     "The tool does not provide financial advice."
    ],
-   "notice_title": "Market outcomes are uncertain",
-   "notice_body": "LSI Gold Digger is a research and analysis tool. Its analysis does not guarantee returns, and past behaviour of a market does not predict its future. You are responsible for your own decisions.",
+   "notice_title": "Trading can lose all the money in the account",
+   "notice_body": "LSI Gold Digger is a research and analysis tool. Nothing in it is financial advice, no strategy in it is a proven edge, and no result is guaranteed. Past behaviour of a market does not predict its future. Use the paper account and then a demo account before considering real money. You are responsible for your own decisions.",
    "support_url": null,
    "privacy_url": null,
    "icon_path": null
@@ -448,21 +508,21 @@
    "product_slug": "1145",
    "slug": "getting-started",
    "title": "Getting started with 1145 Lifestyle",
-   "summary": "What you will need and what to expect once the first module is released.",
+   "summary": "Open the web app, create an account and place a first order or open a store.",
    "audience": "Everyone",
    "sort_order": 1,
-   "body": "## Current status\n\n1145 Lifestyle is in development. There is no public web app or store listing yet, so there is nothing to install or open.\n\n## What you will need\n\n- A phone or computer with an internet connection. Supported devices will be confirmed with the first release.\n- A 1145 Lifestyle account. You will create it on the product's own domain or in its official app, never on this website.\n\n## When a release is published\n\n1. Open the [1145 Lifestyle product page](/work/1145).\n2. Check the status and the platform you want to use.\n3. Use the **Open** or **Download** button. It will only appear for a release LSI has reviewed and published.\n\nAccount setup, onboarding and payment or wallet guidance will be added here only for capabilities that have actually been released.\n",
+   "body": "1145 Lifestyle is live as a web app. It runs in your browser, so there is nothing to install.\n\n## What you need\n\n- A phone, tablet or computer with a current web browser and an internet connection.\n- A 1145 account. You create it on 1145.io, never on this website.\n\n## Open 1145\n\n1. Go to the [1145 Lifestyle page](/work/1145) and choose **Open 1145 Lifestyle**. The link leaves this website and opens 1145.io.\n2. Create an account, or sign in if you already have one.\n\n## If you are shopping\n\nBrowse the categories, deals and storefronts, add what you want to your basket and check out. You can follow the order to delivery from your account.\n\n## If you are selling\n\nRegister as a merchant and set up your store. Each merchant has their own storefront, with tools for products, stock and orders.\n\n## On a phone\n\nThere are no mobile apps to download yet. Open 1145.io in your phone's browser; the web app adapts to the screen.\n",
    "last_reviewed": "2026-10-06",
    "status": "published"
   },
   {
    "product_slug": "1145",
-   "slug": "modules",
-   "title": "1145 Lifestyle modules",
-   "summary": "The marketplace, merchant, delivery, ride and financial modules, and the current availability of each.",
+   "slug": "services",
+   "title": "What 1145 brings together",
+   "summary": "The marketplace, merchant tools, delivery, rides and financial features in one platform.",
    "audience": "Everyone",
    "sort_order": 2,
-   "body": "1145 Lifestyle is made up of modules. Each one is released and documented separately. Every module below is currently **planned**. None has been released.\n\n## Marketplace\n\nFor consumers. Browse products from participating merchants, place orders and follow them through to delivery.\n\n## Merchant tools\n\nFor merchants and brand owners. List products, manage stock and orders, and see how a store is performing.\n\n## Delivery\n\nFor delivery partners. Assign, track and complete deliveries for marketplace orders.\n\n## Rides\n\nFor consumers and drivers. Request and manage rides through the same account.\n\n## Financial services\n\nFor consumers and merchants. Wallet and payment features related to shopping on the platform. No financial service is live, and guidance will be published only for services that have been released and approved.\n",
+   "body": "1145 is built as a connected ecosystem: you use the services relevant to you, and they work together.\n\n## Available now\n\n- **Marketplace and brand storefronts.** Discover and buy products from many sellers.\n- **Merchant tools.** Product listings, stock, orders and store performance.\n- **Secure checkout and payments.** An integrated, encrypted checkout.\n- **Order tracking and delivery.** A logistics layer connects a sale to the delivery that completes it.\n- **Rides.** Request and manage rides through the same account.\n- **Wallet and rewards.** Connected to your activity on the platform.\n\nThe terms published on 1145.io apply to every payment, wallet and rewards feature.\n\n## Planned\n\n- Mobile apps for Android and iOS.\n- Product recommendations.\n- More languages and currencies.\n\nPlanned features are not available yet and may change.\n",
    "last_reviewed": "2026-10-06",
    "status": "published"
   },
@@ -470,10 +530,10 @@
    "product_slug": "1145",
    "slug": "troubleshooting",
    "title": "Troubleshooting 1145 Lifestyle",
-   "summary": "Common questions before launch and where to go for help.",
+   "summary": "Where to get help with an account, order, ride or payment.",
    "audience": "Everyone",
    "sort_order": 3,
-   "body": "## I cannot find a download or sign-in link\n\nThat is expected. No release has been published. A button will appear on the [product page](/work/1145) once one is approved.\n\n## Someone sent me a link to a 1145 Lifestyle app\n\nOnly use links published on this website. LSI lists every official web app and store listing on the [Downloads page](/downloads). If a link is not there, treat it as unofficial.\n\n## I need more help\n\nSee [Support](/support).\n",
+   "body": "## I cannot find an app to download\n\nThere is none yet. 1145 is a web app: open it from the [1145 Lifestyle page](/work/1145) in your browser, including on a phone.\n\n## I have a problem with an order, a ride or a payment\n\nUse the help and contact options on 1145.io. The 1145 support team can see your account and order; this website cannot.\n\n## Someone sent me a link to a 1145 app or sign-in page\n\nOnly use the link published on this website, which opens 1145.io. Treat any other address or any app file as unofficial, and never enter your sign-in details there.\n\n## The page will not load\n\nCheck your connection and try a current browser. If the problem continues, see [Support](/support).\n",
    "last_reviewed": "2026-10-06",
    "status": "published"
   },
@@ -524,11 +584,11 @@
   {
    "product_slug": "gold-digger",
    "slug": "analysis-views",
-   "title": "Analysis views",
-   "summary": "What the macro-regime, daily-bias, market-structure, liquidity, regression and Double Bollinger Bands views are meant to show.",
+   "title": "Analysis, strategies and connecting MetaTrader 5",
+   "summary": "What each view shows, how the four strategies decide, and how to connect a broker safely.",
    "audience": "Users",
    "sort_order": 2,
-   "body": "Every view is planned. This page explains the intent of each one so that its output can be read critically.\n\n## Macro regime\n\nA summary of the wider economic conditions that tend to influence gold. It gives context. It does not predict price.\n\n## Daily bias\n\nA stated directional lean for the day, shown with the inputs that produced it so you can judge whether you agree.\n\n## Market structure\n\nThe current trend, recent swing highs and lows, and the points where structure has changed.\n\n## Liquidity\n\nPrice areas where resting orders are likely to cluster. These are estimates drawn from price history, not a view of an order book.\n\n## Regression\n\nWhere price sits relative to a regression line fitted to its recent trend, and how far it has stretched from it.\n\n## Double Bollinger Bands\n\nTwo sets of Bollinger Bands at different widths, used together to describe momentum and range.\n\n## Reading the views together\n\nThe views can disagree. Disagreement is information, not an error, and no single view should be treated as a signal on its own.\n",
+   "body": "Every view explains itself: scores come with their reasons, and no AI model produces or edits a score.\n\n## Analysis views\n\n- **Technical.** Moving averages, RSI, MACD, ATR, Bollinger Bands and ADX across 15-minute, 1-hour, 4-hour, daily and weekly bars. No value depends on future bars.\n- **Market structure.** Confirmed swing highs and lows, trend, breaks of structure, failed breakouts and clustered support and resistance.\n- **Regime.** A label from strongly bullish to strongly bearish, with high-volatility and event-risk overlays.\n- **Macro.** A rule-based score from real yields, the dollar, breakevens, Fed funds and unemployment, with the reason for every point. Needs a free FRED API key.\n- **News and calendar.** Gold-relevant headlines with source and sentiment, and the week's economic events. High-impact US events trigger a trading blackout.\n- **Weekly Focus.** A weekly thesis: bias, levels, bullish and bearish scenarios, what would invalidate each, and the events to watch.\n\nChart overlays for Double Bollinger Bands, the regression channel, structure labels and liquidity pools are switched on from the Market page.\n\n## Strategies\n\nFour strategies share the same risk engine and backtester. Choose one under **Settings > Strategy**.\n\n- **Trend pullback** (the default). Trades with the higher-timeframe trend after a pullback, on a 15-minute break of structure.\n- **Confluence.** Scores regression, Double Bollinger Bands, market structure, liquidity, macro and daily bias from 0 to 100, and needs a high score with agreement between engines.\n- **Ensemble.** Seven independent modules combined by a transparent weighted score. Any failed gate gives no trade.\n- **Adaptive.** Evolves its own rules from recent market behaviour and retires them when they stop working. It often has nothing to trade; that is by design.\n\nEach outputs **BUY**, **SELL** or **WAIT**, with every condition and risk listed. Ensemble and Adaptive are limited to paper and demo accounts until an operator promotes one with a typed confirmation.\n\nCompare them on the same history under **Backtesting > Compare strategies**.\n\n## Connecting MetaTrader 5\n\nUse a **demo** account first.\n\n1. Install a MetaTrader 5 terminal, from your broker or the generic one.\n2. Install the bridge's Python packages. Open a Command Prompt in the app's install folder and run `python -m pip install -r bridge\\requirements.txt`.\n3. In the app, open **Settings > MT5 account login**. Enter the account number, the server name exactly as your broker gives it, and the password, then choose **Log in**.\n\nThe gold symbol is found automatically. Your password is stored in Windows Credential Manager and is passed only to the bridge and the terminal on your own PC.\n\n## Sending orders\n\nThe connection is **read-only by default**. An order is only sent when all of these are true:\n\n1. **Bridge order commands** is enabled in Settings.\n2. **MT5** is selected as the execution venue.\n3. For a live account, live trading has been unlocked with a typed confirmation in this session.\n4. The risk engine approves the order at the moment of execution.\n\nAutomatic trading is always off after a restart and switches itself off on stale data, a lost connection, the emergency stop or a drawdown suspension.\n",
    "last_reviewed": "2026-10-06",
    "status": "published"
   },
@@ -536,10 +596,10 @@
    "product_slug": "gold-digger",
    "slug": "data-and-risk",
    "title": "Data, limitations and risk",
-   "summary": "Data sources, timing, known limits, risk controls and account connections.",
+   "summary": "Where the data comes from, what the risk engine enforces, and what this version cannot do.",
    "audience": "Users",
    "sort_order": 3,
-   "body": "## Data sources, timestamps and refresh intervals\n\nTo be documented before the first release. Every view will show when its data was last updated.\n\n## Limitations\n\n- Analysis can be wrong, late or based on incomplete data.\n- Past market behaviour does not predict future behaviour.\n- The tool does not know your circumstances and does not give financial advice.\n\n## Risk controls\n\nRisk controls will be documented with the first release.\n\n## Account connection and trade execution\n\nXM connectivity and trade execution are not implemented and not approved. They will be documented here only if they are built and approved by LSI.\n\n## No guarantee\n\nMarket outcomes are uncertain. Nothing in LSI Gold Digger guarantees a return.\n",
+   "body": "## Data sources\n\n- **Prices.** Live quotes and closed bars from your MetaTrader 5 terminal, with broker time converted to UTC. Without a broker, a simulator supplies data that is clearly marked as simulated.\n- **Macro.** Economic series from FRED, using your own free API key.\n- **News.** RSS feeds, scored by keyword rules. Every item keeps its source, time and link.\n- **Calendar.** A weekly economic calendar from a public export, cached on your PC.\n\nOrders are refused if the latest price is more than 10 seconds old.\n\n## What the risk engine enforces\n\nEvery order is checked at the moment of execution, even after you have approved it.\n\n- A stop loss is mandatory, and reward-to-risk must be at least 1:2.\n- One position at a time. No averaging into a losing position.\n- Daily loss under 2% and weekly loss under 5% by default.\n- No trading within 30 minutes of a high-impact US event, in abnormal volatility, or on a wide spread.\n- Position size is calculated from the account's equity and the stop distance, and is always rounded down.\n- After losses, drawdown tiers reduce the risk per trade, and trading is suspended below 80% of the reference balance. Risk never increases after a loss.\n\n**Hard ceilings** that no setting can exceed: 2% per trade, 5% daily, 10% weekly and three positions. Martingale, grid recovery and averaging down are blocked.\n\n## Small accounts\n\nWhether a small balance can trade gold is decided by the broker's smallest position. On a standard contract a small account cannot fit even the minimum trade inside the limits, so the risk engine rejects almost every setup. That is correct behaviour. **Trading > Can it trade now?** shows what the broker's contract needs.\n\nA small-account mode exists and is off by default. It needs a typed confirmation, raises the limits for the minimum position only, and makes a suspension much more likely.\n\n## Limitations of version 0.1\n\n- The strategies are explainable starting points, not a proven edge. Validation on real broker history is not complete.\n- Backtests are technical-only: macro and news are not included.\n- The calendar source is unofficial and may be missing values.\n- News sentiment is keyword-based: transparent, but coarse.\n- The simulator replays the same price path on each launch.\n\n## Before any real money\n\n1. Run backtests and walk-forward tests on your own broker's history.\n2. Paper-trade for weeks and review the journal.\n3. Move to a demo account, and only after that consider a live one.\n\n## No guarantee\n\nMarket outcomes are uncertain. Nothing in LSI Gold Digger is financial advice, and nothing in it guarantees a return.\n",
    "last_reviewed": "2026-10-06",
    "status": "published"
   },
@@ -547,10 +607,10 @@
    "product_slug": "gold-digger",
    "slug": "getting-started",
    "title": "Getting started with LSI Gold Digger",
-   "summary": "What the tool is for and what to expect at release.",
+   "summary": "Install the Windows app, check your download, and take a first look on simulated data.",
    "audience": "Users",
    "sort_order": 1,
-   "body": "LSI Gold Digger is a gold market research and analysis tool. It is in development and nothing has been released.\n\n## Before you use it\n\nMarket outcomes are uncertain. The tool's analysis does not guarantee returns and is not financial advice. You are responsible for your own decisions.\n\n## What you will need\n\nDevices, accounts and data requirements will be confirmed with the first release. No trading account connection is offered.\n\n## Next\n\nRead [Analysis views](/docs/gold-digger/analysis-views) to understand what each view is meant to show, and [Data, limitations and risk](/docs/gold-digger/data-and-risk) before relying on any of it.\n",
+   "body": "LSI Gold Digger is a research terminal, analysis engine and risk engine for gold (XAU/USD). Version 0.1 for Windows is available from the [Downloads page](/downloads).\n\n## Before you use it\n\nTrading leveraged products can lose all the money in the account. Nothing in this software is financial advice, and no strategy in it is a proven edge. It starts on simulated data and a paper account. Use those, and then a demo account, before considering real money.\n\n## What you need\n\n- Windows 10 or 11, 64-bit. Installing does not need administrator rights.\n- To connect a broker later: a MetaTrader 5 terminal and Python 3.10 or newer. See [Connecting MetaTrader 5](/docs/gold-digger/analysis-views).\n\n## Install\n\n1. Download the installer from the [Downloads page](/downloads).\n2. Check the download. Compare the file's SHA-256 checksum with the one shown on the release page. In PowerShell: `Get-FileHash GoldDigger-0.1.0-Setup.exe`. If the two differ, do not run the file.\n3. Run the installer. Windows may warn that the publisher is unknown, because the installer is not yet code-signed: choose **More info**, then **Run anyway**.\n4. Read the risk notice the installer shows, and continue. The app installs for your user account only.\n\n## First run\n\nStart **LSI Gold Digger** from the Start Menu. It opens on **simulated** data, clearly marked in the header, so everything works without a broker.\n\n- On weekends the simulated market is closed, like the real one. To test at a weekend, set **Settings > Simulated market hours** to 24/7.\n- Trades go to the **paper account**. The paper balance and positions are kept between restarts.\n\n## Where your data is kept\n\nSettings, the trade journal and the paper account are in `%APPDATA%\\GoldDigger`. Passwords and API keys are in Windows Credential Manager, never in files or logs.\n\n## Uninstall\n\n**Settings > Apps > LSI Gold Digger > Uninstall.** To remove your data as well, delete `%APPDATA%\\GoldDigger`.\n\n## Next\n\nRead [Analysis and strategies](/docs/gold-digger/analysis-views) to understand what the app shows, and [Data, limitations and risk](/docs/gold-digger/data-and-risk) before relying on any of it.\n",
    "last_reviewed": "2026-10-06",
    "status": "published"
   },
@@ -558,10 +618,10 @@
    "product_slug": "gold-digger",
    "slug": "troubleshooting",
    "title": "Troubleshooting LSI Gold Digger",
-   "summary": "Common questions before launch.",
+   "summary": "Installer warnings, a closed simulated market, broker login and rejected trades.",
    "audience": "Users",
    "sort_order": 4,
-   "body": "## I cannot find a download or web app\n\nNo release has been published. The [product page](/work/gold-digger) will show a button when one is approved.\n\n## I need more help\n\nSee [Support](/support).\n",
+   "body": "## Windows says the publisher is unknown\n\nThe installer is not yet code-signed. Compare your download's SHA-256 checksum with the one on the release page. If they match, choose **More info**, then **Run anyway**. If they do not match, delete the file and download it again from the [Downloads page](/downloads).\n\n## Nothing is moving on the chart\n\nWithout a broker the app uses simulated data, and the simulated market closes at weekends. Set **Settings > Simulated market hours** to 24/7.\n\n## It will not log in to my broker\n\n- Check that a MetaTrader 5 terminal is installed and that Python 3.10 or newer is available.\n- Install the bridge packages: `python -m pip install -r bridge\\requirements.txt`, run from the app's install folder.\n- Enter the server name exactly as your broker gives it. If the terminal does not know the server, add the broker once in the terminal under **File > Open an Account**.\n- If several terminals are installed, set the terminal path in Settings.\n\n## Every trade is rejected\n\nThat is usually the risk engine doing its job. Open **Trading > Can it trade now?** to see each requirement with pass or fail. On a small account the broker's minimum position often exceeds the permitted risk.\n\n## Orders are not being sent to the broker\n\nThe connection is read-only by default. See \"Sending orders\" in [Analysis, strategies and connecting MetaTrader 5](/docs/gold-digger/analysis-views).\n\n## I found an installer somewhere else\n\nOnly install files listed on this website, and always compare the checksum.\n\n## I need more help\n\nSee [Support](/support).\n",
    "last_reviewed": "2026-10-06",
    "status": "published"
   },
@@ -603,7 +663,7 @@
   {
    "product_slug": "1145",
    "question": "Can I use 1145 Lifestyle today?",
-   "answer": "Not yet. 1145 Lifestyle is in development and no web app or store listing has been published on this site. When a release is approved, an Open or Download button will appear on the product page.",
+   "answer": "Yes. 1145 is live as a web app at 1145.io. Use the Open 1145 Lifestyle button on its page.",
    "category": "Availability",
    "escalation": null,
    "visible": true,
@@ -611,21 +671,39 @@
   },
   {
    "product_slug": "1145",
-   "question": "Where will I sign in?",
-   "answer": "On the product's own domain or in its official app. This website is a catalogue and never asks for your 1145 Lifestyle sign-in or payment details.",
-   "category": "Accounts",
+   "question": "Is there an app to download?",
+   "answer": "Not yet. 1145 runs in your browser on a phone, tablet or computer. Android and iOS apps are planned, and will be listed on the Downloads page when they are released.",
+   "category": "Availability",
    "escalation": null,
    "visible": true,
    "sort_order": 2
   },
   {
    "product_slug": "1145",
-   "question": "Will every module launch together?",
-   "answer": "Not necessarily. Marketplace, merchant, delivery, ride and financial features are tracked separately, and each is marked Available only once it has been released.",
-   "category": "Availability",
+   "question": "Where do I sign in?",
+   "answer": "On 1145.io. This website is LSI’s company site and never asks for your 1145 sign-in or payment details.",
+   "category": "Accounts",
    "escalation": null,
    "visible": true,
    "sort_order": 3
+  },
+  {
+   "product_slug": "1145",
+   "question": "How do I sell on 1145?",
+   "answer": "Register as a merchant on 1145.io. Each merchant gets their own storefront, with tools for products, stock and orders.",
+   "category": "Merchants",
+   "escalation": null,
+   "visible": true,
+   "sort_order": 4
+  },
+  {
+   "product_slug": "1145",
+   "question": "Who do I contact about an order, a ride or a payment?",
+   "answer": "Use the help and contact options on 1145.io, where your account and order details are available to the support team.",
+   "category": "Support",
+   "escalation": null,
+   "visible": true,
+   "sort_order": 5
   },
   {
    "product_slug": "1145hz",
@@ -657,7 +735,7 @@
   {
    "product_slug": "gold-digger",
    "question": "Does LSI Gold Digger tell me what to trade?",
-   "answer": "No. It is a research and analysis tool. It does not give financial advice, and its analysis does not guarantee returns.",
+   "answer": "It produces BUY, SELL or WAIT signals and shows every condition and reason behind them, but it is a research and analysis tool. It does not give financial advice, its strategies are not a proven edge, and its analysis does not guarantee returns.",
    "category": "Risk",
    "escalation": null,
    "visible": true,
@@ -665,21 +743,57 @@
   },
   {
    "product_slug": "gold-digger",
-   "question": "Can it connect to my XM account or place trades?",
-   "answer": "No. XM connectivity and trade execution are not implemented and not approved. They will only be shown as available if that changes.",
-   "category": "Account connection",
+   "question": "Can it place trades on my broker account?",
+   "answer": "Yes, through a MetaTrader 5 account at any broker, including XM, but not by default. The connection starts read-only and the app trades on a paper account. Sending real orders needs you to enable order commands, choose MT5 as the venue and, for a live account, unlock live trading with a typed confirmation every session. Every order must still pass the risk engine.",
+   "category": "Broker connection",
    "escalation": null,
    "visible": true,
    "sort_order": 2
   },
   {
    "product_slug": "gold-digger",
-   "question": "Where does the market data come from?",
-   "answer": "Data sources, timestamps and refresh intervals will be documented before the first release.",
-   "category": "Data",
+   "question": "Do I need a broker account to try it?",
+   "answer": "No. It opens on simulated data with a paper account, and everything works without a MetaTrader 5 terminal.",
+   "category": "Getting started",
    "escalation": null,
    "visible": true,
    "sort_order": 3
+  },
+  {
+   "product_slug": "gold-digger",
+   "question": "Why does Windows warn me about the installer?",
+   "answer": "The installer is not yet code-signed, so Windows shows an unknown-publisher warning. Before choosing More info and Run anyway, compare the SHA-256 checksum of your download with the one shown on this site. If they differ, do not run the file.",
+   "category": "Installation",
+   "escalation": null,
+   "visible": true,
+   "sort_order": 4
+  },
+  {
+   "product_slug": "gold-digger",
+   "question": "Why does it reject almost every trade on my small account?",
+   "answer": "On a standard gold contract the smallest position can risk more than the limits allow on a small balance, so the risk engine refuses. That is intended. The app shows how much the broker's contract needs under Trading, Can it trade now.",
+   "category": "Risk",
+   "escalation": null,
+   "visible": true,
+   "sort_order": 5
+  },
+  {
+   "product_slug": "gold-digger",
+   "question": "Where does the market data come from?",
+   "answer": "Prices come from your MetaTrader 5 terminal, or from a built-in simulator when no broker is connected. Macro data comes from FRED, news from RSS feeds, and the economic calendar from a public weekly export.",
+   "category": "Data",
+   "escalation": null,
+   "visible": true,
+   "sort_order": 6
+  },
+  {
+   "product_slug": "gold-digger",
+   "question": "Can the AI assistant trade for me?",
+   "answer": "No. The AI Gold Analyst can only read the app's data. It has no ability to place, change or close an order.",
+   "category": "Safety",
+   "escalation": null,
+   "visible": true,
+   "sort_order": 7
   },
   {
    "product_slug": "podcast-radio",

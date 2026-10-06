@@ -79,6 +79,50 @@ The site will not let the person who prepared (or last edited) a release approve
 
 Published releases are never deleted, so there is always a record of what was offered and when.
 
+## Publishing a build from the `download` folder
+
+A product's build script can hand this site a ready-made release: the installer and a small
+`.release.json` next to it (LSI Gold Digger's `scripts\package.bat` writes both). Put the two
+files in `download/`. This is how LSI Gold Digger 0.1.0 was published on 6 October 2026.
+
+1. **Describe the release.** Add `content/releases/<product>-<platform>-<version>.json`. Copy the
+   size, checksum, compatibility and dependencies from the `.release.json`, and write the install
+   steps, release notes, known issues, licence and support route. Set `storage_path` to where the
+   file will live in the release bucket, `local_file` to the file in `download/`, and `status` to
+   `draft` (hidden) or `available` (published).
+2. **Bring the product's content up to date** in `content/products`, `content/docs` and
+   `content/faqs`, so the page describes what this version really does.
+3. **Build and test the update.**
+
+   ```powershell
+   npm run seed
+   node scripts/build-sync-sql.mjs <product>     # checks the file against the record
+   npm test
+   ```
+
+4. **Upload the file**, from the folder that holds it, under the name in the record:
+
+   ```powershell
+   npx supabase storage cp <file> "ss:///lsicorp-release-files/<storage_path>" --linked --experimental --workdir C:\Users\sabel\LSICorp\1145 --content-type application/octet-stream
+   ```
+
+   Use a relative path for the file: the tool misreads `C:\...` as a remote address.
+5. **Download it back and compare the SHA-256** with the record before going further.
+6. **Apply the update:** run `supabase/sync/<product>.sql` in the Supabase SQL editor.
+7. **Check it:** `node scripts/verify-releases.mjs` re-downloads every published file and compares
+   its size and checksum.
+
+Two things to know about this route:
+
+- **It bypasses the two-person review.** SQL run this way is not tied to a staff account, so the
+  release shows "Not approved yet" in the admin area and its audit entries say "System". Use the
+  admin workflow instead once two release managers exist.
+- **It overwrites that product's page, documentation and FAQs** with the files in `content/`. Do
+  not use it for a product whose content staff now edit in the admin area.
+
+Installers are not committed to the repository (`download/*.exe` is ignored); the copy in the
+release bucket is the published one. Keep the original build wherever builds are archived.
+
 ## Audit log
 
 The Audit log tab shows who created, changed or deleted each record, and what changed. It is

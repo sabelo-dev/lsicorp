@@ -79,7 +79,7 @@ ColumnLayout {
                     }
 
                     LinkText {
-                        text: "Install steps and release notes"
+                        text: releaseBlock.modelData.destination_type === "web-app" ? "How to get started, and notes" : "Install steps and release notes"
                         to: Rules.releasePath(releaseBlock.modelData)
                         font.pixelSize: Theme.small
                         Accessible.name: text + " for " + root.product.public_name + " " + releaseBlock.modelData.version

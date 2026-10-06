@@ -1,10 +1,33 @@
 pragma Singleton
 import QtQuick
+import LsiTools
 
 // Design tokens, built on the LSI brand: navy #01245d and gold #ddab22.
 // Text and control colours are chosen to meet WCAG AA contrast in both schemes.
 QtObject {
-    readonly property bool dark: Qt.styleHints.colorScheme === Qt.ColorScheme.Dark
+    /// "system" follows the device; "light" and "dark" are the visitor's own choice, remembered between visits.
+    property string mode: "system"
+    readonly property bool dark: mode === "dark" || (mode === "system" && Qt.styleHints.colorScheme === Qt.ColorScheme.Dark)
+
+    Component.onCompleted: {
+        const saved = Platform.stored("theme");
+        if (saved === "light" || saved === "dark")
+            mode = saved;
+    }
+
+    function cycleMode() {
+        mode = mode === "system" ? "light" : mode === "light" ? "dark" : "system";
+        Platform.store("theme", mode === "system" ? "" : mode);
+    }
+
+    /// Animation is skipped entirely for visitors who ask their system for reduced motion.
+    readonly property bool motion: !Platform.reducedMotion
+    readonly property int fast: motion ? 130 : 0
+    readonly property int medium: motion ? 240 : 0
+    readonly property int slow: motion ? 420 : 0
+
+    /// True once the current page has been scrolled; the header gains a shadow.
+    property bool scrolled: false
 
     // Brand colours. Gold is decorative on light backgrounds (it is too pale for text there).
     readonly property color navy: "#01245d"
@@ -17,6 +40,10 @@ QtObject {
     readonly property color muted: dark ? "#a7b3cb" : "#4b5873"
     readonly property color border: dark ? "#24335a" : "#d9dfec"
     readonly property color shadow: dark ? "#66000000" : "#1a0f1b33"
+    /// One layer of a soft shadow; several are stacked (see Shadow.qml).
+    readonly property color shadowLayer: dark ? "#000000" : "#0f1b33"
+    readonly property real shadowOpacity: dark ? 0.07 : 0.018
+    readonly property color scrim: dark ? "#b3000000" : "#800f1b33"
 
     /// Filled buttons and selected controls.
     readonly property color primary: dark ? "#e2b436" : "#01245d"

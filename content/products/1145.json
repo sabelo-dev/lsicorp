@@ -2,70 +2,90 @@
   "publicName": "1145 Lifestyle",
   "internalName": "1145 Lifestyle",
   "mark": "1145",
-  "tagline": "A connected lifestyle and commerce platform.",
-  "summary": "Connected commerce platform spanning customer shopping, merchant tools, logistics and related financial services.",
+  "tagline": "Shop, ride and earn in one connected commerce platform.",
+  "summary": "1145 is LSI's flagship: a connected marketplace that brings branded online shopping together with the services needed to complete a transaction, from product discovery and merchant storefronts to delivery, rides and digital financial tools.",
   "category": "Commerce",
   "order": 1,
-  "status": "in-development",
-  "statusNote": "1145 Lifestyle is being built. No public web app or store listing has been published on this site yet.",
+  "status": "available",
+  "statusNote": "1145 Lifestyle is live as a web app at 1145.io. It runs in your browser, so there is nothing to download.",
   "audiences": [
     {
       "name": "Consumers",
-      "description": "People who want to browse, order and pay for goods and services in one place."
+      "description": "People who want to discover, buy and receive products, and use related services, in one place."
     },
     {
       "name": "Merchants and brand owners",
-      "description": "Businesses that want to list products, manage orders and reach customers."
+      "description": "Businesses that want their own storefront, with tools to list products, manage orders and reach customers."
     },
     {
-      "name": "Delivery partners",
-      "description": "Drivers and couriers who fulfil deliveries for orders placed on the platform."
+      "name": "Delivery partners and drivers",
+      "description": "People who fulfil deliveries and rides through the platform."
     }
   ],
   "capabilities": [
     {
-      "name": "Marketplace",
+      "name": "Marketplace and brand storefronts",
       "group": "Customer shopping",
-      "availability": "planned",
-      "description": "Browse products from participating merchants, place orders and follow them to delivery."
+      "availability": "available",
+      "description": "Browse categories, deals and new arrivals from many sellers, each with their own storefront."
     },
     {
       "name": "Merchant tools",
       "group": "Merchants",
-      "availability": "planned",
-      "description": "List products, manage stock and orders, and see how a store is performing."
+      "availability": "available",
+      "description": "Register as a merchant, set up a store, list products, manage stock and orders, and see how the store is performing."
     },
     {
-      "name": "Delivery",
+      "name": "Secure checkout and payments",
+      "group": "Payments",
+      "availability": "available",
+      "description": "Pay for an order through an integrated, encrypted checkout."
+    },
+    {
+      "name": "Order tracking and delivery",
       "group": "Logistics",
-      "availability": "planned",
-      "description": "Assign, track and complete deliveries for marketplace orders."
+      "availability": "available",
+      "description": "Follow an order from purchase to delivery, with the logistics layer connecting merchants to drivers."
     },
     {
       "name": "Rides",
       "group": "Logistics",
-      "availability": "planned",
+      "availability": "available",
       "description": "Request and manage rides through the same account."
     },
     {
-      "name": "Financial services",
+      "name": "Wallet and rewards",
       "group": "Payments",
+      "availability": "available",
+      "description": "A wallet and rewards connected to activity on the platform. The terms on 1145.io apply to any financial feature."
+    },
+    {
+      "name": "Mobile apps",
+      "group": "Platforms",
       "availability": "planned",
-      "description": "Wallet and payment features related to shopping on the platform. Details will be published only once a service is released and approved."
+      "description": "Android and iOS apps are planned. Until they are released, use the web app in your phone’s browser."
+    },
+    {
+      "name": "Product recommendations",
+      "group": "Customer shopping",
+      "availability": "planned",
+      "description": "AI-assisted recommendations are on the roadmap."
+    },
+    {
+      "name": "More languages and currencies",
+      "group": "Platforms",
+      "availability": "planned",
+      "description": "Multi-language and multi-currency support is on the roadmap."
     }
   ],
   "requirements": [
     {
-      "label": "Devices",
-      "detail": "Not confirmed yet. Supported devices will be listed with the first release."
+      "label": "Device",
+      "detail": "Any phone, tablet or computer with a current web browser. The web app adapts to the screen."
     },
     {
       "label": "Account",
-      "detail": "A 1145 Lifestyle account, created on the product's own domain. This website never asks for your product sign-in details."
-    },
-    {
-      "label": "Permissions",
-      "detail": "Not confirmed yet. Any permission a module needs will be explained before you are asked to grant it."
+      "detail": "A 1145 account, created on 1145.io. This website never asks for your 1145 sign-in or payment details."
     },
     {
       "label": "Connectivity",
@@ -78,15 +98,14 @@
     "financial-technology"
   ],
   "platforms": [
-    "android",
-    "ios",
     "web"
   ],
-  "platformNote": "Each module is documented separately and may reach different platforms at different times.",
-  "gettingStarted": "There is nothing to install or open yet. When the first module is released, account setup and onboarding steps will be published here.",
+  "platformNote": "1145 is a web app for now. There are no downloadable apps; mobile apps are planned.",
+  "gettingStarted": "Open 1145 in your browser and create an account. You can start shopping straight away, or register as a merchant to open a store.",
   "limitations": [
-    "No module has been released, so nothing described on this page can be used yet.",
-    "Payment and wallet guidance will only be published for services that have actually been released."
+    "There are no mobile apps to download yet. Use the web app in your phone’s browser.",
+    "Which services are offered can differ by location.",
+    "Payments, wallet and rewards are governed by the terms published on 1145.io, not by this website."
   ],
   "supportUrl": null,
   "privacyUrl": null,

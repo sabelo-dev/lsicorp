@@ -18,6 +18,8 @@ class Platform : public QObject
     Q_PROPERTY(QString route READ route WRITE setRoute NOTIFY routeChanged)
     Q_PROPERTY(QVariantMap config READ config CONSTANT)
     Q_PROPERTY(bool browser READ browser CONSTANT)
+    Q_PROPERTY(bool reducedMotion READ reducedMotion CONSTANT)
+    Q_PROPERTY(QString devAction READ devAction CONSTANT)
 
 public:
     explicit Platform(QObject *parent = nullptr);
@@ -31,6 +33,8 @@ public:
     QVariantMap config() const { return m_config; }
 
     bool browser() const;
+    /// True when the visitor has asked their system for less animation.
+    bool reducedMotion() const;
 
     Q_INVOKABLE void setTitle(const QString &title);
     /// Leaves the app for an external address. Callers check the allowlist first.
@@ -44,6 +48,9 @@ public:
 
     /// Route to open at startup in a desktop build.
     static QString initialRoute;
+    /// Desktop builds only: something to do once loaded, such as "search" to open the search panel for a screenshot.
+    static QString initialAction;
+    QString devAction() const { return initialAction; }
 
 signals:
     void routeChanged();

@@ -43,6 +43,12 @@ Flow {
                 color: chip.selected ? Theme.primary : chip.hovered || chip.down ? Theme.surfaceAlt : Theme.surface
                 border.width: chip.visualFocus ? 3 : 1
                 border.color: chip.visualFocus ? Theme.focus : chip.selected ? Theme.primary : Theme.border
+
+                Behavior on color {
+                    ColorAnimation {
+                        duration: Theme.fast
+                    }
+                }
             }
 
             contentItem: Text {

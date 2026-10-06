@@ -1,0 +1,43 @@
+{
+  "product_slug": "gold-digger",
+  "platform": "windows",
+  "version": "0.1.0",
+  "channel": "preview",
+  "status": "available",
+  "release_date": "2026-10-06",
+  "destination_type": "file",
+  "storage_path": "gold-digger/GoldDigger-0.1.0-Setup.exe",
+  "local_file": "download/LSIGoldDigger.exe",
+  "artifact_filename": "GoldDigger-0.1.0-Setup.exe",
+  "artifact_file_type": "Windows installer",
+  "artifact_size_bytes": 17340160,
+  "artifact_sha256": "32e552427518831b1fdd244d7c65a4feb4ba482fc08dbe645c3a7a295e952fa8",
+  "compat_minimum": "Windows 10 or 11, 64-bit",
+  "compat_device_class": "Desktop and laptop PCs",
+  "compat_dependencies": [
+    "MetaTrader 5 terminal (only to connect a broker)",
+    "Python 3.10 or newer (only to connect a broker)"
+  ],
+  "steps": [
+    "Download GoldDigger-0.1.0-Setup.exe.",
+    "Check the download: its SHA-256 checksum must match the one shown on this page. In PowerShell, run Get-FileHash GoldDigger-0.1.0-Setup.exe. If it differs, do not run the file.",
+    "Run the installer. Windows may warn that the publisher is unknown, because the installer is not yet code-signed: choose More info, then Run anyway.",
+    "Read the risk notice the installer shows, and continue. It installs for your user account only and does not need administrator rights.",
+    "Start LSI Gold Digger from the Start Menu. It opens on simulated data with a paper account, so no broker is needed.",
+    "To connect MetaTrader 5 later, follow the documentation. Use a demo account first."
+  ],
+  "notes": [
+    "First public release: the foundation of the research terminal, analysis engines, risk engine and gated execution.",
+    "Runs on simulated data or a live MetaTrader 5 feed, and trades on the paper account by default.",
+    "Live-account trading is locked behind several explicit opt-ins."
+  ],
+  "known_issues": [
+    "The installer is not code-signed, so Windows shows an unknown-publisher warning.",
+    "The strategies are not a proven edge. Validation on real broker history is not complete.",
+    "Backtests are technical-only: macro and news are not included.",
+    "The economic calendar comes from an unofficial public export and may be missing values.",
+    "The simulator replays the same price path on each launch."
+  ],
+  "licence": "Proprietary software, copyright LSI Corp. No separate licence document is included with this release.",
+  "support_route": "See the Support page on this website. Trading leveraged products can lose all the money in the account; nothing in this software is financial advice."
+}

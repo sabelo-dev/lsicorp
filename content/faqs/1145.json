@@ -2,20 +2,32 @@
   "items": [
     {
       "question": "Can I use 1145 Lifestyle today?",
-      "answer": "Not yet. 1145 Lifestyle is in development and no web app or store listing has been published on this site. When a release is approved, an Open or Download button will appear on the product page.",
+      "answer": "Yes. 1145 is live as a web app at 1145.io. Use the Open 1145 Lifestyle button on its page.",
       "category": "Availability",
       "visible": true
     },
     {
-      "question": "Where will I sign in?",
-      "answer": "On the product's own domain or in its official app. This website is a catalogue and never asks for your 1145 Lifestyle sign-in or payment details.",
+      "question": "Is there an app to download?",
+      "answer": "Not yet. 1145 runs in your browser on a phone, tablet or computer. Android and iOS apps are planned, and will be listed on the Downloads page when they are released.",
+      "category": "Availability",
+      "visible": true
+    },
+    {
+      "question": "Where do I sign in?",
+      "answer": "On 1145.io. This website is LSI’s company site and never asks for your 1145 sign-in or payment details.",
       "category": "Accounts",
       "visible": true
     },
     {
-      "question": "Will every module launch together?",
-      "answer": "Not necessarily. Marketplace, merchant, delivery, ride and financial features are tracked separately, and each is marked Available only once it has been released.",
-      "category": "Availability",
+      "question": "How do I sell on 1145?",
+      "answer": "Register as a merchant on 1145.io. Each merchant gets their own storefront, with tools for products, stock and orders.",
+      "category": "Merchants",
+      "visible": true
+    },
+    {
+      "question": "Who do I contact about an order, a ride or a payment?",
+      "answer": "Use the help and contact options on 1145.io, where your account and order details are available to the support team.",
+      "category": "Support",
       "visible": true
     }
   ]

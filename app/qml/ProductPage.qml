@@ -108,7 +108,38 @@ PageScroll {
         }
     }
 
+    // On this page: jump to a section.
+    Flow {
+        Layout.fillWidth: true
+        Layout.topMargin: Theme.s4
+        spacing: Theme.s2
+        Accessible.role: Accessible.Grouping
+        Accessible.name: "On this page"
+
+        Repeater {
+            model: [
+                { label: "Overview", target: overviewHeading },
+                { label: "Capabilities", target: capabilitiesHeading },
+                { label: "Requirements", target: requirementsHeading },
+                { label: "Getting started", target: startHeading },
+                { label: "Help", target: helpHeading },
+                { label: "Release history", target: historyHeading }
+            ]
+
+            AppButton {
+                required property var modelData
+
+                text: modelData.label
+                secondary: true
+                implicitHeight: 40
+                Accessible.name: "Jump to " + modelData.label
+                onClicked: page.scrollToItem(modelData.target)
+            }
+        }
+    }
+
     H {
+        id: overviewHeading
         text: "Overview"
     }
 
@@ -150,6 +181,7 @@ PageScroll {
     }
 
     H {
+        id: capabilitiesHeading
         text: "Capabilities"
     }
 
@@ -240,6 +272,7 @@ PageScroll {
     }
 
     H {
+        id: requirementsHeading
         text: "Requirements"
     }
 
@@ -248,6 +281,7 @@ PageScroll {
     }
 
     H {
+        id: startHeading
         text: "Getting started"
     }
 
@@ -273,6 +307,7 @@ PageScroll {
     }
 
     H {
+        id: helpHeading
         text: "Help"
     }
 
@@ -358,6 +393,7 @@ PageScroll {
     }
 
     H {
+        id: historyHeading
         text: "Release history"
     }
 

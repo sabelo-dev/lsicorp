@@ -2,93 +2,135 @@
   "publicName": "LSI Gold Digger",
   "internalName": "LSI Gold Digger",
   "mark": "GD",
-  "tagline": "Gold market research and analysis with risk-aware decision support.",
-  "summary": "Gold market research and analysis project with market context, technical inputs and risk-aware decision support.",
+  "tagline": "A gold (XAU/USD) research terminal with a risk engine that has the final say.",
+  "summary": "LSI Gold Digger is a desktop research terminal, analysis engine and risk engine for gold (XAU/USD). It brings market data, macro context, news and technical analysis together, explains every signal it produces, and can place trades through a MetaTrader 5 account only after its risk engine approves them.",
   "category": "Market research",
   "order": 4,
-  "status": "in-development",
-  "statusNote": "LSI Gold Digger is being built. No release has been published.",
+  "status": "available",
+  "statusNote": "Version 0.1 for Windows is available as a preview. It is a foundation release: it starts on simulated data with a paper account, and live-account trading stays locked until you unlock it yourself.",
   "audiences": [
     {
       "name": "People researching the gold market",
-      "description": "Anyone who wants structured market context and technical inputs to inform their own decisions."
+      "description": "Anyone who wants structured market context and transparent technical analysis to inform their own decisions."
+    },
+    {
+      "name": "Traders testing a disciplined process",
+      "description": "People who want to backtest and paper-trade a rules-based approach, with enforced risk limits, before considering a demo or live account."
     }
   ],
   "capabilities": [
     {
-      "name": "Macro-regime view",
-      "group": "Market context",
-      "availability": "planned",
-      "description": "A summary of the wider economic conditions that tend to influence gold."
+      "name": "Market data",
+      "group": "Data",
+      "availability": "available",
+      "description": "Live prices and closed bars from a MetaTrader 5 terminal, or a built-in simulator when no broker is connected. Simulated data is clearly labelled."
     },
     {
-      "name": "Daily bias",
-      "group": "Market context",
-      "availability": "planned",
-      "description": "A stated directional lean for the day, with the inputs behind it."
+      "name": "Technical analysis and market structure",
+      "group": "Analysis",
+      "availability": "available",
+      "description": "Moving averages, RSI, MACD, ATR, Bollinger Bands and ADX, plus swing structure, breaks of structure, support and resistance, regression channels, Double Bollinger Bands and liquidity pools. No value depends on future bars."
     },
     {
-      "name": "Market structure",
-      "group": "Technical analysis",
-      "availability": "planned",
-      "description": "Trend, swing highs and lows, and where structure has changed."
+      "name": "Market regime and macro view",
+      "group": "Analysis",
+      "availability": "available",
+      "description": "A regime label from strongly bullish to strongly bearish with high-volatility and event-risk overlays, and a rule-based macro score that lists the reason for every point. The macro view needs a free FRED API key."
     },
     {
-      "name": "Liquidity",
-      "group": "Technical analysis",
-      "availability": "planned",
-      "description": "Price areas where resting orders are likely to cluster."
+      "name": "News and economic calendar",
+      "group": "Analysis",
+      "availability": "available",
+      "description": "Gold-relevant news scored by transparent keyword rules, and a weekly economic calendar. High-impact US events trigger a trading blackout."
     },
     {
-      "name": "Regression",
-      "group": "Technical analysis",
-      "availability": "planned",
-      "description": "A regression view of where price sits relative to its recent trend."
+      "name": "Signals with reasons",
+      "group": "Decision support",
+      "availability": "available",
+      "description": "Four strategies (trend pullback, confluence, ensemble and adaptive) that output BUY, SELL or WAIT with every condition, reason and risk listed. No AI model produces or edits a score."
     },
     {
-      "name": "Double Bollinger Bands",
-      "group": "Technical analysis",
-      "availability": "planned",
-      "description": "Two sets of Bollinger Bands used together to describe momentum and range."
+      "name": "Weekly Focus",
+      "group": "Decision support",
+      "availability": "available",
+      "description": "A weekly thesis: bias, key levels, bullish and bearish scenarios, what would invalidate them, and the events to watch."
     },
     {
-      "name": "XM connectivity and trade execution",
-      "group": "Account connection",
+      "name": "Risk engine",
+      "group": "Risk",
+      "availability": "available",
+      "description": "The final authority on every order: a mandatory stop loss, a minimum reward-to-risk of 1:2, one position at a time, no averaging into a loss, daily and weekly loss limits, and drawdown tiers that reduce risk after losses. Hard ceilings cannot be raised by any setting."
+    },
+    {
+      "name": "Paper trading, backtesting and journal",
+      "group": "Testing",
+      "availability": "available",
+      "description": "A paper account, bar-by-bar backtests and walk-forward tests that run through the same signal, risk and execution code as live analysis, and a journal of every proposal, rejection and trade with performance statistics."
+    },
+    {
+      "name": "MetaTrader 5 connection and trade execution",
+      "group": "Broker connection",
+      "availability": "available",
+      "description": "Connects to an MT5 account at any broker, including XM. The connection is read-only by default. Sending orders needs three separate opt-ins, and a live account must be unlocked with a typed confirmation every session.",
+      "platformNote": "Needs a MetaTrader 5 terminal and Python 3.10 or newer on the same PC, or on another machine you control."
+    },
+    {
+      "name": "AI Gold Analyst",
+      "group": "Decision support",
+      "availability": "available",
+      "description": "A chat assistant that can read the app's market, signal, macro, news, journal and performance data. It has no ability to place, change or close an order. Needs your own Anthropic API key; usage is billed to you."
+    },
+    {
+      "name": "Macro and news in backtests",
+      "group": "Testing",
       "availability": "planned",
-      "description": "Not implemented and not approved. It will only be shown as available if it is built and approved by LSI."
+      "description": "Backtests are technical-only in this version, because point-in-time macro and news history is not yet included."
+    },
+    {
+      "name": "Signed installer",
+      "group": "Distribution",
+      "availability": "planned",
+      "description": "The installer is not yet code-signed, so Windows shows an unknown-publisher warning."
     }
   ],
   "requirements": [
     {
-      "label": "Devices",
-      "detail": "Not confirmed yet."
+      "label": "Operating system",
+      "detail": "Windows 10 or 11, 64-bit. No administrator rights are needed to install."
     },
     {
-      "label": "Account",
-      "detail": "Not confirmed yet. No trading account connection is offered."
+      "label": "To connect a broker",
+      "detail": "A MetaTrader 5 terminal (your broker's download) and Python 3.10 or newer. Not needed to run on simulated data."
     },
     {
-      "label": "Data",
-      "detail": "Data sources, timestamps and refresh intervals will be documented before release."
+      "label": "Optional keys",
+      "detail": "A free FRED API key for the macro view, and an Anthropic API key for the AI Gold Analyst. Keys and passwords are stored in Windows Credential Manager, never in files or logs."
     },
     {
       "label": "Connectivity",
-      "detail": "An internet connection for market data."
+      "detail": "An internet connection for live market data, news, the calendar and the optional services."
     }
   ],
   "services": [
     "market-intelligence"
   ],
-  "platforms": [],
-  "gettingStarted": "There is nothing to install or open yet. Setup steps will be published with the first release.",
+  "platforms": [
+    "windows"
+  ],
+  "platformNote": "Windows only in this version.",
+  "gettingStarted": "Download the installer, check its SHA-256 checksum against the one shown on this site, and run it. The app opens on simulated data with a paper account, so you can explore everything before connecting a broker.",
   "limitations": [
-    "No release exists, so nothing described on this page can be used yet.",
-    "Analysis can be wrong, late or based on incomplete data.",
+    "The strategies are explainable starting points, not a proven edge. Validation on real broker history is not complete.",
+    "Backtests are technical-only: macro and news are not included in them.",
+    "The economic calendar comes from an unofficial public export and can have missing values.",
+    "News sentiment is based on keyword rules: transparent, but coarse.",
+    "On a very small account the risk engine will reject almost every trade, because the broker's minimum position exceeds the permitted risk. That is intended.",
+    "The installer is not code-signed, so Windows warns that the publisher is unknown.",
     "The tool does not provide financial advice."
   ],
   "notice": {
-    "title": "Market outcomes are uncertain",
-    "body": "LSI Gold Digger is a research and analysis tool. Its analysis does not guarantee returns, and past behaviour of a market does not predict its future. You are responsible for your own decisions."
+    "title": "Trading can lose all the money in the account",
+    "body": "LSI Gold Digger is a research and analysis tool. Nothing in it is financial advice, no strategy in it is a proven edge, and no result is guaranteed. Past behaviour of a market does not predict its future. Use the paper account and then a demo account before considering real money. You are responsible for your own decisions."
   },
   "supportUrl": null,
   "privacyUrl": null,

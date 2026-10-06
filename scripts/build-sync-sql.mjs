@@ -1,0 +1,143 @@
+// Writes supabase/sync/<product>.sql: one transaction that brings a product
+// in the live database into line with the authored files in content/.
+//
+// The seed only fills an empty database, so it never changes a row that
+// already exists. Use this when the authored content for a product has
+// changed, or a release record has been added under content/releases/.
+// It overwrites that product's row, documentation and FAQs, so do not run it
+// for a product whose content staff now maintain in the admin area.
+//
+//   npm run seed                              (refresh app/seed/seed.json first)
+//   node scripts/build-sync-sql.mjs gold-digger
+import { createHash } from 'node:crypto';
+import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { checkRelease, hostOf } from '../app/qml/rules.mjs';
+
+const root = join(dirname(fileURLToPath(import.meta.url)), '..');
+const slug = process.argv[2];
+if (!slug) {
+  console.error('Usage: node scripts/build-sync-sql.mjs <product-slug>');
+  process.exit(2);
+}
+
+/** The storage host for release files: the project the site is connected to. */
+function projectUrl() {
+  if (process.env.SUPABASE_URL) return process.env.SUPABASE_URL;
+  try {
+    return readFileSync(join(root, '.env'), 'utf8').match(/^SUPABASE_URL=(.+)$/m)?.[1].trim() ?? '';
+  } catch {
+    return '';
+  }
+}
+
+const seed = JSON.parse(readFileSync(join(root, 'app/seed/seed.json'), 'utf8'));
+const product = seed.products.find((p) => p.slug === slug);
+if (!product) throw new Error(`No product "${slug}" in content/products`);
+const docs = seed.doc_pages.filter((d) => d.product_slug === slug);
+const faqs = seed.faqs.filter((f) => f.product_slug === slug);
+const allowed = [...seed.site_settings[0].allowed_external_domains];
+
+const releaseDir = join(root, 'content/releases');
+const releases = (existsSync(releaseDir) ? readdirSync(releaseDir) : [])
+  .filter((name) => name.endsWith('.json'))
+  .map((name) => ({ name, ...JSON.parse(readFileSync(join(releaseDir, name), 'utf8')) }))
+  .filter((r) => r.product_slug === slug);
+
+const problems = [];
+const base = projectUrl().replace(/\/+$/, '');
+for (const r of releases) {
+  if (r.storage_path) {
+    if (!base) throw new Error('SUPABASE_URL is needed (in the environment or .env) to build the download address');
+    r.destination_url = `${base}/storage/v1/object/public/lsicorp-release-files/${r.storage_path}`;
+  }
+  const host = hostOf(r.destination_url);
+  if (host && !allowed.includes(host)) allowed.push(host);
+  problems.push(...checkRelease(r, allowed).map((m) => `${r.name}: ${m}`));
+  // The record must describe the file that will actually be served.
+  if (r.local_file && existsSync(join(root, r.local_file))) {
+    const bytes = readFileSync(join(root, r.local_file));
+    if (bytes.length !== r.artifact_size_bytes) problems.push(`${r.name}: ${r.local_file} is ${bytes.length} bytes, record says ${r.artifact_size_bytes}`);
+    const digest = createHash('sha256').update(bytes).digest('hex');
+    if (digest !== r.artifact_sha256) problems.push(`${r.name}: ${r.local_file} has SHA-256 ${digest}, record says ${r.artifact_sha256}`);
+  } else if (r.local_file) {
+    console.warn(`note: ${r.local_file} is not present, so the checksum in ${r.name} was not re-verified`);
+  }
+  if (r.status === 'available' && !['available', 'maintenance'].includes(product.status)) {
+    problems.push(`${r.name}: the product's status must be "available" to publish a release`);
+  }
+}
+if (problems.length) {
+  console.error(`Cannot build the sync file:\n- ${problems.join('\n- ')}`);
+  process.exit(1);
+}
+
+const text = (value) => `'${String(value).replaceAll("'", "''")}'`;
+const JSONB = new Set(['audiences', 'capabilities', 'requirements']);
+function literal(column, value) {
+  if (JSONB.has(column)) return `${text(JSON.stringify(value))}::jsonb`;
+  if (value === null || value === undefined) return 'null';
+  if (typeof value === 'boolean' || typeof value === 'number') return String(value);
+  if (Array.isArray(value)) return value.length ? `array[${value.map(text).join(', ')}]::text[]` : `'{}'::text[]`;
+  return text(value);
+}
+const assignments = (row, skip) =>
+  Object.keys(row)
+    .filter((c) => !skip.includes(c))
+    .map((c) => `  ${c} = ${literal(c, row[c])}`)
+    .join(',\n');
+const insert = (table, row) =>
+  `insert into lsicorp.${table} (${Object.keys(row).join(', ')})\nvalues (${Object.keys(row).map((c) => literal(c, row[c])).join(', ')})`;
+
+const RELEASE_COLUMNS = [
+  'product_slug', 'platform', 'version', 'channel', 'status', 'release_date', 'destination_type', 'destination_url',
+  'artifact_filename', 'artifact_file_type', 'artifact_size_bytes', 'artifact_sha256', 'compat_minimum', 'compat_device_class',
+  'compat_dependencies', 'steps', 'notes', 'known_issues', 'licence', 'support_route',
+];
+
+const parts = [
+  `-- Generated by scripts/build-sync-sql.mjs ${slug}. Do not edit by hand.
+-- Brings "${slug}" in the live database into line with content/.
+-- Overwrites this product's row, documentation and FAQs. Safe to run again.
+
+begin;
+
+-- Hosts that this product's links point to.
+update lsicorp.site_settings
+set allowed_external_domains = ${literal('allowed', allowed)}
+where not allowed_external_domains @> ${literal('allowed', allowed)};
+
+update lsicorp.products set
+${assignments(product, ['slug'])}
+where slug = ${text(slug)};`,
+
+  ...docs.map(
+    (doc) => `${insert('doc_pages', doc)}
+on conflict (product_slug, slug) do update set
+${Object.keys(doc).filter((c) => !['product_slug', 'slug'].includes(c)).map((c) => `  ${c} = excluded.${c}`).join(',\n')};`,
+  ),
+
+  `delete from lsicorp.doc_pages
+where product_slug = ${text(slug)} and slug not in (${docs.map((d) => text(d.slug)).join(', ') || "''"});
+
+delete from lsicorp.faqs where product_slug = ${text(slug)};`,
+
+  ...faqs.map((faq) => `${insert('faqs', faq)};`),
+
+  ...releases.map((r) => {
+    const row = Object.fromEntries(RELEASE_COLUMNS.map((c) => [c, r[c] ?? (c === 'known_issues' || c === 'compat_dependencies' ? [] : null)]));
+    return `-- ${r.name}
+${insert('releases', row)}
+on conflict (product_slug, platform, version) do update set
+${RELEASE_COLUMNS.filter((c) => !['product_slug', 'platform', 'version'].includes(c)).map((c) => `  ${c} = excluded.${c}`).join(',\n')};`;
+  }),
+
+  'commit;\n',
+];
+
+mkdirSync(join(root, 'supabase/sync'), { recursive: true });
+const out = join(root, 'supabase/sync', `${slug}.sql`);
+writeFileSync(out, parts.join('\n\n'));
+console.log(`supabase/sync/${slug}.sql written: product, ${docs.length} documentation pages, ${faqs.length} FAQs, ${releases.length} release(s)`);
+for (const r of releases) console.log(`  release ${r.version} for ${r.platform}: status "${r.status}" -> ${r.destination_url}`);

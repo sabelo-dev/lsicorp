@@ -1,0 +1,27 @@
+{
+  "product_slug": "1145",
+  "platform": "web",
+  "version": "live",
+  "channel": "stable",
+  "status": "available",
+  "release_date": "2026-10-06",
+  "destination_type": "web-app",
+  "destination_url": "https://1145.io",
+  "compat_minimum": "A current web browser",
+  "compat_device_class": "Phones, tablets and computers",
+  "compat_dependencies": [],
+  "steps": [
+    "Choose Open 1145 Lifestyle. The link leaves this website and opens 1145.io.",
+    "Create an account, or sign in if you already have one. You do this on 1145.io, never on this website.",
+    "Start shopping, or register as a merchant to open a store."
+  ],
+  "notes": [
+    "1145 Lifestyle is live for online use as a web app.",
+    "The web app is updated continuously, so it does not have a version number here. The date shown is when it was listed on this website."
+  ],
+  "known_issues": [
+    "There are no mobile apps to download yet. Use the web app in your phone’s browser."
+  ],
+  "licence": "Copyright LSI. All rights reserved. Use of 1145 is subject to the terms published on 1145.io.",
+  "support_route": "Use the help and contact options on 1145.io for anything about your account, an order, a ride or a payment."
+}

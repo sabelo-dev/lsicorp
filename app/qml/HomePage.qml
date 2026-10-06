@@ -7,6 +7,17 @@ import LsiTools
 PageScroll {
     id: page
 
+    /// Shown in the hero. Counts come from the content; the founding year is from the company profile.
+    readonly property var stats: [
+        { value: "2016", label: "Founded" },
+        { value: String(Store.services.length), label: "Service areas" },
+        { value: String(Store.products.length), label: "Products in the portfolio" },
+        { value: String(Store.products.filter(p => p.status === "available").length), label: "Live today" }
+    ]
+    /// The first live product leads the portfolio section; the rest follow in a grid.
+    readonly property var featured: Store.products.find(p => p.status === "available") || (Store.products.length > 0 ? Store.products[0] : null)
+    readonly property var others: Store.products.filter(p => featured === null || p.slug !== featured.slug)
+
     readonly property var values: [
         { title: "Connected design", text: "Digital services, operational workflows and financial tools are brought together, so each part supports the wider customer and business journey." },
         { title: "Practical execution", text: "Products are shaped around everyday needs: finding and selling goods, arranging delivery, accessing media and understanding markets." },
@@ -48,6 +59,33 @@ PageScroll {
                 radius: modelData.size / 2
                 color: modelData.gold ? Theme.gold : "#ffffff"
                 opacity: modelData.opacity
+
+                transform: Translate {
+                    id: drift
+                }
+
+                SequentialAnimation {
+                    running: Theme.motion
+                    loops: Animation.Infinite
+
+                    NumberAnimation {
+                        target: drift
+                        property: "y"
+                        from: 0
+                        to: 18
+                        duration: 5200 + modelData.size * 6
+                        easing.type: Easing.InOutSine
+                    }
+
+                    NumberAnimation {
+                        target: drift
+                        property: "y"
+                        from: 18
+                        to: 0
+                        duration: 5200 + modelData.size * 6
+                        easing.type: Easing.InOutSine
+                    }
+                }
             }
         }
 
@@ -111,6 +149,38 @@ PageScroll {
                     to: "/work"
                     secondary: true
                     onBrand: true
+                }
+            }
+
+            Flow {
+                Layout.fillWidth: true
+                Layout.topMargin: Theme.s6
+                spacing: Theme.narrow ? Theme.s5 : Theme.s7
+
+                Repeater {
+                    model: page.stats
+
+                    Column {
+                        required property var modelData
+
+                        spacing: 2
+                        Accessible.role: Accessible.StaticText
+                        Accessible.name: modelData.value + " " + modelData.label
+
+                        Text {
+                            text: modelData.value
+                            color: Theme.onHero
+                            font.pixelSize: Theme.narrow ? 28 : 36
+                            font.weight: Font.Bold
+                            font.letterSpacing: -0.5
+                        }
+
+                        Text {
+                            text: modelData.label
+                            color: Theme.onHeroMuted
+                            font.pixelSize: Theme.small
+                        }
+                    }
                 }
             }
         }
@@ -190,9 +260,19 @@ PageScroll {
         text: "Products designed and built by " + Store.site.short_name + ". Each one is shown with its true status."
     }
 
+    Repeater {
+        model: page.featured ? 1 : 0
+
+        FeatureWork {
+            product: page.featured
+        }
+    }
+
     CardGrid {
+        Layout.topMargin: Theme.s2
+
         Repeater {
-            model: Store.products
+            model: page.others
 
             ProductCard {
                 required property var modelData
