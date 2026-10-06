@@ -1,0 +1,26 @@
+# Build settings for AWS Amplify Hosting (Git-connected app).
+#
+# Set these environment variables in the Amplify console, per branch:
+#   SUPABASE_URL        the Supabase project URL for that branch's environment
+#   SUPABASE_ANON_KEY   that project's public anon key (never the service-role key)
+#
+# The first build downloads Qt and Emscripten (several minutes); later builds
+# reuse them from the cache.
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - bash scripts/amplify-toolchain.sh
+    build:
+      commands:
+        # Only the main branch may be indexed by search engines.
+        - if [ "$AWS_BRANCH" = "main" ]; then export SITE_ENV=production; else export SITE_ENV=staging; fi
+        - bash scripts/build-wasm.sh
+  artifacts:
+    baseDirectory: dist
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - .toolchain/**/*

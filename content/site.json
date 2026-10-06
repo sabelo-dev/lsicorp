@@ -1,0 +1,22 @@
+{
+  "name": "LSI Corp",
+  "organisation": "Lifestyle Investment Corp",
+  "shortName": "LSI",
+  "tagline": "Technology, logistics and finance connected around real-world commerce.",
+  "description": "LSI builds connected digital solutions that make everyday commerce and services simpler to access, operate and grow.",
+  "dateTimezone": "UTC",
+  "contact": {
+    "email": null,
+    "phone": null,
+    "location": null
+  },
+  "support": {
+    "email": null,
+    "url": null
+  },
+  "allowedExternalDomains": [
+    "play.google.com",
+    "apps.apple.com",
+    "1145.io"
+  ]
+}

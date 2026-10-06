@@ -1,0 +1,743 @@
+{
+ "site_settings": [
+  {
+   "id": true,
+   "name": "LSI Corp",
+   "organisation": "Lifestyle Investment Corp",
+   "short_name": "LSI",
+   "description": "LSI builds connected digital solutions that make everyday commerce and services simpler to access, operate and grow.",
+   "tagline": "Technology, logistics and finance connected around real-world commerce.",
+   "date_timezone": "UTC",
+   "contact_email": null,
+   "contact_phone": null,
+   "location": null,
+   "support_email": null,
+   "support_url": null,
+   "allowed_external_domains": [
+    "play.google.com",
+    "apps.apple.com",
+    "1145.io"
+   ]
+  }
+ ],
+ "services": [
+  {
+   "slug": "digital-platforms",
+   "name": "Digital platforms",
+   "mark": "DP",
+   "tagline": "Web and mobile products people use every day.",
+   "summary": "LSI designs and builds digital platforms: marketplaces and storefronts, the tools merchants and partners work in, and media applications. Products are shaped around everyday needs and built as modules, so they can grow across users, partners and new service areas.",
+   "offerings": [
+    "Marketplaces and brand storefronts",
+    "Merchant and partner tools",
+    "Media and audio applications",
+    "Modular product architecture that can be extended over time"
+   ],
+   "sort_order": 1
+  },
+  {
+   "slug": "financial-technology",
+   "name": "Financial technology",
+   "mark": "FT",
+   "tagline": "Secure financial tools inside the customer journey.",
+   "summary": "LSI builds financial tools into the platforms where people already buy, sell and deliver, so that value can be managed in the same place as the transaction it belongs to.",
+   "offerings": [
+    "Payments within a commerce journey",
+    "Rewards and related account services",
+    "Financial features designed with security and approval in mind"
+   ],
+   "sort_order": 3
+  },
+  {
+   "slug": "logistics-technology",
+   "name": "Logistics technology",
+   "mark": "LT",
+   "tagline": "Connecting a sale to the delivery that completes it.",
+   "summary": "Commerce is only finished when the goods arrive. LSI builds the logistics layer that connects digital platforms to delivery: the workflows drivers and delivery partners follow, and the links between an order and its journey.",
+   "offerings": [
+    "Delivery and driver workflows",
+    "Order-to-delivery connections between commerce and logistics",
+    "Ride and mobility services"
+   ],
+   "sort_order": 2
+  },
+  {
+   "slug": "market-intelligence",
+   "name": "Market intelligence",
+   "mark": "MI",
+   "tagline": "Research and analysis that explains its reasoning.",
+   "summary": "LSI builds research and analysis products that bring market data, relevant news and technical analysis together, show the reasons behind a changing outlook, and treat risk controls as a core requirement.",
+   "offerings": [
+    "Market research dashboards",
+    "Structured technical analysis frameworks",
+    "Risk-aware decision support"
+   ],
+   "sort_order": 4
+  }
+ ],
+ "products": [
+  {
+   "slug": "1145",
+   "public_name": "1145 Lifestyle",
+   "internal_name": "1145 Lifestyle",
+   "mark": "1145",
+   "tagline": "A connected lifestyle and commerce platform.",
+   "summary": "Connected commerce platform spanning customer shopping, merchant tools, logistics and related financial services.",
+   "category": "Commerce",
+   "sort_order": 1,
+   "status": "in-development",
+   "status_note": "1145 Lifestyle is being built. No public web app or store listing has been published on this site yet.",
+   "audiences": [
+    {
+     "name": "Consumers",
+     "description": "People who want to browse, order and pay for goods and services in one place."
+    },
+    {
+     "name": "Merchants and brand owners",
+     "description": "Businesses that want to list products, manage orders and reach customers."
+    },
+    {
+     "name": "Delivery partners",
+     "description": "Drivers and couriers who fulfil deliveries for orders placed on the platform."
+    }
+   ],
+   "capabilities": [
+    {
+     "name": "Marketplace",
+     "group": "Customer shopping",
+     "availability": "planned",
+     "description": "Browse products from participating merchants, place orders and follow them to delivery."
+    },
+    {
+     "name": "Merchant tools",
+     "group": "Merchants",
+     "availability": "planned",
+     "description": "List products, manage stock and orders, and see how a store is performing."
+    },
+    {
+     "name": "Delivery",
+     "group": "Logistics",
+     "availability": "planned",
+     "description": "Assign, track and complete deliveries for marketplace orders."
+    },
+    {
+     "name": "Rides",
+     "group": "Logistics",
+     "availability": "planned",
+     "description": "Request and manage rides through the same account."
+    },
+    {
+     "name": "Financial services",
+     "group": "Payments",
+     "availability": "planned",
+     "description": "Wallet and payment features related to shopping on the platform. Details will be published only once a service is released and approved."
+    }
+   ],
+   "requirements": [
+    {
+     "label": "Devices",
+     "detail": "Not confirmed yet. Supported devices will be listed with the first release."
+    },
+    {
+     "label": "Account",
+     "detail": "A 1145 Lifestyle account, created on the product's own domain. This website never asks for your product sign-in details."
+    },
+    {
+     "label": "Permissions",
+     "detail": "Not confirmed yet. Any permission a module needs will be explained before you are asked to grant it."
+    },
+    {
+     "label": "Connectivity",
+     "detail": "An internet connection."
+    }
+   ],
+   "services": [
+    "digital-platforms",
+    "logistics-technology",
+    "financial-technology"
+   ],
+   "platforms": [
+    "android",
+    "ios",
+    "web"
+   ],
+   "platform_note": "Each module is documented separately and may reach different platforms at different times.",
+   "getting_started": "There is nothing to install or open yet. When the first module is released, account setup and onboarding steps will be published here.",
+   "limitations": [
+    "No module has been released, so nothing described on this page can be used yet.",
+    "Payment and wallet guidance will only be published for services that have actually been released."
+   ],
+   "notice_title": null,
+   "notice_body": null,
+   "support_url": null,
+   "privacy_url": null,
+   "icon_path": null
+  },
+  {
+   "slug": "1145hz",
+   "public_name": "1145Hz Player",
+   "internal_name": "LSI Player",
+   "mark": "Hz",
+   "tagline": "A media player planned around voice-led search and playback.",
+   "summary": "Media player project centred on voice control, playback and a modular media experience. 1145Hz Player is the public name of the project previously referred to as LSI Player.",
+   "category": "Media",
+   "sort_order": 2,
+   "status": "in-development",
+   "status_note": "1145Hz Player is being built. No download has been published yet.",
+   "audiences": [
+    {
+     "name": "Listeners and viewers",
+     "description": "People who want to play their own audio and video and find it quickly, including by voice."
+    }
+   ],
+   "capabilities": [
+    {
+     "name": "Voice-led search and playback",
+     "availability": "planned",
+     "description": "Find and control media by speaking.",
+     "platformNote": "Voice features may not be offered on every platform. Each release will state where they work."
+    },
+    {
+     "name": "Playback",
+     "availability": "planned",
+     "description": "Play audio and video with standard transport controls. Supported formats will be confirmed by engineering before release."
+    },
+    {
+     "name": "Library management",
+     "availability": "planned",
+     "description": "Add folders of media and browse them as a library."
+    },
+    {
+     "name": "Modular design",
+     "availability": "planned",
+     "description": "The player is being developed as separate modules so that features can be added over time."
+    }
+   ],
+   "requirements": [
+    {
+     "label": "Operating systems",
+     "detail": "Not confirmed yet. Supported operating systems will be listed with the first release."
+    },
+    {
+     "label": "Media formats",
+     "detail": "Not confirmed yet."
+    },
+    {
+     "label": "Permissions",
+     "detail": "Voice control will need microphone access on platforms where it is offered. Access to the folders you add to your library will also be needed."
+    },
+    {
+     "label": "Connectivity",
+     "detail": "Not confirmed yet."
+    }
+   ],
+   "services": [
+    "digital-platforms"
+   ],
+   "platforms": [],
+   "platform_note": "Features can differ between platforms. Voice control is only promised on platforms where a release says it is implemented.",
+   "getting_started": "There is nothing to install yet. Installation, first-run setup and library setup steps will be published with the first release.",
+   "limitations": [
+    "No release exists, so nothing described on this page can be used yet.",
+    "Supported platforms, formats and voice features are not confirmed."
+   ],
+   "notice_title": null,
+   "notice_body": null,
+   "support_url": null,
+   "privacy_url": null,
+   "icon_path": null
+  },
+  {
+   "slug": "gold-digger",
+   "public_name": "LSI Gold Digger",
+   "internal_name": "LSI Gold Digger",
+   "mark": "GD",
+   "tagline": "Gold market research and analysis with risk-aware decision support.",
+   "summary": "Gold market research and analysis project with market context, technical inputs and risk-aware decision support.",
+   "category": "Market research",
+   "sort_order": 4,
+   "status": "in-development",
+   "status_note": "LSI Gold Digger is being built. No release has been published.",
+   "audiences": [
+    {
+     "name": "People researching the gold market",
+     "description": "Anyone who wants structured market context and technical inputs to inform their own decisions."
+    }
+   ],
+   "capabilities": [
+    {
+     "name": "Macro-regime view",
+     "group": "Market context",
+     "availability": "planned",
+     "description": "A summary of the wider economic conditions that tend to influence gold."
+    },
+    {
+     "name": "Daily bias",
+     "group": "Market context",
+     "availability": "planned",
+     "description": "A stated directional lean for the day, with the inputs behind it."
+    },
+    {
+     "name": "Market structure",
+     "group": "Technical analysis",
+     "availability": "planned",
+     "description": "Trend, swing highs and lows, and where structure has changed."
+    },
+    {
+     "name": "Liquidity",
+     "group": "Technical analysis",
+     "availability": "planned",
+     "description": "Price areas where resting orders are likely to cluster."
+    },
+    {
+     "name": "Regression",
+     "group": "Technical analysis",
+     "availability": "planned",
+     "description": "A regression view of where price sits relative to its recent trend."
+    },
+    {
+     "name": "Double Bollinger Bands",
+     "group": "Technical analysis",
+     "availability": "planned",
+     "description": "Two sets of Bollinger Bands used together to describe momentum and range."
+    },
+    {
+     "name": "XM connectivity and trade execution",
+     "group": "Account connection",
+     "availability": "planned",
+     "description": "Not implemented and not approved. It will only be shown as available if it is built and approved by LSI."
+    }
+   ],
+   "requirements": [
+    {
+     "label": "Devices",
+     "detail": "Not confirmed yet."
+    },
+    {
+     "label": "Account",
+     "detail": "Not confirmed yet. No trading account connection is offered."
+    },
+    {
+     "label": "Data",
+     "detail": "Data sources, timestamps and refresh intervals will be documented before release."
+    },
+    {
+     "label": "Connectivity",
+     "detail": "An internet connection for market data."
+    }
+   ],
+   "services": [
+    "market-intelligence"
+   ],
+   "platforms": [],
+   "platform_note": null,
+   "getting_started": "There is nothing to install or open yet. Setup steps will be published with the first release.",
+   "limitations": [
+    "No release exists, so nothing described on this page can be used yet.",
+    "Analysis can be wrong, late or based on incomplete data.",
+    "The tool does not provide financial advice."
+   ],
+   "notice_title": "Market outcomes are uncertain",
+   "notice_body": "LSI Gold Digger is a research and analysis tool. Its analysis does not guarantee returns, and past behaviour of a market does not predict its future. You are responsible for your own decisions.",
+   "support_url": null,
+   "privacy_url": null,
+   "icon_path": null
+  },
+  {
+   "slug": "podcast-radio",
+   "public_name": "LSI Podcast and Online Radio",
+   "internal_name": "LSI Podcast and Online Radio",
+   "mark": "PR",
+   "tagline": "Podcast publishing and listening, plus live or scheduled online radio.",
+   "summary": "Spoken-audio product concept for podcast publishing and listening, plus live or scheduled online radio.",
+   "category": "Audio",
+   "sort_order": 3,
+   "status": "coming-soon",
+   "status_note": "LSI Podcast and Online Radio is a product concept. Nothing has been released.",
+   "audiences": [
+    {
+     "name": "Listeners",
+     "description": "People who want to find shows, follow episodes and tune in to online radio channels."
+    },
+    {
+     "name": "Creators",
+     "description": "Podcasters and broadcasters who want to publish episodes or run a radio channel."
+    }
+   ],
+   "capabilities": [
+    {
+     "name": "Podcast shows and episodes",
+     "group": "Creators",
+     "availability": "planned",
+     "description": "Set up a show, add its details and publish episodes."
+    },
+    {
+     "name": "Online radio channels",
+     "group": "Creators",
+     "availability": "planned",
+     "description": "Run a channel with live or scheduled streaming."
+    },
+    {
+     "name": "Discovery",
+     "group": "Listeners",
+     "availability": "planned",
+     "description": "Find shows, episodes and channels."
+    },
+    {
+     "name": "Listening controls",
+     "group": "Listeners",
+     "availability": "planned",
+     "description": "Play, pause and move through episodes and live streams."
+    },
+    {
+     "name": "Creator analytics",
+     "group": "Creators",
+     "availability": "planned",
+     "description": "See how shows and channels are performing."
+    },
+    {
+     "name": "Sharing",
+     "group": "Listeners",
+     "availability": "planned",
+     "description": "Share shows, episodes and channels with other people."
+    },
+    {
+     "name": "Offline listening",
+     "group": "Listeners",
+     "availability": "planned",
+     "description": "Save episodes to listen without a connection."
+    }
+   ],
+   "requirements": [
+    {
+     "label": "Devices",
+     "detail": "Not confirmed yet."
+    },
+    {
+     "label": "Account",
+     "detail": "Not confirmed yet. Creators are expected to need an account to publish."
+    },
+    {
+     "label": "Permissions",
+     "detail": "Not confirmed yet."
+    },
+    {
+     "label": "Connectivity",
+     "detail": "An internet connection for streaming."
+    }
+   ],
+   "services": [
+    "digital-platforms"
+   ],
+   "platforms": [],
+   "platform_note": null,
+   "getting_started": "There is nothing to install or open yet. Listener and creator setup steps will be published before launch.",
+   "limitations": [
+    "This is a product concept. Every capability on this page is planned, not available.",
+    "Upload formats, file limits, scheduling rules and the moderation and publishing workflow will be specified before launch."
+   ],
+   "notice_title": null,
+   "notice_body": null,
+   "support_url": null,
+   "privacy_url": null,
+   "icon_path": null
+  }
+ ],
+ "doc_pages": [
+  {
+   "product_slug": "1145",
+   "slug": "getting-started",
+   "title": "Getting started with 1145 Lifestyle",
+   "summary": "What you will need and what to expect once the first module is released.",
+   "audience": "Everyone",
+   "sort_order": 1,
+   "body": "## Current status\n\n1145 Lifestyle is in development. There is no public web app or store listing yet, so there is nothing to install or open.\n\n## What you will need\n\n- A phone or computer with an internet connection. Supported devices will be confirmed with the first release.\n- A 1145 Lifestyle account. You will create it on the product's own domain or in its official app, never on this website.\n\n## When a release is published\n\n1. Open the [1145 Lifestyle product page](/work/1145).\n2. Check the status and the platform you want to use.\n3. Use the **Open** or **Download** button. It will only appear for a release LSI has reviewed and published.\n\nAccount setup, onboarding and payment or wallet guidance will be added here only for capabilities that have actually been released.\n",
+   "last_reviewed": "2026-10-06",
+   "status": "published"
+  },
+  {
+   "product_slug": "1145",
+   "slug": "modules",
+   "title": "1145 Lifestyle modules",
+   "summary": "The marketplace, merchant, delivery, ride and financial modules, and the current availability of each.",
+   "audience": "Everyone",
+   "sort_order": 2,
+   "body": "1145 Lifestyle is made up of modules. Each one is released and documented separately. Every module below is currently **planned**. None has been released.\n\n## Marketplace\n\nFor consumers. Browse products from participating merchants, place orders and follow them through to delivery.\n\n## Merchant tools\n\nFor merchants and brand owners. List products, manage stock and orders, and see how a store is performing.\n\n## Delivery\n\nFor delivery partners. Assign, track and complete deliveries for marketplace orders.\n\n## Rides\n\nFor consumers and drivers. Request and manage rides through the same account.\n\n## Financial services\n\nFor consumers and merchants. Wallet and payment features related to shopping on the platform. No financial service is live, and guidance will be published only for services that have been released and approved.\n",
+   "last_reviewed": "2026-10-06",
+   "status": "published"
+  },
+  {
+   "product_slug": "1145",
+   "slug": "troubleshooting",
+   "title": "Troubleshooting 1145 Lifestyle",
+   "summary": "Common questions before launch and where to go for help.",
+   "audience": "Everyone",
+   "sort_order": 3,
+   "body": "## I cannot find a download or sign-in link\n\nThat is expected. No release has been published. A button will appear on the [product page](/work/1145) once one is approved.\n\n## Someone sent me a link to a 1145 Lifestyle app\n\nOnly use links published on this website. LSI lists every official web app and store listing on the [Downloads page](/downloads). If a link is not there, treat it as unofficial.\n\n## I need more help\n\nSee [Support](/support).\n",
+   "last_reviewed": "2026-10-06",
+   "status": "published"
+  },
+  {
+   "product_slug": "1145hz",
+   "slug": "getting-started",
+   "title": "Getting started with 1145Hz Player",
+   "summary": "Installation, first-run setup and building your media library.",
+   "audience": "Users",
+   "sort_order": 1,
+   "body": "1145Hz Player is the public name of the project that earlier LSI material calls LSI Player.\n\n## Current status\n\nThe player is in development and no download has been published. The sections below show what this guide will cover. Exact details will be filled in once engineering confirms them.\n\n## Installation\n\nSupported operating systems and installers are not confirmed. When a release is published, the [Downloads page](/downloads) will show the version, platform, file size and SHA-256 checksum for each file.\n\n## First run\n\nTo be documented with the first release, including any permissions the player asks for and why.\n\n## Setting up your media library\n\nThe player is planned to build a library from folders you choose. Supported audio and video formats are not confirmed.\n",
+   "last_reviewed": "2026-10-06",
+   "status": "published"
+  },
+  {
+   "product_slug": "1145hz",
+   "slug": "playback-and-accessibility",
+   "title": "Playback and accessibility",
+   "summary": "Playback controls and the accessibility options the player offers.",
+   "audience": "Users",
+   "sort_order": 3,
+   "body": "## Playback controls\n\nStandard controls such as play, pause, seek and volume are planned. Keyboard shortcuts will be listed here once they are final.\n\n## Accessibility options\n\nAccessibility options will be documented for each platform with the first release. Voice control is intended to help people who prefer not to use a pointer or keyboard, but it will not be the only way to use the player.\n",
+   "last_reviewed": "2026-10-06",
+   "status": "published"
+  },
+  {
+   "product_slug": "1145hz",
+   "slug": "troubleshooting",
+   "title": "Troubleshooting 1145Hz Player",
+   "summary": "What to check if something is not working.",
+   "audience": "Users",
+   "sort_order": 4,
+   "body": "## I cannot find a download\n\nNo release has been published yet. When one is, it will be listed on the [Downloads page](/downloads).\n\n## I found an installer somewhere else\n\nOnly install files listed on this website. Every official file is shown with a SHA-256 checksum that you can compare with the file you downloaded.\n\n## I need more help\n\nSee [Support](/support).\n",
+   "last_reviewed": "2026-10-06",
+   "status": "published"
+  },
+  {
+   "product_slug": "1145hz",
+   "slug": "voice-control",
+   "title": "Voice control",
+   "summary": "Microphone setup and using your voice to search and play media.",
+   "audience": "Users",
+   "sort_order": 2,
+   "body": "Voice-led search and playback is the main idea behind 1145Hz Player. It is planned, not available.\n\n## Platform differences\n\nVoice features may not be offered on every platform. Each release will state where voice control is implemented. If a platform is not listed, assume voice control does not work there.\n\n## Microphone setup\n\nVoice control will need microphone access. This guide will explain how to grant and revoke that permission on each supported operating system once those systems are confirmed.\n\n## Voice commands\n\nThe list of supported commands will be published with the first release that includes voice control.\n",
+   "last_reviewed": "2026-10-06",
+   "status": "published"
+  },
+  {
+   "product_slug": "gold-digger",
+   "slug": "analysis-views",
+   "title": "Analysis views",
+   "summary": "What the macro-regime, daily-bias, market-structure, liquidity, regression and Double Bollinger Bands views are meant to show.",
+   "audience": "Users",
+   "sort_order": 2,
+   "body": "Every view is planned. This page explains the intent of each one so that its output can be read critically.\n\n## Macro regime\n\nA summary of the wider economic conditions that tend to influence gold. It gives context. It does not predict price.\n\n## Daily bias\n\nA stated directional lean for the day, shown with the inputs that produced it so you can judge whether you agree.\n\n## Market structure\n\nThe current trend, recent swing highs and lows, and the points where structure has changed.\n\n## Liquidity\n\nPrice areas where resting orders are likely to cluster. These are estimates drawn from price history, not a view of an order book.\n\n## Regression\n\nWhere price sits relative to a regression line fitted to its recent trend, and how far it has stretched from it.\n\n## Double Bollinger Bands\n\nTwo sets of Bollinger Bands at different widths, used together to describe momentum and range.\n\n## Reading the views together\n\nThe views can disagree. Disagreement is information, not an error, and no single view should be treated as a signal on its own.\n",
+   "last_reviewed": "2026-10-06",
+   "status": "published"
+  },
+  {
+   "product_slug": "gold-digger",
+   "slug": "data-and-risk",
+   "title": "Data, limitations and risk",
+   "summary": "Data sources, timing, known limits, risk controls and account connections.",
+   "audience": "Users",
+   "sort_order": 3,
+   "body": "## Data sources, timestamps and refresh intervals\n\nTo be documented before the first release. Every view will show when its data was last updated.\n\n## Limitations\n\n- Analysis can be wrong, late or based on incomplete data.\n- Past market behaviour does not predict future behaviour.\n- The tool does not know your circumstances and does not give financial advice.\n\n## Risk controls\n\nRisk controls will be documented with the first release.\n\n## Account connection and trade execution\n\nXM connectivity and trade execution are not implemented and not approved. They will be documented here only if they are built and approved by LSI.\n\n## No guarantee\n\nMarket outcomes are uncertain. Nothing in LSI Gold Digger guarantees a return.\n",
+   "last_reviewed": "2026-10-06",
+   "status": "published"
+  },
+  {
+   "product_slug": "gold-digger",
+   "slug": "getting-started",
+   "title": "Getting started with LSI Gold Digger",
+   "summary": "What the tool is for and what to expect at release.",
+   "audience": "Users",
+   "sort_order": 1,
+   "body": "LSI Gold Digger is a gold market research and analysis tool. It is in development and nothing has been released.\n\n## Before you use it\n\nMarket outcomes are uncertain. The tool's analysis does not guarantee returns and is not financial advice. You are responsible for your own decisions.\n\n## What you will need\n\nDevices, accounts and data requirements will be confirmed with the first release. No trading account connection is offered.\n\n## Next\n\nRead [Analysis views](/docs/gold-digger/analysis-views) to understand what each view is meant to show, and [Data, limitations and risk](/docs/gold-digger/data-and-risk) before relying on any of it.\n",
+   "last_reviewed": "2026-10-06",
+   "status": "published"
+  },
+  {
+   "product_slug": "gold-digger",
+   "slug": "troubleshooting",
+   "title": "Troubleshooting LSI Gold Digger",
+   "summary": "Common questions before launch.",
+   "audience": "Users",
+   "sort_order": 4,
+   "body": "## I cannot find a download or web app\n\nNo release has been published. The [product page](/work/gold-digger) will show a button when one is approved.\n\n## I need more help\n\nSee [Support](/support).\n",
+   "last_reviewed": "2026-10-06",
+   "status": "published"
+  },
+  {
+   "product_slug": "podcast-radio",
+   "slug": "getting-started",
+   "title": "Getting started with LSI Podcast and Online Radio",
+   "summary": "The intended journeys for listeners and creators.",
+   "audience": "Listeners and creators",
+   "sort_order": 1,
+   "body": "LSI Podcast and Online Radio is a product concept. Nothing has been released, so this page describes what is intended.\n\n## For listeners\n\n1. Find a show, episode or radio channel.\n2. Play it, and use the listening controls to pause or move through it.\n3. Follow shows you like.\n\n## For creators\n\n1. Set up a show or a radio channel and add its details.\n2. Publish episodes, or schedule or start a live stream.\n3. Review how it is performing.\n\nEach step will be documented in full as the capability becomes available.\n",
+   "last_reviewed": "2026-10-06",
+   "status": "published"
+  },
+  {
+   "product_slug": "podcast-radio",
+   "slug": "publishing-and-radio",
+   "title": "Publishing and radio streaming",
+   "summary": "Episode publishing, channel setup, scheduling and moderation.",
+   "audience": "Creators",
+   "sort_order": 2,
+   "body": "Everything on this page is planned.\n\n## To be specified before launch\n\n- Accepted upload formats\n- File size limits\n- Channel setup\n- Scheduling rules\n- Moderation and publishing workflow\n\n## Podcast shows and episodes\n\nCreators will set up a show, add its details and publish episodes to it.\n\n## Online radio\n\nChannels are intended to support both live and scheduled streaming.\n\n## Planned, not available\n\nCreator analytics, sharing and offline listening are planned features. None of them is available.\n",
+   "last_reviewed": "2026-10-06",
+   "status": "published"
+  },
+  {
+   "product_slug": "podcast-radio",
+   "slug": "troubleshooting",
+   "title": "Troubleshooting LSI Podcast and Online Radio",
+   "summary": "Common questions before launch.",
+   "audience": "Listeners and creators",
+   "sort_order": 3,
+   "body": "## I cannot find the app or sign up as a creator\n\nThat is expected. The product has not been released. Its status on the [product page](/work/podcast-radio) will change when it is.\n\n## I need more help\n\nSee [Support](/support).\n",
+   "last_reviewed": "2026-10-06",
+   "status": "published"
+  }
+ ],
+ "faqs": [
+  {
+   "product_slug": "1145",
+   "question": "Can I use 1145 Lifestyle today?",
+   "answer": "Not yet. 1145 Lifestyle is in development and no web app or store listing has been published on this site. When a release is approved, an Open or Download button will appear on the product page.",
+   "category": "Availability",
+   "escalation": null,
+   "visible": true,
+   "sort_order": 1
+  },
+  {
+   "product_slug": "1145",
+   "question": "Where will I sign in?",
+   "answer": "On the product's own domain or in its official app. This website is a catalogue and never asks for your 1145 Lifestyle sign-in or payment details.",
+   "category": "Accounts",
+   "escalation": null,
+   "visible": true,
+   "sort_order": 2
+  },
+  {
+   "product_slug": "1145",
+   "question": "Will every module launch together?",
+   "answer": "Not necessarily. Marketplace, merchant, delivery, ride and financial features are tracked separately, and each is marked Available only once it has been released.",
+   "category": "Availability",
+   "escalation": null,
+   "visible": true,
+   "sort_order": 3
+  },
+  {
+   "product_slug": "1145hz",
+   "question": "Is 1145Hz Player the same as LSI Player?",
+   "answer": "Yes. 1145Hz Player is the public name of the media player project that earlier LSI material calls LSI Player. They are one product.",
+   "category": "About",
+   "escalation": null,
+   "visible": true,
+   "sort_order": 1
+  },
+  {
+   "product_slug": "1145hz",
+   "question": "Where can I download it?",
+   "answer": "There is no download yet. When a release is approved it will be listed on the Downloads page with its version, platform, file size and checksum.",
+   "category": "Availability",
+   "escalation": null,
+   "visible": true,
+   "sort_order": 2
+  },
+  {
+   "product_slug": "1145hz",
+   "question": "Will voice control work on my device?",
+   "answer": "That has not been confirmed. Voice features will only be promised on platforms where a release states they are implemented.",
+   "category": "Voice control",
+   "escalation": null,
+   "visible": true,
+   "sort_order": 3
+  },
+  {
+   "product_slug": "gold-digger",
+   "question": "Does LSI Gold Digger tell me what to trade?",
+   "answer": "No. It is a research and analysis tool. It does not give financial advice, and its analysis does not guarantee returns.",
+   "category": "Risk",
+   "escalation": null,
+   "visible": true,
+   "sort_order": 1
+  },
+  {
+   "product_slug": "gold-digger",
+   "question": "Can it connect to my XM account or place trades?",
+   "answer": "No. XM connectivity and trade execution are not implemented and not approved. They will only be shown as available if that changes.",
+   "category": "Account connection",
+   "escalation": null,
+   "visible": true,
+   "sort_order": 2
+  },
+  {
+   "product_slug": "gold-digger",
+   "question": "Where does the market data come from?",
+   "answer": "Data sources, timestamps and refresh intervals will be documented before the first release.",
+   "category": "Data",
+   "escalation": null,
+   "visible": true,
+   "sort_order": 3
+  },
+  {
+   "product_slug": "podcast-radio",
+   "question": "Can I publish a podcast or start a radio channel now?",
+   "answer": "No. LSI Podcast and Online Radio is a product concept and nothing has been released.",
+   "category": "Availability",
+   "escalation": null,
+   "visible": true,
+   "sort_order": 1
+  },
+  {
+   "product_slug": "podcast-radio",
+   "question": "What file formats will I be able to upload?",
+   "answer": "Accepted formats and file limits have not been decided. They will be specified here before launch.",
+   "category": "Creators",
+   "escalation": null,
+   "visible": true,
+   "sort_order": 2
+  },
+  {
+   "product_slug": "podcast-radio",
+   "question": "Will there be analytics, sharing or offline listening?",
+   "answer": "They are planned, not available. Each will be marked Available only when it has been released.",
+   "category": "Features",
+   "escalation": null,
+   "visible": true,
+   "sort_order": 3
+  }
+ ],
+ "pages": [
+  {
+   "slug": "about",
+   "title": "About LSI Corp",
+   "description": "Technology, logistics and finance connected around real-world commerce.",
+   "body": "Founded in 2016, Lifestyle Investment Corp (LSI) works across technology, logistics and finance. LSI designs smart, scalable solutions that connect digital platforms, efficient logistics networks and secure financial systems.\n\n## Our mission\n\nTo simplify and enable commerce. By connecting innovation with practical execution, LSI helps businesses move goods, transact with confidence and build for sustainable growth in an increasingly digital economy.\n\n## How LSI creates value\n\n**Connected design.** LSI brings digital services, operational workflows and financial tools together, so that each part supports the wider customer and business journey.\n\n**Practical execution.** Products are shaped around everyday needs: finding and selling goods, arranging delivery, accessing media and understanding markets.\n\n**Scalable foundations.** LSI focuses on systems that can grow across users, merchants, partners and new service areas over time.\n\n## At a glance\n\n- **Founded:** 2016\n- **Core focus:** technology, logistics and finance\n- **Approach:** integrated platforms and real-world delivery\n- **Purpose:** make commerce simpler, more connected and easier to scale\n\n## Our work\n\nLSI's portfolio applies technology to distinct needs: connected commerce, media playback, spoken-audio publishing and listening, and market research. The projects are at different stages of definition and development, and each is shown with its true status.\n\nSee [what we do](/services), browse [our work](/work) or [get in touch](/contact).\n",
+   "last_reviewed": "2026-10-06"
+  },
+  {
+   "slug": "accessibility",
+   "title": "Accessibility statement",
+   "description": "How this website supports accessibility and how to report a problem.",
+   "body": "LSI Corp wants this website to be usable by as many people as possible. Our target is the Web Content Accessibility Guidelines (WCAG) 2.2, level AA.\n\n## What we have done\n\n- Every control can be reached and used with a keyboard, with a visible focus indicator.\n- Status is always written in words and never shown by colour alone.\n- Text and controls are designed to meet AA contrast in light and dark colour schemes.\n- The site does not play audio or video automatically and does not rely on animation.\n- Download buttons name their platform and version.\n\n## Known limitations\n\nThis website is an application drawn inside the browser rather than a set of standard web pages. Because of that:\n\n- Screen reader support depends on your browser and may be incomplete.\n- Browser features such as find-in-page, text zoom and reader mode may not work as they do on ordinary pages.\n- The first visit needs a larger download than a typical web page.\n\nA short plain-text summary of the site is shown if the application cannot start.\n\n## Reporting a problem\n\nIf something on this site is not accessible to you, please tell us through [the contact page](/contact).\n",
+   "last_reviewed": "2026-10-06"
+  },
+  {
+   "slug": "privacy",
+   "title": "Privacy notice",
+   "description": "What this website collects and how it is used.",
+   "body": "This notice covers the LSI Corp website only. Each product in our portfolio has its own privacy information, linked from its page once the product is released.\n\n## What this website collects\n\n- **Browsing the site.** You do not need an account. The website does not use advertising or cross-site tracking, and sets no cookies for visitors.\n- **The contact form.** If you send us an enquiry, we receive what you enter: your name, your email address, your organisation if you give one, the service you are asking about and your message. We use it only to reply to you and to handle your enquiry. You are asked to agree to this before sending.\n- **Staff sign-in.** If you are a member of LSI staff and sign in, your sign-in session is stored in your browser so that you stay signed in.\n- **Technical logs.** The services that host this website and its content may keep standard technical logs, such as IP address and time of request, to keep the service secure and working.\n\nDo not put passwords, payment details or other sensitive information in the contact form.\n\n## Who can see an enquiry\n\nOnly LSI staff. Enquiries are not published and are not shared with other organisations.\n\n## Asking us to remove your details\n\nTell us through the [contact page](/contact) and we will delete your enquiry.\n\n## Links to other sites\n\nDownload and launch buttons can take you to an app store or to a product's own domain. Those links are labelled, and the destination's own privacy terms apply once you leave.\n\n## Changes\n\nIf this notice changes, the review date shown on this page is updated.\n",
+   "last_reviewed": "2026-10-06"
+  },
+  {
+   "slug": "terms",
+   "title": "Terms of use",
+   "description": "The terms for using this website.",
+   "body": "These terms cover the LSI Corp website. Each product has its own terms and licence, shown with its releases.\n\n## Information on this site\n\nLSI aims to keep product status, documentation and release details accurate. Products marked In Development or Coming Soon are not available, and planned features may change or may not be released.\n\n## Downloads\n\nOnly use downloads and links published on this website. Check the version, platform and compatibility details before installing. For direct file downloads, compare the published SHA-256 checksum with the file you received.\n\n## Market analysis\n\nWhere a product provides market research or analysis, that analysis is not financial advice and does not guarantee returns.\n",
+   "last_reviewed": "2026-10-06"
+  }
+ ],
+ "releases": []
+}

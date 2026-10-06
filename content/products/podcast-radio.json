@@ -1,0 +1,95 @@
+{
+  "publicName": "LSI Podcast and Online Radio",
+  "internalName": "LSI Podcast and Online Radio",
+  "mark": "PR",
+  "tagline": "Podcast publishing and listening, plus live or scheduled online radio.",
+  "summary": "Spoken-audio product concept for podcast publishing and listening, plus live or scheduled online radio.",
+  "category": "Audio",
+  "order": 3,
+  "status": "coming-soon",
+  "statusNote": "LSI Podcast and Online Radio is a product concept. Nothing has been released.",
+  "audiences": [
+    {
+      "name": "Listeners",
+      "description": "People who want to find shows, follow episodes and tune in to online radio channels."
+    },
+    {
+      "name": "Creators",
+      "description": "Podcasters and broadcasters who want to publish episodes or run a radio channel."
+    }
+  ],
+  "capabilities": [
+    {
+      "name": "Podcast shows and episodes",
+      "group": "Creators",
+      "availability": "planned",
+      "description": "Set up a show, add its details and publish episodes."
+    },
+    {
+      "name": "Online radio channels",
+      "group": "Creators",
+      "availability": "planned",
+      "description": "Run a channel with live or scheduled streaming."
+    },
+    {
+      "name": "Discovery",
+      "group": "Listeners",
+      "availability": "planned",
+      "description": "Find shows, episodes and channels."
+    },
+    {
+      "name": "Listening controls",
+      "group": "Listeners",
+      "availability": "planned",
+      "description": "Play, pause and move through episodes and live streams."
+    },
+    {
+      "name": "Creator analytics",
+      "group": "Creators",
+      "availability": "planned",
+      "description": "See how shows and channels are performing."
+    },
+    {
+      "name": "Sharing",
+      "group": "Listeners",
+      "availability": "planned",
+      "description": "Share shows, episodes and channels with other people."
+    },
+    {
+      "name": "Offline listening",
+      "group": "Listeners",
+      "availability": "planned",
+      "description": "Save episodes to listen without a connection."
+    }
+  ],
+  "requirements": [
+    {
+      "label": "Devices",
+      "detail": "Not confirmed yet."
+    },
+    {
+      "label": "Account",
+      "detail": "Not confirmed yet. Creators are expected to need an account to publish."
+    },
+    {
+      "label": "Permissions",
+      "detail": "Not confirmed yet."
+    },
+    {
+      "label": "Connectivity",
+      "detail": "An internet connection for streaming."
+    }
+  ],
+  "services": [
+    "digital-platforms"
+  ],
+  "platforms": [],
+  "gettingStarted": "There is nothing to install or open yet. Listener and creator setup steps will be published before launch.",
+  "limitations": [
+    "This is a product concept. Every capability on this page is planned, not available.",
+    "Upload formats, file limits, scheduling rules and the moderation and publishing workflow will be specified before launch."
+  ],
+  "supportUrl": null,
+  "privacyUrl": null,
+  "icon": null
+}

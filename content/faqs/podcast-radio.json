@@ -1,0 +1,22 @@
+{
+  "items": [
+    {
+      "question": "Can I publish a podcast or start a radio channel now?",
+      "answer": "No. LSI Podcast and Online Radio is a product concept and nothing has been released.",
+      "category": "Availability",
+      "visible": true
+    },
+    {
+      "question": "What file formats will I be able to upload?",
+      "answer": "Accepted formats and file limits have not been decided. They will be specified here before launch.",
+      "category": "Creators",
+      "visible": true
+    },
+    {
+      "question": "Will there be analytics, sharing or offline listening?",
+      "answer": "They are planned, not available. Each will be marked Available only when it has been released.",
+      "category": "Features",
+      "visible": true
+    }
+  ]
+}

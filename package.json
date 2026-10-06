@@ -1,0 +1,21 @@
+{
+  "name": "lsi-tools-website",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Tooling for the LSI Corp website: seed generation, rule tests, database tests and a local preview server. The site itself is the Qt Quick app in app/.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "seed": "node scripts/build-seed.mjs && node scripts/build-install-sql.mjs",
+    "test": "node --test \"tests/*.test.mjs\"",
+    "serve": "node scripts/serve.mjs",
+    "package": "node scripts/package.mjs",
+    "mock": "node scripts/mock-supabase.mjs",
+    "verify:releases": "node scripts/verify-releases.mjs"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.8"
+  }
+}

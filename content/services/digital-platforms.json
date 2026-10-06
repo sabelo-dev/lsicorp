@@ -1,0 +1,13 @@
+{
+  "name": "Digital platforms",
+  "mark": "DP",
+  "order": 1,
+  "tagline": "Web and mobile products people use every day.",
+  "summary": "LSI designs and builds digital platforms: marketplaces and storefronts, the tools merchants and partners work in, and media applications. Products are shaped around everyday needs and built as modules, so they can grow across users, partners and new service areas.",
+  "offerings": [
+    "Marketplaces and brand storefronts",
+    "Merchant and partner tools",
+    "Media and audio applications",
+    "Modular product architecture that can be extended over time"
+  ]
+}

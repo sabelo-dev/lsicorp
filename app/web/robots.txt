@@ -1,0 +1,4 @@
+# Production copy. On staging and preview hosts, replace this file with
+# "User-agent: *" / "Disallow: /" so they are never indexed.
+User-agent: *
+Allow: /

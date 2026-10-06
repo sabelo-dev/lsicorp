@@ -1,0 +1,10 @@
+node_modules/
+build/
+aqtinstall.log
+.env
+.env.*
+*.log
+# Local desktop-run settings; deployments use app/web/config.js instead.
+/config.json
+dist/
+.toolchain/

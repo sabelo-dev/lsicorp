@@ -1,0 +1,22 @@
+{
+  "items": [
+    {
+      "question": "Can I use 1145 Lifestyle today?",
+      "answer": "Not yet. 1145 Lifestyle is in development and no web app or store listing has been published on this site. When a release is approved, an Open or Download button will appear on the product page.",
+      "category": "Availability",
+      "visible": true
+    },
+    {
+      "question": "Where will I sign in?",
+      "answer": "On the product's own domain or in its official app. This website is a catalogue and never asks for your 1145 Lifestyle sign-in or payment details.",
+      "category": "Accounts",
+      "visible": true
+    },
+    {
+      "question": "Will every module launch together?",
+      "answer": "Not necessarily. Marketplace, merchant, delivery, ride and financial features are tracked separately, and each is marked Available only once it has been released.",
+      "category": "Availability",
+      "visible": true
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "items": [
+    {
+      "question": "Does LSI Gold Digger tell me what to trade?",
+      "answer": "No. It is a research and analysis tool. It does not give financial advice, and its analysis does not guarantee returns.",
+      "category": "Risk",
+      "visible": true
+    },
+    {
+      "question": "Can it connect to my XM account or place trades?",
+      "answer": "No. XM connectivity and trade execution are not implemented and not approved. They will only be shown as available if that changes.",
+      "category": "Account connection",
+      "visible": true
+    },
+    {
+      "question": "Where does the market data come from?",
+      "answer": "Data sources, timestamps and refresh intervals will be documented before the first release.",
+      "category": "Data",
+      "visible": true
+    }
+  ]
+}

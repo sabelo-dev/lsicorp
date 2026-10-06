@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <!-- 1:1 mapping between CSS pixels and the app's pixels, edge to edge on phones. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>LSI Corp</title>
+    <meta
+      name="description"
+      content="LSI Corp (Lifestyle Investment Corp) builds connected digital solutions across technology, logistics and finance that make everyday commerce simpler to access, operate and grow."
+    />
+    <meta name="theme-color" content="#01245d" />
+    <link rel="icon" href="favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="stylesheet" href="shell.css" />
+  </head>
+  <body>
+    <!-- Shown while the app downloads, and kept if it cannot start. -->
+    <main id="loading">
+      <div class="plate"><img src="logo-mark.png" width="120" height="85" alt="LSI" /></div>
+      <h1>LSI Corp</h1>
+      <p>
+        Lifestyle Investment Corp builds connected digital solutions across technology, logistics and finance that make everyday
+        commerce and services simpler to access, operate and grow.
+      </p>
+      <progress id="progress" max="100" value="0" aria-label="Loading the site"></progress>
+      <p id="status" role="status">Loading&hellip;</p>
+      <noscript>
+        <p>This site needs JavaScript and WebAssembly. Please enable JavaScript, or use a current browser, to view it.</p>
+      </noscript>
+    </main>
+    <div id="screen" hidden></div>
+
+    <script src="config.js"></script>
+    <script src="lsitools.js"></script>
+    <script src="qtloader.js"></script>
+    <!-- scripts/package.mjs replaces the file names on this line and the one above with content-hashed ones. -->
+    <script src="shell.js" data-wasm="lsitools.wasm" data-wasm-gz=""></script>
+  </body>
+</html>

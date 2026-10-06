@@ -1,0 +1,112 @@
+/* Styles for the page that hosts the app: the loading and fallback screen only. */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  /* The app scrolls itself; stop the browser's pull-to-refresh and page bounce from fighting it. */
+  overscroll-behavior: none;
+  background: #f4f6fb;
+  color: #0f1b33;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.5;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+}
+
+#screen {
+  width: 100%;
+  height: 100%;
+  /* Touches go straight to the app, which handles dragging and flicking itself. */
+  touch-action: none;
+}
+
+#loading {
+  box-sizing: border-box;
+  max-width: 34rem;
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 3rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.plate {
+  align-self: flex-start;
+  padding: 0.9rem 1.1rem;
+  border-radius: 1.1rem;
+  background: #ffffff;
+  box-shadow: 0 6px 24px rgba(15, 27, 51, 0.12);
+}
+
+.plate img {
+  display: block;
+}
+
+#loading h1 {
+  margin: 1.5rem 0 0.5rem;
+  font-size: 2.4rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #01245d;
+}
+
+#loading p {
+  margin: 0 0 1rem;
+}
+
+progress {
+  width: 100%;
+  height: 0.5rem;
+  margin-top: 0.75rem;
+  border: 0;
+  border-radius: 999px;
+  overflow: hidden;
+  background: #d9dfec;
+  accent-color: #01245d;
+}
+
+progress::-webkit-progress-bar {
+  background: #d9dfec;
+}
+
+progress::-webkit-progress-value {
+  background: #ddab22;
+}
+
+progress::-moz-progress-bar {
+  background: #ddab22;
+}
+
+#status {
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+  color: #4b5873;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html,
+  body {
+    background: #070f1f;
+    color: #edf1f9;
+  }
+
+  #loading h1 {
+    color: #ffffff;
+  }
+
+  progress,
+  progress::-webkit-progress-bar {
+    background: #24335a;
+  }
+
+  #status {
+    color: #a7b3cb;
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "publicName": "1145 Lifestyle",
+  "internalName": "1145 Lifestyle",
+  "mark": "1145",
+  "tagline": "A connected lifestyle and commerce platform.",
+  "summary": "Connected commerce platform spanning customer shopping, merchant tools, logistics and related financial services.",
+  "category": "Commerce",
+  "order": 1,
+  "status": "in-development",
+  "statusNote": "1145 Lifestyle is being built. No public web app or store listing has been published on this site yet.",
+  "audiences": [
+    {
+      "name": "Consumers",
+      "description": "People who want to browse, order and pay for goods and services in one place."
+    },
+    {
+      "name": "Merchants and brand owners",
+      "description": "Businesses that want to list products, manage orders and reach customers."
+    },
+    {
+      "name": "Delivery partners",
+      "description": "Drivers and couriers who fulfil deliveries for orders placed on the platform."
+    }
+  ],
+  "capabilities": [
+    {
+      "name": "Marketplace",
+      "group": "Customer shopping",
+      "availability": "planned",
+      "description": "Browse products from participating merchants, place orders and follow them to delivery."
+    },
+    {
+      "name": "Merchant tools",
+      "group": "Merchants",
+      "availability": "planned",
+      "description": "List products, manage stock and orders, and see how a store is performing."
+    },
+    {
+      "name": "Delivery",
+      "group": "Logistics",
+      "availability": "planned",
+      "description": "Assign, track and complete deliveries for marketplace orders."
+    },
+    {
+      "name": "Rides",
+      "group": "Logistics",
+      "availability": "planned",
+      "description": "Request and manage rides through the same account."
+    },
+    {
+      "name": "Financial services",
+      "group": "Payments",
+      "availability": "planned",
+      "description": "Wallet and payment features related to shopping on the platform. Details will be published only once a service is released and approved."
+    }
+  ],
+  "requirements": [
+    {
+      "label": "Devices",
+      "detail": "Not confirmed yet. Supported devices will be listed with the first release."
+    },
+    {
+      "label": "Account",
+      "detail": "A 1145 Lifestyle account, created on the product's own domain. This website never asks for your product sign-in details."
+    },
+    {
+      "label": "Permissions",
+      "detail": "Not confirmed yet. Any permission a module needs will be explained before you are asked to grant it."
+    },
+    {
+      "label": "Connectivity",
+      "detail": "An internet connection."
+    }
+  ],
+  "services": [
+    "digital-platforms",
+    "logistics-technology",
+    "financial-technology"
+  ],
+  "platforms": [
+    "android",
+    "ios",
+    "web"
+  ],
+  "platformNote": "Each module is documented separately and may reach different platforms at different times.",
+  "gettingStarted": "There is nothing to install or open yet. When the first module is released, account setup and onboarding steps will be published here.",
+  "limitations": [
+    "No module has been released, so nothing described on this page can be used yet.",
+    "Payment and wallet guidance will only be published for services that have actually been released."
+  ],
+  "supportUrl": null,
+  "privacyUrl": null,
+  "icon": null
+}

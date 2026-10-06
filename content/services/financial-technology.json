@@ -1,0 +1,12 @@
+{
+  "name": "Financial technology",
+  "mark": "FT",
+  "order": 3,
+  "tagline": "Secure financial tools inside the customer journey.",
+  "summary": "LSI builds financial tools into the platforms where people already buy, sell and deliver, so that value can be managed in the same place as the transaction it belongs to.",
+  "offerings": [
+    "Payments within a commerce journey",
+    "Rewards and related account services",
+    "Financial features designed with security and approval in mind"
+  ]
+}

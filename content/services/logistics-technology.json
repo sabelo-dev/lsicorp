@@ -1,0 +1,12 @@
+{
+  "name": "Logistics technology",
+  "mark": "LT",
+  "order": 2,
+  "tagline": "Connecting a sale to the delivery that completes it.",
+  "summary": "Commerce is only finished when the goods arrive. LSI builds the logistics layer that connects digital platforms to delivery: the workflows drivers and delivery partners follow, and the links between an order and its journey.",
+  "offerings": [
+    "Delivery and driver workflows",
+    "Order-to-delivery connections between commerce and logistics",
+    "Ride and mobility services"
+  ]
+}

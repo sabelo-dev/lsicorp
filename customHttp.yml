@@ -1,0 +1,47 @@
+# Response headers for AWS Amplify Hosting. Amplify reads this file from the
+# repository root on a Git-connected deploy. For a manual (zip) deploy, paste
+# its contents into Hosting > Custom headers in the Amplify console.
+#
+# 'wasm-unsafe-eval' lets the browser compile the app's WebAssembly module; it
+# does not permit eval() of script text. If the Supabase project uses a custom
+# domain rather than *.supabase.co, change connect-src to match.
+customHeaders:
+  - pattern: '**'
+    headers:
+      - key: Content-Security-Policy
+        value: "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' https://*.supabase.co; worker-src 'self' blob:; manifest-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+      - key: X-Content-Type-Options
+        value: nosniff
+      - key: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      - key: Strict-Transport-Security
+        value: max-age=31536000; includeSubDomains
+      - key: Permissions-Policy
+        value: camera=(), microphone=(), geolocation=()
+      # Everything is revalidated on each visit unless a rule below says otherwise,
+      # so an edit to config.js or a new deploy takes effect immediately.
+      - key: Cache-Control
+        value: no-cache
+
+  # Content-hashed by scripts/package.mjs: a new build has new file names, so
+  # these can be kept by browsers and CloudFront for a year.
+  - pattern: '/app.*.js'
+    headers:
+      - key: Cache-Control
+        value: public, max-age=31536000, immutable
+  - pattern: '/app.*.wasm'
+    headers:
+      - key: Cache-Control
+        value: public, max-age=31536000, immutable
+  - pattern: '/app.*.wasm.gz'
+    headers:
+      - key: Cache-Control
+        value: public, max-age=31536000, immutable
+      # Served as opaque bytes: the page unpacks it itself.
+      - key: Content-Type
+        value: application/octet-stream
+
+  - pattern: '/*.png'
+    headers:
+      - key: Cache-Control
+        value: public, max-age=86400

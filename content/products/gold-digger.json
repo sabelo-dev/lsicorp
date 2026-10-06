@@ -1,0 +1,96 @@
+{
+  "publicName": "LSI Gold Digger",
+  "internalName": "LSI Gold Digger",
+  "mark": "GD",
+  "tagline": "Gold market research and analysis with risk-aware decision support.",
+  "summary": "Gold market research and analysis project with market context, technical inputs and risk-aware decision support.",
+  "category": "Market research",
+  "order": 4,
+  "status": "in-development",
+  "statusNote": "LSI Gold Digger is being built. No release has been published.",
+  "audiences": [
+    {
+      "name": "People researching the gold market",
+      "description": "Anyone who wants structured market context and technical inputs to inform their own decisions."
+    }
+  ],
+  "capabilities": [
+    {
+      "name": "Macro-regime view",
+      "group": "Market context",
+      "availability": "planned",
+      "description": "A summary of the wider economic conditions that tend to influence gold."
+    },
+    {
+      "name": "Daily bias",
+      "group": "Market context",
+      "availability": "planned",
+      "description": "A stated directional lean for the day, with the inputs behind it."
+    },
+    {
+      "name": "Market structure",
+      "group": "Technical analysis",
+      "availability": "planned",
+      "description": "Trend, swing highs and lows, and where structure has changed."
+    },
+    {
+      "name": "Liquidity",
+      "group": "Technical analysis",
+      "availability": "planned",
+      "description": "Price areas where resting orders are likely to cluster."
+    },
+    {
+      "name": "Regression",
+      "group": "Technical analysis",
+      "availability": "planned",
+      "description": "A regression view of where price sits relative to its recent trend."
+    },
+    {
+      "name": "Double Bollinger Bands",
+      "group": "Technical analysis",
+      "availability": "planned",
+      "description": "Two sets of Bollinger Bands used together to describe momentum and range."
+    },
+    {
+      "name": "XM connectivity and trade execution",
+      "group": "Account connection",
+      "availability": "planned",
+      "description": "Not implemented and not approved. It will only be shown as available if it is built and approved by LSI."
+    }
+  ],
+  "requirements": [
+    {
+      "label": "Devices",
+      "detail": "Not confirmed yet."
+    },
+    {
+      "label": "Account",
+      "detail": "Not confirmed yet. No trading account connection is offered."
+    },
+    {
+      "label": "Data",
+      "detail": "Data sources, timestamps and refresh intervals will be documented before release."
+    },
+    {
+      "label": "Connectivity",
+      "detail": "An internet connection for market data."
+    }
+  ],
+  "services": [
+    "market-intelligence"
+  ],
+  "platforms": [],
+  "gettingStarted": "There is nothing to install or open yet. Setup steps will be published with the first release.",
+  "limitations": [
+    "No release exists, so nothing described on this page can be used yet.",
+    "Analysis can be wrong, late or based on incomplete data.",
+    "The tool does not provide financial advice."
+  ],
+  "notice": {
+    "title": "Market outcomes are uncertain",
+    "body": "LSI Gold Digger is a research and analysis tool. Its analysis does not guarantee returns, and past behaviour of a market does not predict its future. You are responsible for your own decisions."
+  },
+  "supportUrl": null,
+  "privacyUrl": null,
+  "icon": null
+}

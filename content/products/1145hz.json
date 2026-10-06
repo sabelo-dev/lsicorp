@@ -1,0 +1,71 @@
+{
+  "publicName": "1145Hz Player",
+  "internalName": "LSI Player",
+  "mark": "Hz",
+  "tagline": "A media player planned around voice-led search and playback.",
+  "summary": "Media player project centred on voice control, playback and a modular media experience. 1145Hz Player is the public name of the project previously referred to as LSI Player.",
+  "category": "Media",
+  "order": 2,
+  "status": "in-development",
+  "statusNote": "1145Hz Player is being built. No download has been published yet.",
+  "audiences": [
+    {
+      "name": "Listeners and viewers",
+      "description": "People who want to play their own audio and video and find it quickly, including by voice."
+    }
+  ],
+  "capabilities": [
+    {
+      "name": "Voice-led search and playback",
+      "availability": "planned",
+      "description": "Find and control media by speaking.",
+      "platformNote": "Voice features may not be offered on every platform. Each release will state where they work."
+    },
+    {
+      "name": "Playback",
+      "availability": "planned",
+      "description": "Play audio and video with standard transport controls. Supported formats will be confirmed by engineering before release."
+    },
+    {
+      "name": "Library management",
+      "availability": "planned",
+      "description": "Add folders of media and browse them as a library."
+    },
+    {
+      "name": "Modular design",
+      "availability": "planned",
+      "description": "The player is being developed as separate modules so that features can be added over time."
+    }
+  ],
+  "requirements": [
+    {
+      "label": "Operating systems",
+      "detail": "Not confirmed yet. Supported operating systems will be listed with the first release."
+    },
+    {
+      "label": "Media formats",
+      "detail": "Not confirmed yet."
+    },
+    {
+      "label": "Permissions",
+      "detail": "Voice control will need microphone access on platforms where it is offered. Access to the folders you add to your library will also be needed."
+    },
+    {
+      "label": "Connectivity",
+      "detail": "Not confirmed yet."
+    }
+  ],
+  "services": [
+    "digital-platforms"
+  ],
+  "platforms": [],
+  "platformNote": "Features can differ between platforms. Voice control is only promised on platforms where a release says it is implemented.",
+  "gettingStarted": "There is nothing to install yet. Installation, first-run setup and library setup steps will be published with the first release.",
+  "limitations": [
+    "No release exists, so nothing described on this page can be used yet.",
+    "Supported platforms, formats and voice features are not confirmed."
+  ],
+  "supportUrl": null,
+  "privacyUrl": null,
+  "icon": null
+}

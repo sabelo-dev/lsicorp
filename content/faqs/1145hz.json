@@ -1,0 +1,22 @@
+{
+  "items": [
+    {
+      "question": "Is 1145Hz Player the same as LSI Player?",
+      "answer": "Yes. 1145Hz Player is the public name of the media player project that earlier LSI material calls LSI Player. They are one product.",
+      "category": "About",
+      "visible": true
+    },
+    {
+      "question": "Where can I download it?",
+      "answer": "There is no download yet. When a release is approved it will be listed on the Downloads page with its version, platform, file size and checksum.",
+      "category": "Availability",
+      "visible": true
+    },
+    {
+      "question": "Will voice control work on my device?",
+      "answer": "That has not been confirmed. Voice features will only be promised on platforms where a release states they are implemented.",
+      "category": "Voice control",
+      "visible": true
+    }
+  ]
+}

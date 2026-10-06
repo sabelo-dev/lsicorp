@@ -1,0 +1,12 @@
+{
+  "name": "Market intelligence",
+  "mark": "MI",
+  "order": 4,
+  "tagline": "Research and analysis that explains its reasoning.",
+  "summary": "LSI builds research and analysis products that bring market data, relevant news and technical analysis together, show the reasons behind a changing outlook, and treat risk controls as a core requirement.",
+  "offerings": [
+    "Market research dashboards",
+    "Structured technical analysis frameworks",
+    "Risk-aware decision support"
+  ]
+}
