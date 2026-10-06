@@ -1,0 +1,5 @@
+# Shell scripts run on Linux build machines, where Windows line endings break them.
+*.sh text eol=lf
+*.yml text eol=lf
+*.png binary
+*.ttf binary
