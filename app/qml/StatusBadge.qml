@@ -9,9 +9,9 @@ Rectangle {
     property string label: ""
     property string prefix: ""
 
-    implicitWidth: row.implicitWidth + 2 * Theme.s3
-    implicitHeight: 28
-    radius: height / 2
+    implicitWidth: row.implicitWidth + 2 * Theme.s2
+    implicitHeight: 24
+    radius: 4
     color: Theme.tone(tone)[0]
     Accessible.role: Accessible.StaticText
     Accessible.name: (prefix ? prefix + ": " : "") + label
@@ -23,16 +23,16 @@ Rectangle {
 
         Rectangle {
             anchors.verticalCenter: parent.verticalCenter
-            width: 8
-            height: 8
-            radius: 4
+            width: 6
+            height: 6
+            radius: 3
             color: Theme.tone(badge.tone)[1]
         }
 
         Text {
             text: badge.label
             color: Theme.tone(badge.tone)[1]
-            font.pixelSize: Theme.small
+            font.pixelSize: 13
             font.weight: Font.DemiBold
         }
     }

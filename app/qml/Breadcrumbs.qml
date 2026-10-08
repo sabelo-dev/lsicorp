@@ -30,7 +30,7 @@ Flow {
             spacing: Theme.s1
 
             Text {
-                text: "/"
+                text: "›"
                 color: Theme.muted
                 font.pixelSize: Theme.small
                 topPadding: 6

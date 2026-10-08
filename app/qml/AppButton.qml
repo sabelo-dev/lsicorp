@@ -26,9 +26,9 @@ T.AbstractButton {
     readonly property color outline: onBrand ? Theme.onHero : danger ? Theme.danger : Theme.primary
 
     implicitWidth: label.implicitWidth + busyWidth + leftPadding + rightPadding
-    implicitHeight: Math.max(Theme.touch, label.implicitHeight + topPadding + bottomPadding)
-    leftPadding: 20
-    rightPadding: 20
+    implicitHeight: Math.max(Theme.control, label.implicitHeight + topPadding + bottomPadding)
+    leftPadding: Theme.s4
+    rightPadding: Theme.s4
     topPadding: Theme.s2
     bottomPadding: Theme.s2
     focusPolicy: Qt.StrongFocus
@@ -69,7 +69,7 @@ T.AbstractButton {
                 width: Math.min(implicitWidth, Math.max(0, control.availableWidth - control.busyWidth))
                 text: control.text
                 color: control.secondary ? control.outline : control.fillInk
-                font.pixelSize: Theme.body
+                font.pixelSize: Theme.label
                 font.weight: Font.DemiBold
                 horizontalAlignment: Text.AlignHCenter
                 wrapMode: Text.Wrap
@@ -81,8 +81,8 @@ T.AbstractButton {
         radius: Theme.controlRadius
         color: !control.secondary ? control.fill
              : control.hovered || control.down ? (control.onBrand ? "#26ffffff" : Theme.primarySoft) : "transparent"
-        border.width: control.secondary ? 2 : 0
-        border.color: control.outline
+        border.width: control.secondary ? 1 : 0
+        border.color: control.onBrand || control.danger ? control.outline : control.hovered ? Theme.primary : Theme.controlBorder
 
         Behavior on color {
             ColorAnimation {
@@ -92,10 +92,10 @@ T.AbstractButton {
 
         Rectangle {
             anchors.fill: parent
-            anchors.margins: -4
-            radius: Theme.controlRadius + 4
+            anchors.margins: -3
+            radius: Theme.controlRadius + 3
             color: "transparent"
-            border.width: 3
+            border.width: 2
             border.color: control.onBrand ? Theme.onHero : Theme.focus
             visible: control.visualFocus
         }

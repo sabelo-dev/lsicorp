@@ -9,8 +9,8 @@ ComboBox {
     id: control
 
     Layout.fillWidth: true
-    implicitHeight: Theme.touch
-    leftPadding: Theme.s4
+    implicitHeight: Theme.control
+    leftPadding: Theme.s3
     font.pixelSize: Theme.body
     textRole: "text"
     valueRole: "value"
@@ -20,7 +20,7 @@ ComboBox {
         radius: Theme.controlRadius
         color: control.enabled ? Theme.surface : Theme.surfaceAlt
         border.width: control.visualFocus || control.popup.visible ? 2 : 1
-        border.color: control.visualFocus || control.popup.visible ? Theme.focus : Theme.muted
+        border.color: control.visualFocus || control.popup.visible ? Theme.focus : Theme.controlBorder
     }
 
     contentItem: Text {
@@ -32,7 +32,7 @@ ComboBox {
     }
 
     indicator: Text {
-        x: control.width - width - Theme.s4
+        x: control.width - width - Theme.s3
         y: (control.height - height) / 2
         text: "▾"
         color: Theme.muted
@@ -46,7 +46,7 @@ ComboBox {
         required property int index
 
         width: control.width
-        height: Theme.touch
+        height: Theme.control
         highlighted: control.highlightedIndex === index
 
         contentItem: Text {

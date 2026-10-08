@@ -10,8 +10,8 @@ T.AbstractButton {
     property string glyph: "search"
     property string label: ""
 
-    implicitWidth: Theme.touch
-    implicitHeight: Theme.touch
+    implicitWidth: Theme.control
+    implicitHeight: Theme.control
     focusPolicy: Qt.StrongFocus
     Accessible.role: Accessible.Button
     Accessible.name: label
@@ -21,7 +21,7 @@ T.AbstractButton {
     background: Rectangle {
         radius: Theme.controlRadius
         color: control.hovered || control.down ? Theme.surfaceAlt : "transparent"
-        border.width: control.visualFocus ? 3 : 1
+        border.width: control.visualFocus ? 2 : 1
         border.color: control.visualFocus ? Theme.focus : Theme.border
 
         Behavior on color {

@@ -21,8 +21,8 @@ Rectangle {
 
         // The logo is navy, so it always sits on a white plate.
         Rectangle {
-            implicitWidth: 196
-            implicitHeight: 76
+            implicitWidth: 156
+            implicitHeight: 60
             radius: Theme.controlRadius
             color: "#ffffff"
             border.color: Theme.border
@@ -30,7 +30,7 @@ Rectangle {
 
             Image {
                 anchors.fill: parent
-                anchors.margins: 12
+                anchors.margins: 10
                 source: "../assets/logo-full.png"
                 fillMode: Image.PreserveAspectFit
                 mipmap: true

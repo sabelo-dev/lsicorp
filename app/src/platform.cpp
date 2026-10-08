@@ -15,6 +15,7 @@ using emscripten::val;
 
 QString Platform::initialRoute = QStringLiteral("/");
 QString Platform::initialAction;
+bool Platform::forceDark = false;
 
 namespace {
 

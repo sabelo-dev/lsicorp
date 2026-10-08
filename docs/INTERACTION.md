@@ -16,6 +16,22 @@ appearance: the brand, the light scheme and the wording are LSI's own.
 | Record analytics events for search, filters, detail views and downloads. | **Not done.** | The site has no analytics, and the privacy notice says so. Adding measurement needs the owner's decision on purpose, consent and retention first ([OPERATIONS.md](OPERATIONS.md), "Privacy and analytics"). |
 | Recently viewed items (if implemented). | Not implemented. | It would store browsing history on the visitor's device, which the privacy notice does not cover. |
 
+## Look
+
+Crisp and flat, on the LSI navy and gold. Surfaces are near-white (or near-black in the dark
+scheme) and separated by hairline borders, not shadows; only the search panel, which floats,
+casts one. Corners are 8 pixels on surfaces and 6 on controls. Controls are squared: chips and
+navigation are rectangles, and the current navigation item is underlined. Buttons and inputs are
+40 pixels high with a pointer and 48 on a small screen, where a finger has to hit them. Headings
+are tight and semi-bold. Navy carries primary actions and the brand bands; gold is an accent (the
+rule under the hero, the rule above a section heading, the primary button on navy). Anything that
+is typed into or pressed has a border with at least 3:1 contrast (`Theme.controlBorder`);
+decorative hairlines are fainter (`Theme.border`). All of it comes from `app/qml/Theme.qml`.
+
+The home page opens on a flat navy band: the company statement on one side and the portfolio as
+a four-line index on the other, each line showing the product's status in words. Below it are a
+ruled strip of key facts, the services, the lead piece of work, and how LSI creates value.
+
 ## The catalogue (`/work`)
 
 - **Search** filters as you type, with no submit step, across name, internal name, category,
@@ -46,7 +62,7 @@ are in `app/qml/rules.mjs` and are covered by `tests/rules.test.mjs`.
 
 | Key | Where | What it does |
 | --- | --- | --- |
-| Tab, Shift+Tab | Everywhere | Moves through controls in reading order. The focused control scrolls into view and shows a 3-pixel ring. |
+| Tab, Shift+Tab | Everywhere | Moves through controls in reading order. The focused control scrolls into view and shows a 2-pixel ring. |
 | Enter or Space | A focused control | Activates it. |
 | Ctrl+K (Command+K on a Mac) | Anywhere except while typing | Opens the site search. The header shows the shortcut for the device. |
 | / | Anywhere except while typing | On `/work`, puts the cursor in the catalogue search. Elsewhere, opens the site search. |

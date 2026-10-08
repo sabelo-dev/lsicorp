@@ -16,8 +16,8 @@ Input {
         forceActiveFocus();
     }
 
-    leftPadding: Theme.s4 + 18 + Theme.s2
-    rightPadding: clearButton.visible ? clearButton.width + Theme.s1 : Theme.s4
+    leftPadding: Theme.s3 + 18 + Theme.s2
+    rightPadding: clearButton.visible ? clearButton.width + Theme.s1 : Theme.s3
     inputMethodHints: Qt.ImhNoPredictiveText | Qt.ImhNoAutoUppercase
 
     Keys.onEscapePressed: event => {
@@ -29,7 +29,7 @@ Input {
     }
 
     Icon {
-        x: Theme.s4
+        x: Theme.s3
         anchors.verticalCenter: parent.verticalCenter
         name: "search"
         size: 18
@@ -41,8 +41,8 @@ Input {
 
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
-        width: Theme.touch
-        height: Theme.touch
+        width: Theme.control
+        height: Theme.control
         visible: control.text !== ""
         focusPolicy: Qt.StrongFocus
         Accessible.role: Accessible.Button
@@ -54,9 +54,9 @@ Input {
         background: Rectangle {
             anchors.fill: parent
             anchors.margins: 6
-            radius: Theme.controlRadius - 4
+            radius: 4
             color: clearButton.hovered || clearButton.down ? Theme.surfaceAlt : "transparent"
-            border.width: clearButton.visualFocus ? 3 : 0
+            border.width: clearButton.visualFocus ? 2 : 0
             border.color: Theme.focus
         }
 

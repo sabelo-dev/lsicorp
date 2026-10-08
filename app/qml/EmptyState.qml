@@ -10,8 +10,7 @@ Rectangle {
     Layout.maximumWidth: Theme.measure
     implicitHeight: label.implicitHeight + 2 * Theme.s4
     color: Theme.surfaceAlt
-    border.color: Theme.border
-    border.width: 1
+    border.width: 0
     radius: Theme.radius
 
     Text {

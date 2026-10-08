@@ -13,8 +13,8 @@ Text {
     wrapMode: Text.Wrap
     textFormat: Text.PlainText
     color: muted || lede ? Theme.muted : Theme.ink
-    font.pixelSize: lede ? (Theme.narrow ? 18 : Theme.h3) : small ? Theme.small : Theme.body
-    lineHeight: 1.45
+    font.pixelSize: lede ? (Theme.narrow ? 17 : 19) : small ? Theme.small : Theme.body
+    lineHeight: 1.5
     Accessible.role: Accessible.StaticText
     Accessible.name: text
 }

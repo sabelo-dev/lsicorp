@@ -64,8 +64,8 @@ Popup {
 
     parent: Overlay.overlay
     x: Math.round((parent.width - width) / 2)
-    y: Theme.narrow ? Theme.s4 : 96
-    width: Math.min(640, parent.width - 2 * Theme.s4)
+    y: Theme.narrow ? Theme.s4 : 88
+    width: Math.min(600, parent.width - 2 * Theme.s4)
     padding: 0
     modal: true
     focus: true
@@ -121,7 +121,7 @@ Popup {
     background: Rectangle {
         radius: Theme.radius
         color: Theme.surface
-        border.color: Theme.border
+        border.color: Theme.controlBorder
 
         Shadow {
             radius: Theme.radius
@@ -153,7 +153,7 @@ Popup {
                 placeholderText: "Search services, work and guides"
                 placeholderTextColor: Theme.muted
                 color: Theme.ink
-                font.pixelSize: 18
+                font.pixelSize: 17
                 background: null
                 Accessible.name: "Search the site"
 
@@ -206,7 +206,7 @@ Popup {
                     readonly property bool selected: index === root.current
 
                     Layout.fillWidth: true
-                    implicitHeight: 56
+                    implicitHeight: Theme.narrow ? 52 : 44
                     focusPolicy: Qt.NoFocus
                     Accessible.role: Accessible.Link
                     Accessible.name: entry.title + ", " + entry.kind + (selected ? ", selected" : "")
@@ -221,9 +221,9 @@ Popup {
                         Rectangle {
                             visible: row.selected
                             anchors.verticalCenter: parent.verticalCenter
-                            width: 4
-                            height: 24
-                            radius: 2
+                            width: 3
+                            height: 20
+                            radius: 1
                             color: Theme.dark ? Theme.primary : Theme.navy
                         }
                     }
@@ -236,7 +236,7 @@ Popup {
                             Layout.leftMargin: Theme.s4
                             text: row.entry.title
                             color: Theme.ink
-                            font.pixelSize: Theme.body
+                            font.pixelSize: Theme.label
                             font.weight: Font.DemiBold
                             elide: Text.ElideRight
                         }

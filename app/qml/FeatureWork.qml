@@ -23,7 +23,7 @@ Card {
         readonly property real split: Theme.narrow ? 1 : 0.6
 
         Layout.fillWidth: true
-        implicitHeight: Math.max(textColumn.implicitHeight + 2 * pad, Theme.narrow ? 0 : 300)
+        implicitHeight: Math.max(textColumn.implicitHeight + 2 * pad, Theme.narrow ? 0 : 280)
 
         ColumnLayout {
             id: textColumn
@@ -34,8 +34,8 @@ Card {
 
             Text {
                 text: "Featured work"
-                color: Theme.dark ? Theme.gold : Theme.navy
-                font.pixelSize: Theme.small
+                color: Theme.muted
+                font.pixelSize: 13
                 font.weight: Font.DemiBold
                 font.capitalization: Font.AllUppercase
                 font.letterSpacing: 1.2
@@ -88,56 +88,46 @@ Card {
             }
         }
 
-        // Brand panel: decorative.
+        // Brand panel: decorative. Flat navy with the product's mark and a gold rule.
         Rectangle {
             x: layout.width * layout.split
             width: layout.width - x
             height: layout.height
             visible: !Theme.narrow
-            clip: true
+            color: Theme.heroTop
             topRightRadius: Theme.radius
             bottomRightRadius: Theme.radius
             Accessible.ignored: true
 
-            gradient: Gradient {
-                GradientStop {
-                    position: 0
-                    color: Theme.heroBottom
-                }
-
-                GradientStop {
-                    position: 1
-                    color: Theme.heroTop
-                }
-            }
-
-            Rectangle {
-                x: parent.width * 0.55
-                y: -60
-                width: 220
-                height: 220
-                radius: 110
-                color: Theme.gold
-                opacity: 0.2
-            }
-
-            Rectangle {
-                x: -50
-                y: parent.height - 110
-                width: 180
-                height: 180
-                radius: 90
-                color: "#ffffff"
-                opacity: 0.08
-            }
-
-            Text {
+            Column {
                 anchors.centerIn: parent
-                text: card.product.mark
-                color: Theme.onHero
-                font.pixelSize: 84
-                font.weight: Font.Bold
-                font.letterSpacing: -2
+                spacing: Theme.s3
+
+                Text {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    text: card.product.mark
+                    color: Theme.onHero
+                    font.pixelSize: 72
+                    font.weight: Font.Bold
+                    font.letterSpacing: -2
+                }
+
+                Rectangle {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    width: 32
+                    height: 2
+                    color: Theme.gold
+                }
+
+                Text {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    text: card.product.category
+                    color: Theme.onHeroMuted
+                    font.pixelSize: 13
+                    font.weight: Font.DemiBold
+                    font.capitalization: Font.AllUppercase
+                    font.letterSpacing: 1.2
+                }
             }
         }
     }

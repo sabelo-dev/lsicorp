@@ -9,7 +9,7 @@ PageScroll {
 
     component Bone: Rectangle {
         Layout.fillWidth: true
-        radius: 8
+        radius: Theme.controlRadius
         color: Theme.surfaceAlt
 
         SequentialAnimation on opacity {

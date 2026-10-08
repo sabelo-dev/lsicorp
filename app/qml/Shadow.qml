@@ -3,7 +3,8 @@ import LsiTools
 
 // A soft drop shadow built from a few stacked, slightly larger plates. Much
 // cheaper than a blur, and it reads as one. Declare it inside the item that
-// casts the shadow; it sits behind that item's own surface.
+// casts the shadow; it sits behind that item's own surface. The interface is
+// flat, so only something that floats above the page (a panel, a menu) uses it.
 Item {
     id: root
 

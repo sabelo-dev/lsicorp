@@ -18,9 +18,12 @@ Rectangle {
     Accessible.role: Accessible.Note
     Accessible.name: title + ". " + body
 
+    // Clipped by hand to the rounded corner: a 3-pixel rule down the left edge.
     Rectangle {
-        width: 4
-        height: parent.height
+        x: 0
+        y: Theme.radius
+        width: 3
+        height: parent.height - 2 * Theme.radius
         color: Theme.tone(notice.tone)[1]
     }
 
@@ -39,7 +42,7 @@ Rectangle {
             text: notice.title
             wrapMode: Text.Wrap
             color: Theme.tone(notice.tone)[1]
-            font.pixelSize: Theme.h3
+            font.pixelSize: Theme.body
             font.weight: Font.Bold
         }
 

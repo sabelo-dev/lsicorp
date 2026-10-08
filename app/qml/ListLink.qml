@@ -14,7 +14,7 @@ T.AbstractButton {
 
     Layout.fillWidth: true
     Layout.maximumWidth: Theme.measure
-    implicitHeight: Math.max(Theme.touch + 8, column.implicitHeight + 2 * Theme.s3)
+    implicitHeight: Math.max(Theme.control + 8, column.implicitHeight + 2 * Theme.s3)
     focusPolicy: Qt.StrongFocus
     Accessible.role: Accessible.Link
     Accessible.name: text + (current ? ", current page" : "") + (description ? ". " + description : "")
@@ -27,7 +27,7 @@ T.AbstractButton {
     background: Rectangle {
         radius: Theme.controlRadius
         color: control.current ? Theme.primarySoft : control.hovered || control.down ? Theme.surfaceAlt : Theme.surface
-        border.width: control.visualFocus ? 3 : 1
+        border.width: control.visualFocus ? 2 : 1
         border.color: control.visualFocus ? Theme.focus : control.hovered ? Theme.primary : Theme.border
     }
 
@@ -67,8 +67,8 @@ T.AbstractButton {
             anchors.rightMargin: Theme.s4
             anchors.verticalCenter: parent.verticalCenter
             text: "›"
-            color: Theme.accent
-            font.pixelSize: 24
+            color: Theme.muted
+            font.pixelSize: 20
         }
     }
 

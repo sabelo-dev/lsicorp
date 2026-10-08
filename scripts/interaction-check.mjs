@@ -207,7 +207,7 @@ try {
   // 5. The contact form: an empty send is refused next to the fields, nothing is posted, and typing continues in the first field.
   await open('/contact');
   const form = await shot('10-contact');
-  await click(110, 1255);
+  await click(104, 1186);
   await sleep(700);
   const refused = await shot('11-contact-problems');
   check('sending an empty form shows problems', (await difference(form, refused)) > 0.002, percent(await difference(form, refused)));
@@ -220,7 +220,7 @@ try {
   // 6. A download: one press starts it and says so; a double click does not fetch the file twice.
   await open('/work/gold-digger');
   const before = await shot('13-product');
-  await click(170, 580, 2);
+  await click(165, 529, 2);
   await sleep(1500);
   const started = await shot('14-download-started');
   check('the download button starts a download', downloads.length >= 1, downloads[0] ?? 'no request seen');

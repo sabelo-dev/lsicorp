@@ -4,8 +4,9 @@ import LsiTools
 
 // Raised surface that stacks its children vertically. Give it `to` and the
 // whole card becomes a target for a tap or click, which is easier to hit than
-// a line of link text. It responds to the pointer with its border and shadow
-// and never moves or resizes, so nothing shifts under the cursor.
+// a line of link text. Flat, with a hairline border; it responds to the
+// pointer with its border and never moves or resizes, so nothing shifts
+// under the cursor.
 Rectangle {
     id: card
 
@@ -21,11 +22,6 @@ Rectangle {
     border.color: lifted ? Theme.primary : Theme.border
     border.width: 1
     radius: Theme.radius
-
-    Shadow {
-        radius: card.radius
-        elevation: card.lifted ? 2.2 : 1
-    }
 
     Behavior on border.color {
         ColorAnimation {

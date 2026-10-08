@@ -11,9 +11,9 @@ TextField {
     property bool invalid: false
 
     Layout.fillWidth: true
-    implicitHeight: Theme.touch
-    leftPadding: Theme.s4
-    rightPadding: Theme.s4
+    implicitHeight: Theme.control
+    leftPadding: Theme.s3
+    rightPadding: Theme.s3
     font.pixelSize: Theme.body
     color: Theme.ink
     placeholderTextColor: Theme.muted
@@ -24,6 +24,6 @@ TextField {
         radius: Theme.controlRadius
         color: control.readOnly ? Theme.surfaceAlt : Theme.surface
         border.width: control.activeFocus || control.invalid ? 2 : 1
-        border.color: control.activeFocus ? Theme.focus : control.invalid ? Theme.danger : Theme.muted
+        border.color: control.activeFocus ? Theme.focus : control.invalid ? Theme.danger : Theme.controlBorder
     }
 }

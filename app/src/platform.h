@@ -21,6 +21,7 @@ class Platform : public QObject
     Q_PROPERTY(bool reducedMotion READ reducedMotion CONSTANT)
     Q_PROPERTY(bool apple READ apple CONSTANT)
     Q_PROPERTY(QString devAction READ devAction CONSTANT)
+    Q_PROPERTY(bool devDark READ devDark CONSTANT)
 
 public:
     explicit Platform(QObject *parent = nullptr);
@@ -58,6 +59,9 @@ public:
     /// Desktop builds only: something to do once loaded, such as "search" or "menu" to open that panel for a screenshot.
     static QString initialAction;
     QString devAction() const { return initialAction; }
+    /// Desktop builds only: render in the dark scheme (the --dark option), whatever the system says.
+    static bool forceDark;
+    bool devDark() const { return forceDark; }
 
 signals:
     void routeChanged();

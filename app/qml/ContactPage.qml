@@ -204,7 +204,7 @@ PageScroll {
 
                 background: Rectangle {
                     color: Theme.surface
-                    border.color: messageField.activeFocus ? Theme.focus : page.errors.message ? Theme.danger : Theme.muted
+                    border.color: messageField.activeFocus ? Theme.focus : page.errors.message ? Theme.danger : Theme.controlBorder
                     border.width: messageField.activeFocus || page.errors.message ? 2 : 1
                     radius: Theme.controlRadius
                 }

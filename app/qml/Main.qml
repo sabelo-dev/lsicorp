@@ -121,7 +121,7 @@ ApplicationWindow {
     }
 
     header: Rectangle {
-        implicitHeight: 68
+        implicitHeight: 60
         color: Theme.surface
 
         z: 2
@@ -170,7 +170,7 @@ ApplicationWindow {
                 id: brand
 
                 implicitWidth: brandRow.implicitWidth + Theme.s3
-                implicitHeight: 52
+                implicitHeight: 44
                 focusPolicy: Qt.StrongFocus
                 Accessible.role: Accessible.Link
                 Accessible.name: Store.site.name + ", home"
@@ -181,27 +181,27 @@ ApplicationWindow {
                 background: Rectangle {
                     color: "transparent"
                     radius: Theme.controlRadius
-                    border.width: brand.visualFocus ? 3 : 0
+                    border.width: brand.visualFocus ? 2 : 0
                     border.color: Theme.focus
                 }
 
                 contentItem: Row {
                     id: brandRow
-                    spacing: Theme.s3
+                    spacing: 10
 
                     // The mark is navy, so it sits on a white tile in both colour schemes.
                     Rectangle {
                         anchors.verticalCenter: parent.verticalCenter
-                        width: 44
-                        height: 44
-                        radius: 11
+                        width: 36
+                        height: 36
+                        radius: Theme.controlRadius
                         color: "#ffffff"
                         border.width: Theme.dark ? 0 : 1
                         border.color: Theme.border
 
                         Image {
                             anchors.fill: parent
-                            anchors.margins: 5
+                            anchors.margins: 4
                             source: "../assets/logo-mark.png"
                             fillMode: Image.PreserveAspectFit
                             mipmap: true
@@ -212,7 +212,7 @@ ApplicationWindow {
                         anchors.verticalCenter: parent.verticalCenter
                         text: Store.site.name
                         color: Theme.dark ? Theme.ink : Theme.navy
-                        font.pixelSize: 20
+                        font.pixelSize: 17
                         font.weight: Font.Bold
                         font.letterSpacing: -0.3
                     }
@@ -245,8 +245,10 @@ ApplicationWindow {
 
                 visible: !window.compact
                 Layout.leftMargin: Theme.s2
-                implicitWidth: searchRow.implicitWidth + 2 * Theme.s3
-                implicitHeight: 44
+                implicitWidth: searchRow.implicitWidth + leftPadding + rightPadding
+                implicitHeight: 36
+                leftPadding: 10
+                rightPadding: Theme.s2
                 focusPolicy: Qt.StrongFocus
                 Accessible.role: Accessible.Button
                 Accessible.name: "Search the site, shortcut " + (Platform.apple ? "Command K" : "Control K")
@@ -255,10 +257,10 @@ ApplicationWindow {
                 Keys.onEnterPressed: click()
 
                 background: Rectangle {
-                    radius: height / 2
+                    radius: Theme.controlRadius
                     color: searchButton.hovered ? Theme.surfaceAlt : Theme.bg
-                    border.width: searchButton.visualFocus ? 3 : 1
-                    border.color: searchButton.visualFocus ? Theme.focus : Theme.border
+                    border.width: searchButton.visualFocus ? 2 : 1
+                    border.color: searchButton.visualFocus ? Theme.focus : Theme.controlBorder
                 }
 
                 contentItem: Row {
@@ -268,7 +270,7 @@ ApplicationWindow {
                     Icon {
                         anchors.verticalCenter: parent.verticalCenter
                         name: "search"
-                        size: 18
+                        size: 16
                         color: Theme.muted
                     }
 
@@ -282,8 +284,8 @@ ApplicationWindow {
                     Rectangle {
                         anchors.verticalCenter: parent.verticalCenter
                         width: hint.implicitWidth + 12
-                        height: 22
-                        radius: 6
+                        height: 20
+                        radius: 4
                         color: Theme.surface
                         border.color: Theme.border
 
@@ -322,8 +324,8 @@ ApplicationWindow {
                 id: menuButton
 
                 visible: window.compact
-                implicitWidth: Theme.touch
-                implicitHeight: Theme.touch
+                implicitWidth: Theme.control
+                implicitHeight: Theme.control
                 focusPolicy: Qt.StrongFocus
                 Accessible.role: Accessible.Button
                 Accessible.name: "Menu" + (menu.opened ? ", expanded" : ", collapsed")
@@ -334,7 +336,7 @@ ApplicationWindow {
                 background: Rectangle {
                     radius: Theme.controlRadius
                     color: menuButton.hovered || menuButton.down ? Theme.surfaceAlt : "transparent"
-                    border.width: menuButton.visualFocus ? 3 : 1
+                    border.width: menuButton.visualFocus ? 2 : 1
                     border.color: menuButton.visualFocus ? Theme.focus : Theme.border
                 }
 
@@ -347,7 +349,7 @@ ApplicationWindow {
                             model: 3
 
                             Rectangle {
-                                width: 22
+                                width: 20
                                 height: 2
                                 radius: 1
                                 color: Theme.ink

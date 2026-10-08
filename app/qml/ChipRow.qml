@@ -3,8 +3,8 @@ import QtQuick.Layouts
 import QtQuick.Templates as T
 import LsiTools
 
-// One-of-many choice shown as a row of large pills: quicker than a drop-down,
-// and every option is visible. options: [{ value, text }].
+// One-of-many choice shown as a row of squared chips: quicker than a
+// drop-down, and every option is visible. options: [{ value, text }].
 Flow {
     id: root
 
@@ -26,8 +26,8 @@ Flow {
             required property var modelData
             readonly property bool selected: root.value === modelData.value
 
-            implicitWidth: text.implicitWidth + 2 * Theme.s4
-            implicitHeight: 44
+            implicitWidth: text.implicitWidth + 2 * Theme.s3
+            implicitHeight: Theme.controlSmall
             focusPolicy: Qt.StrongFocus
             Accessible.role: Accessible.RadioButton
             Accessible.name: modelData.text
@@ -39,10 +39,10 @@ Flow {
             Keys.onEnterPressed: click()
 
             background: Rectangle {
-                radius: height / 2
+                radius: Theme.controlRadius
                 color: chip.selected ? Theme.primary : chip.hovered || chip.down ? Theme.surfaceAlt : Theme.surface
-                border.width: chip.visualFocus ? 3 : 1
-                border.color: chip.visualFocus ? Theme.focus : chip.selected ? Theme.primary : Theme.border
+                border.width: chip.visualFocus ? 2 : 1
+                border.color: chip.visualFocus ? Theme.focus : chip.selected ? Theme.primary : Theme.controlBorder
 
                 Behavior on color {
                     ColorAnimation {

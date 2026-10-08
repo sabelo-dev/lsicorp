@@ -173,7 +173,7 @@ Item {
                 ColumnLayout {
                     id: column
                     x: Math.max(Theme.gutter, (parent.width - width) / 2)
-                    y: Theme.s6
+                    y: Theme.narrow ? Theme.s5 : Theme.s6
                     width: Math.min(Theme.maxWidth, parent.width - 2 * Theme.gutter)
                     spacing: Theme.s4
                 }
@@ -209,7 +209,7 @@ Item {
     // Reading progress on long pages.
     Rectangle {
         width: parent.width * root.progress
-        height: 3
+        height: 2
         color: Theme.gold
         visible: flick.contentHeight > flick.height * 1.8
     }
@@ -221,8 +221,8 @@ Item {
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         anchors.margins: Theme.gutter
-        width: 52
-        height: 52
+        width: 44
+        height: 44
         visible: opacity > 0
         opacity: flick.contentY > flick.height * 0.8 ? 1 : 0
         focusPolicy: Qt.NoFocus
@@ -237,23 +237,16 @@ Item {
         }
 
         background: Rectangle {
-            radius: width / 2
-            color: topButton.hovered || topButton.down ? Theme.primaryHover : Theme.primary
-
-            Rectangle {
-                z: -1
-                anchors.fill: parent
-                anchors.topMargin: 3
-                anchors.bottomMargin: -3
-                radius: width / 2
-                color: Theme.shadow
-            }
+            radius: Theme.controlRadius
+            color: topButton.hovered || topButton.down ? Theme.surfaceAlt : Theme.surface
+            border.width: 1
+            border.color: Theme.controlBorder
         }
 
         contentItem: Text {
             text: "↑"
-            color: Theme.primaryInk
-            font.pixelSize: 22
+            color: Theme.ink
+            font.pixelSize: 18
             font.weight: Font.Bold
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter

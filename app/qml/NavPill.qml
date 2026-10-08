@@ -11,8 +11,8 @@ T.AbstractButton {
     property bool current: false
     property bool wide: false
 
-    implicitWidth: wide ? 200 : label.implicitWidth + 2 * Theme.s4
-    implicitHeight: wide ? 56 : 44
+    implicitWidth: wide ? 200 : label.implicitWidth + 2 * Theme.s3
+    implicitHeight: wide ? 52 : 36
     focusPolicy: Qt.StrongFocus
     Accessible.role: Accessible.Link
     Accessible.name: text + (current ? ", current section" : "")
@@ -22,9 +22,9 @@ T.AbstractButton {
     Keys.onEnterPressed: click()
 
     background: Rectangle {
-        radius: control.wide ? Theme.controlRadius : height / 2
-        color: control.current ? Theme.primarySoft : control.hovered || control.down ? Theme.surfaceAlt : "transparent"
-        border.width: control.visualFocus ? 3 : 0
+        radius: Theme.controlRadius
+        color: control.wide && control.current ? Theme.primarySoft : control.hovered || control.down ? Theme.surfaceAlt : "transparent"
+        border.width: control.visualFocus ? 2 : 0
         border.color: Theme.focus
 
         Behavior on color {
@@ -37,10 +37,10 @@ T.AbstractButton {
         Rectangle {
             visible: control.current
             x: control.wide ? 0 : (parent.width - width) / 2
-            y: control.wide ? (parent.height - height) / 2 : parent.height - height - 5
-            width: control.wide ? 4 : 18
-            height: control.wide ? 24 : 3
-            radius: 2
+            y: control.wide ? (parent.height - height) / 2 : parent.height - height
+            width: control.wide ? 3 : parent.width - 2 * Theme.s3
+            height: control.wide ? 22 : 2
+            radius: 1
             color: Theme.dark ? Theme.primary : Theme.navy
         }
     }
@@ -49,8 +49,8 @@ T.AbstractButton {
         id: label
         leftPadding: control.wide ? Theme.s4 : 0
         text: control.text
-        color: control.current ? (Theme.dark ? Theme.primary : Theme.navy) : Theme.ink
-        font.pixelSize: control.wide ? 18 : Theme.body
+        color: control.current ? (Theme.dark ? Theme.primary : Theme.navy) : control.wide || control.hovered ? Theme.ink : Theme.muted
+        font.pixelSize: control.wide ? 17 : Theme.label
         font.weight: control.current ? Font.DemiBold : Font.Normal
         horizontalAlignment: control.wide ? Text.AlignLeft : Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter

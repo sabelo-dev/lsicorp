@@ -40,7 +40,10 @@ int main(int argc, char *argv[])
     parser.process(app);
     Platform::initialRoute = parser.value(QStringLiteral("route"));
     Platform::initialAction = parser.value(QStringLiteral("action"));
-    if (parser.isSet(QStringLiteral("dark")))
+    // Not every platform plugin lets an application choose the colour scheme (the
+    // offscreen one used for screenshots does not), so the app is also told directly.
+    Platform::forceDark = parser.isSet(QStringLiteral("dark"));
+    if (Platform::forceDark)
         QGuiApplication::styleHints()->setColorScheme(Qt::ColorScheme::Dark);
 #endif
 

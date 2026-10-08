@@ -80,7 +80,7 @@ Card {
 
         Text {
             text: "View project ›"
-            color: Theme.accent
+            color: Theme.muted
             font.pixelSize: Theme.small
             font.weight: Font.DemiBold
             Accessible.ignored: true

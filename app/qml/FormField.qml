@@ -82,7 +82,7 @@ FieldLabel {
 
         background: Rectangle {
             color: area.readOnly ? Theme.surfaceAlt : Theme.surface
-            border.color: area.activeFocus ? Theme.focus : Theme.muted
+            border.color: area.activeFocus ? Theme.focus : Theme.controlBorder
             border.width: area.activeFocus ? 2 : 1
             radius: Theme.controlRadius
         }
