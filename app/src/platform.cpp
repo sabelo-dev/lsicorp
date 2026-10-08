@@ -111,6 +111,30 @@ bool Platform::reducedMotion() const
 #endif
 }
 
+bool Platform::apple() const
+{
+#ifdef Q_OS_WASM
+    // iPhone and iPad user agents also say "like Mac OS X".
+    return QString::fromStdString(val::global("navigator")["userAgent"].as<std::string>()).contains(QLatin1String("Mac"));
+#elif defined(Q_OS_MACOS)
+    return true;
+#else
+    return false;
+#endif
+}
+
+void Platform::replaceRoute(const QString &route)
+{
+    const QString next = normalised(route);
+    if (next == m_route)
+        return;
+    m_route = next;
+#ifdef Q_OS_WASM
+    val::global("history").call<void>("replaceState", val::null(), std::string(), (QStringLiteral("#") + next).toStdString());
+#endif
+    emit routeChanged();
+}
+
 void Platform::setRoute(const QString &route)
 {
     const QString next = normalised(route);

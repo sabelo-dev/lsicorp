@@ -16,6 +16,9 @@ PageScroll {
     readonly property var docs: Store.docsFor(product.slug)
     readonly property var faqs: Store.faqsFor(product.slug)
     readonly property bool hasRelease: Rules.availableReleases(releases, product.slug, "").length > 0
+    /// Other work that demonstrates one of the same services.
+    readonly property var related: Store.products.filter(p => p.slug !== product.slug
+                                       && (p.services || []).some(s => (product.services || []).indexOf(s) >= 0)).slice(0, 3)
 
     Breadcrumbs {
         items: [{ label: "Work", to: "/work" }, { label: page.product.public_name }]
@@ -440,6 +443,24 @@ PageScroll {
             P {
                 small: true
                 text: history.modelData.notes.join(" ")
+            }
+        }
+    }
+
+    H {
+        visible: page.related.length > 0
+        text: "Related work"
+    }
+
+    CardGrid {
+        visible: page.related.length > 0
+
+        Repeater {
+            model: page.related
+
+            ProductCard {
+                required property var modelData
+                product: modelData
             }
         }
     }

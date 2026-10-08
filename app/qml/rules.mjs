@@ -256,3 +256,109 @@ export function formatBytes(bytes) {
 export function options(labels) {
     return Object.keys(labels).map((value) => ({ value: value, text: labels[value] }));
 }
+
+/** Splits an in-app route: "/work?q=gold&status=available" gives the path "/work" and the query as a map. */
+export function parseRoute(route) {
+    const text = String(route || "/");
+    const cut = text.indexOf("?");
+    let path = cut < 0 ? text : text.slice(0, cut);
+    while (path.length > 1 && path.charAt(path.length - 1) === "/")
+        path = path.slice(0, -1);
+    const query = {};
+    const pairs = cut < 0 ? [] : text.slice(cut + 1).split("&");
+    for (let i = 0; i < pairs.length; i++) {
+        const eq = pairs[i].indexOf("=");
+        const name = eq < 0 ? pairs[i] : pairs[i].slice(0, eq);
+        try {
+            if (name)
+                query[decodeURIComponent(name)] = eq < 0 ? "" : decodeURIComponent(pairs[i].slice(eq + 1).replace(/\+/g, " "));
+        } catch (e) {
+            // A malformed escape in a hand-edited address: ignore that one value.
+        }
+    }
+    return { path: path || "/", query: query };
+}
+
+/** The reverse of parseRoute. Empty values are left out, so a cleared filter leaves a clean address. */
+export function buildRoute(path, query) {
+    const parts = [];
+    const names = Object.keys(query || {});
+    for (let i = 0; i < names.length; i++) {
+        const value = query[names[i]];
+        if (value !== null && value !== undefined && String(value) !== "")
+            parts.push(encodeURIComponent(names[i]) + "=" + encodeURIComponent(String(value)));
+    }
+    return parts.length > 0 ? path + "?" + parts.join("&") : path;
+}
+
+export const CATALOG_SORTS = { "": "Featured", "name": "Name: A to Z" };
+
+/** How a product can be used today, from its available releases only: "Web app", "Windows download". */
+export function accessFor(product, releases) {
+    const found = availableReleases(releases, product.slug, "");
+    const labels = [];
+    for (let i = 0; i < found.length; i++) {
+        const r = found[i];
+        const label = r.destination_type === "web-app" ? "Web app"
+                    : PLATFORMS[r.platform] + (r.destination_type === "store" ? " app" : " download");
+        if (labels.indexOf(label) < 0)
+            labels.push(label);
+    }
+    return labels;
+}
+
+/** The filter values that occur in the catalogue, so no chip is offered that could never match. */
+export function catalogFacets(products, releases) {
+    const platforms = {};
+    const statuses = {};
+    for (let i = 0; i < products.length; i++) {
+        statuses[products[i].status] = true;
+        const targets = platformsFor(products[i], releases);
+        for (let j = 0; j < targets.length; j++)
+            platforms[targets[j]] = true;
+    }
+    return {
+        platforms: Object.keys(PLATFORMS).filter((p) => platforms[p]),
+        statuses: Object.keys(PRODUCT_STATUSES).filter((s) => statuses[s])
+    };
+}
+
+/** How many filters are narrowing the catalogue. The search text and the sort order are not filters. */
+export function activeFilterCount(state) {
+    return (state.service ? 1 : 0) + (state.platform ? 1 : 0) + (state.status ? 1 : 0);
+}
+
+/**
+ * The catalogue as a visitor has narrowed it. state: { q, service, platform, status, sort }.
+ * Every word of q must appear in the name, category, description, status, platform or service of a product.
+ */
+export function filterCatalog(products, releases, services, state) {
+    const terms = String(state.q || "").toLowerCase().split(/\s+/).filter((t) => t.length > 0);
+    const serviceNames = {};
+    for (let i = 0; i < services.length; i++)
+        serviceNames[services[i].slug] = services[i].name;
+
+    const shown = products.filter((p) => {
+        const platforms = platformsFor(p, releases);
+        if (state.service && (p.services || []).indexOf(state.service) < 0)
+            return false;
+        if (state.platform && platforms.indexOf(state.platform) < 0)
+            return false;
+        if (state.status && p.status !== state.status)
+            return false;
+        const haystack = [p.public_name, p.internal_name, p.category, p.tagline, p.summary, PRODUCT_STATUSES[p.status]]
+            .concat(platforms.map((name) => PLATFORMS[name]))
+            .concat((p.services || []).map((slug) => serviceNames[slug] || ""))
+            .concat(accessFor(p, releases))
+            .join(" ").toLowerCase();
+        return terms.every((t) => haystack.indexOf(t) >= 0);
+    });
+    if (state.sort === "name") {
+        shown.sort((a, b) => {
+            const x = a.public_name.toLowerCase();
+            const y = b.public_name.toLowerCase();
+            return x < y ? -1 : x > y ? 1 : 0;
+        });
+    }
+    return shown;
+}

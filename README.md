@@ -57,6 +57,11 @@ Set `supabaseUrl: 'http://localhost:54321'` and `supabaseKey: 'anon'` in `dist\c
 reload, and sign in at `/#/admin` as `editor@lsi.test`, `ann@lsi.test`, `ben@lsi.test` (release
 managers) or `admin@lsi.test`, password `password`. Data resets each time the stand-in starts.
 
+Start it with `WITH_SYNC=1` to include the releases published on the live site, so that download
+and launch buttons appear. With that and `npm run serve` running,
+`node scripts/interaction-check.mjs` drives headless Chrome through the keyboard, search, form
+and download interactions and saves a screenshot of each step.
+
 ### Desktop build for development
 
 ```powershell
@@ -83,6 +88,7 @@ There are no secrets in this repository or in the built site.
 ## More documentation
 
 - [docs/SITE_SPEC.md](docs/SITE_SPEC.md): what the site is for and what it must do.
+- [docs/INTERACTION.md](docs/INTERACTION.md): how controls behave: states, keyboard, feedback, motion, and what was checked.
 - [docs/SUPABASE_SETUP.md](docs/SUPABASE_SETUP.md): installing into the shared 1145 project, exposing the schema, the first administrator.
 - [docs/CONTENT_AND_RELEASES.md](docs/CONTENT_AND_RELEASES.md): editing content, the release checklist, an admin walkthrough.
 - [docs/AMPLIFY.md](docs/AMPLIFY.md): deploying to AWS Amplify Hosting.

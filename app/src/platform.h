@@ -19,6 +19,7 @@ class Platform : public QObject
     Q_PROPERTY(QVariantMap config READ config CONSTANT)
     Q_PROPERTY(bool browser READ browser CONSTANT)
     Q_PROPERTY(bool reducedMotion READ reducedMotion CONSTANT)
+    Q_PROPERTY(bool apple READ apple CONSTANT)
     Q_PROPERTY(QString devAction READ devAction CONSTANT)
 
 public:
@@ -36,6 +37,12 @@ public:
     /// True when the visitor has asked their system for less animation.
     bool reducedMotion() const;
 
+    /// True on Apple devices, where shortcuts are shown with the Command key.
+    bool apple() const;
+
+    /// Changes the route without adding a history entry. For state such as a
+    /// search or filter, where Back should leave the page, not undo a keystroke.
+    Q_INVOKABLE void replaceRoute(const QString &route);
     Q_INVOKABLE void setTitle(const QString &title);
     /// Leaves the app for an external address. Callers check the allowlist first.
     Q_INVOKABLE void openExternal(const QString &url);
@@ -48,7 +55,7 @@ public:
 
     /// Route to open at startup in a desktop build.
     static QString initialRoute;
-    /// Desktop builds only: something to do once loaded, such as "search" to open the search panel for a screenshot.
+    /// Desktop builds only: something to do once loaded, such as "search" or "menu" to open that panel for a screenshot.
     static QString initialAction;
     QString devAction() const { return initialAction; }
 

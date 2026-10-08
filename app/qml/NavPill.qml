@@ -32,6 +32,17 @@ T.AbstractButton {
                 duration: Theme.fast
             }
         }
+
+        // The current section is marked by a bar, not by colour alone.
+        Rectangle {
+            visible: control.current
+            x: control.wide ? 0 : (parent.width - width) / 2
+            y: control.wide ? (parent.height - height) / 2 : parent.height - height - 5
+            width: control.wide ? 4 : 18
+            height: control.wide ? 24 : 3
+            radius: 2
+            color: Theme.dark ? Theme.primary : Theme.navy
+        }
     }
 
     contentItem: Text {

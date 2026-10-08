@@ -43,7 +43,9 @@ const releaseDir = join(root, 'content/releases');
 const releases = (existsSync(releaseDir) ? readdirSync(releaseDir) : [])
   .filter((name) => name.endsWith('.json'))
   .map((name) => ({ name, ...JSON.parse(readFileSync(join(releaseDir, name), 'utf8')) }))
-  .filter((r) => r.product_slug === slug);
+  .filter((r) => r.product_slug === slug)
+  // A superseded release names the version that replaced it, so that version has to be written first.
+  .sort((a, b) => Number(a.status === 'superseded') - Number(b.status === 'superseded'));
 
 const problems = [];
 const base = projectUrl().replace(/\/+$/, '');
@@ -93,7 +95,7 @@ const insert = (table, row) =>
 const RELEASE_COLUMNS = [
   'product_slug', 'platform', 'version', 'channel', 'status', 'release_date', 'destination_type', 'destination_url',
   'artifact_filename', 'artifact_file_type', 'artifact_size_bytes', 'artifact_sha256', 'compat_minimum', 'compat_device_class',
-  'compat_dependencies', 'steps', 'notes', 'known_issues', 'licence', 'support_route',
+  'compat_dependencies', 'steps', 'notes', 'known_issues', 'licence', 'support_route', 'superseded_by', 'withdrawn_reason',
 ];
 
 const parts = [

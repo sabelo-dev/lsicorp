@@ -18,6 +18,10 @@ PageScroll {
         text: Store.errorText
     }
 
+    P {
+        text: "Nothing was changed or lost, so it is safe to try again. If it keeps happening, check your connection and come back in a few minutes."
+    }
+
     AppButton {
         text: "Try again"
         onClicked: Store.load()

@@ -18,9 +18,9 @@ update lsicorp.products set
   category = 'Market research',
   sort_order = 4,
   status = 'available',
-  status_note = 'Version 0.1 for Windows is available as a preview. It is a foundation release: it starts on simulated data with a paper account, and live-account trading stays locked until you unlock it yourself.',
+  status_note = 'Version 0.3 for Windows is available as a preview. It starts on simulated data with a paper account, and live-account trading stays locked until you unlock it yourself.',
   audiences = '[{"name":"People researching the gold market","description":"Anyone who wants structured market context and transparent technical analysis to inform their own decisions."},{"name":"Traders testing a disciplined process","description":"People who want to backtest and paper-trade a rules-based approach, with enforced risk limits, before considering a demo or live account."}]'::jsonb,
-  capabilities = '[{"name":"Market data","group":"Data","availability":"available","description":"Live prices and closed bars from a MetaTrader 5 terminal, or a built-in simulator when no broker is connected. Simulated data is clearly labelled."},{"name":"Technical analysis and market structure","group":"Analysis","availability":"available","description":"Moving averages, RSI, MACD, ATR, Bollinger Bands and ADX, plus swing structure, breaks of structure, support and resistance, regression channels, Double Bollinger Bands and liquidity pools. No value depends on future bars."},{"name":"Market regime and macro view","group":"Analysis","availability":"available","description":"A regime label from strongly bullish to strongly bearish with high-volatility and event-risk overlays, and a rule-based macro score that lists the reason for every point. The macro view needs a free FRED API key."},{"name":"News and economic calendar","group":"Analysis","availability":"available","description":"Gold-relevant news scored by transparent keyword rules, and a weekly economic calendar. High-impact US events trigger a trading blackout."},{"name":"Signals with reasons","group":"Decision support","availability":"available","description":"Four strategies (trend pullback, confluence, ensemble and adaptive) that output BUY, SELL or WAIT with every condition, reason and risk listed. No AI model produces or edits a score."},{"name":"Weekly Focus","group":"Decision support","availability":"available","description":"A weekly thesis: bias, key levels, bullish and bearish scenarios, what would invalidate them, and the events to watch."},{"name":"Risk engine","group":"Risk","availability":"available","description":"The final authority on every order: a mandatory stop loss, a minimum reward-to-risk of 1:2, one position at a time, no averaging into a loss, daily and weekly loss limits, and drawdown tiers that reduce risk after losses. Hard ceilings cannot be raised by any setting."},{"name":"Paper trading, backtesting and journal","group":"Testing","availability":"available","description":"A paper account, bar-by-bar backtests and walk-forward tests that run through the same signal, risk and execution code as live analysis, and a journal of every proposal, rejection and trade with performance statistics."},{"name":"MetaTrader 5 connection and trade execution","group":"Broker connection","availability":"available","description":"Connects to an MT5 account at any broker, including XM. The connection is read-only by default. Sending orders needs three separate opt-ins, and a live account must be unlocked with a typed confirmation every session.","platformNote":"Needs a MetaTrader 5 terminal and Python 3.10 or newer on the same PC, or on another machine you control."},{"name":"AI Gold Analyst","group":"Decision support","availability":"available","description":"A chat assistant that can read the app''s market, signal, macro, news, journal and performance data. It has no ability to place, change or close an order. Needs your own Anthropic API key; usage is billed to you."},{"name":"Macro and news in backtests","group":"Testing","availability":"planned","description":"Backtests are technical-only in this version, because point-in-time macro and news history is not yet included."},{"name":"Signed installer","group":"Distribution","availability":"planned","description":"The installer is not yet code-signed, so Windows shows an unknown-publisher warning."}]'::jsonb,
+  capabilities = '[{"name":"Market data","group":"Data","availability":"available","description":"Live prices and closed bars from a MetaTrader 5 terminal, or a built-in simulator when no broker is connected. Simulated data is clearly labelled."},{"name":"Technical analysis and market structure","group":"Analysis","availability":"available","description":"Moving averages, RSI, MACD, ATR, Bollinger Bands and ADX, plus swing structure, breaks of structure, support and resistance, regression channels, Double Bollinger Bands and liquidity pools. No value depends on future bars."},{"name":"Market regime and macro view","group":"Analysis","availability":"available","description":"A regime label from strongly bullish to strongly bearish with high-volatility and event-risk overlays, and a rule-based macro score that lists the reason for every point. The macro view needs a free FRED API key."},{"name":"News and economic calendar","group":"Analysis","availability":"available","description":"Gold-relevant news scored by transparent keyword rules, and a weekly economic calendar. High-impact US events trigger a trading blackout."},{"name":"Signals with reasons","group":"Decision support","availability":"available","description":"Five strategies (trend pullback, confluence, ensemble, adaptive and sniper) that output BUY, SELL or WAIT with every condition, reason and risk listed. No AI model produces or edits a score."},{"name":"Champion and Challenger strategies","group":"Decision support","availability":"available","description":"Confluence is the Champion. Ensemble, Adaptive and Sniper are Challengers, limited to paper and demo accounts until an operator promotes one with a typed confirmation. A promotion is refused unless the strategy beats the Champion on results it had not seen; none has earned it so far."},{"name":"Weekly Focus","group":"Decision support","availability":"available","description":"A weekly thesis: bias, key levels, bullish and bearish scenarios, what would invalidate them, and the events to watch."},{"name":"Risk engine","group":"Risk","availability":"available","description":"The final authority on every order: a mandatory stop loss, a minimum reward-to-risk of 1:2, one position at a time, no averaging into a loss, daily and weekly loss limits, and drawdown tiers that reduce risk after losses. Hard ceilings cannot be raised by any setting."},{"name":"Daily profit target","group":"Risk","availability":"available","description":"An optional stopping rule: when the day''s realised gain reaches the target, new entries pause and the app asks whether to keep trading. It cannot make a day reach the target and never changes a risk limit."},{"name":"Paper trading, backtesting and journal","group":"Testing","availability":"available","description":"A paper account, bar-by-bar backtests and walk-forward tests that run through the same signal, risk and execution code as live analysis, and a journal of every proposal, rejection and trade with performance statistics. A backtest can simulate an account you describe (deposit, contract size, minimum lot, leverage, spread and risk rules) and report which strategy fits it."},{"name":"MetaTrader 5 connection and trade execution","group":"Broker connection","availability":"available","description":"Connects to an MT5 account at any broker, including XM. The connection is read-only by default. Sending orders needs three separate opt-ins, and a live account must be unlocked with a typed confirmation every session.","platformNote":"Needs a MetaTrader 5 terminal and Python 3.10 or newer on the same PC, or on another machine you control."},{"name":"AI Gold Analyst","group":"Decision support","availability":"available","description":"A chat assistant that can read the app''s market, signal, macro, news, journal and performance data. It has no ability to place, change or close an order. Needs your own Anthropic API key; usage is billed to you."},{"name":"Macro and news in backtests","group":"Testing","availability":"planned","description":"Backtests are technical-only in this version, because point-in-time macro and news history is not yet included."},{"name":"Signed installer","group":"Distribution","availability":"planned","description":"The installer is not yet code-signed, so Windows shows an unknown-publisher warning."}]'::jsonb,
   requirements = '[{"label":"Operating system","detail":"Windows 10 or 11, 64-bit. No administrator rights are needed to install."},{"label":"To connect a broker","detail":"A MetaTrader 5 terminal (your broker''s download) and Python 3.10 or newer. Not needed to run on simulated data."},{"label":"Optional keys","detail":"A free FRED API key for the macro view, and an Anthropic API key for the AI Gold Analyst. Keys and passwords are stored in Windows Credential Manager, never in files or logs."},{"label":"Connectivity","detail":"An internet connection for live market data, news, the calendar and the optional services."}]'::jsonb,
   services = array['market-intelligence']::text[],
   platforms = array['windows']::text[],
@@ -35,7 +35,7 @@ update lsicorp.products set
 where slug = 'gold-digger';
 
 insert into lsicorp.doc_pages (product_slug, slug, title, summary, audience, sort_order, body, last_reviewed, status)
-values ('gold-digger', 'analysis-views', 'Analysis, strategies and connecting MetaTrader 5', 'What each view shows, how the four strategies decide, and how to connect a broker safely.', 'Users', 2, 'Every view explains itself: scores come with their reasons, and no AI model produces or edits a score.
+values ('gold-digger', 'analysis-views', 'Analysis, strategies and connecting MetaTrader 5', 'What each view shows, how the five strategies decide, and how to connect a broker safely.', 'Users', 2, 'Every view explains itself: scores come with their reasons, and no AI model produces or edits a score.
 
 ## Analysis views
 
@@ -50,14 +50,17 @@ Chart overlays for Double Bollinger Bands, the regression channel, structure lab
 
 ## Strategies
 
-Four strategies share the same risk engine and backtester. Choose one under **Settings > Strategy**.
+Five strategies share the same risk engine and backtester. Choose one under **Settings > Strategy**.
 
 - **Trend pullback** (the default). Trades with the higher-timeframe trend after a pullback, on a 15-minute break of structure.
 - **Confluence.** Scores regression, Double Bollinger Bands, market structure, liquidity, macro and daily bias from 0 to 100, and needs a high score with agreement between engines.
 - **Ensemble.** Seven independent modules combined by a transparent weighted score. Any failed gate gives no trade.
 - **Adaptive.** Evolves its own rules from recent market behaviour and retires them when they stop working. It often has nothing to trade; that is by design.
+- **Sniper.** One entry on a strong 15-minute burst that agrees with the 1-hour trend, scored from 0 to 100 and taken only within minutes of the bar closing.
 
-Each outputs **BUY**, **SELL** or **WAIT**, with every condition and risk listed. Ensemble and Adaptive are limited to paper and demo accounts until an operator promotes one with a typed confirmation.
+Each outputs **BUY**, **SELL** or **WAIT**, with every condition and risk listed.
+
+Confluence is the **Champion**. Ensemble, Adaptive and Sniper are **Challengers**: limited to paper and demo accounts until an operator promotes one with a typed confirmation, which is recorded and can be rolled back. A promotion is refused unless the strategy beats the Champion on results it had not seen. None has earned it so far.
 
 Compare them on the same history under **Backtesting > Compare strategies**.
 
@@ -81,7 +84,7 @@ The connection is **read-only by default**. An order is only sent when all of th
 4. The risk engine approves the order at the moment of execution.
 
 Automatic trading is always off after a restart and switches itself off on stale data, a lost connection, the emergency stop or a drawdown suspension.
-', '2026-10-06', 'published')
+', '2026-10-08', 'published')
 on conflict (product_slug, slug) do update set
   title = excluded.title,
   summary = excluded.summary,
@@ -120,7 +123,13 @@ Whether a small balance can trade gold is decided by the broker''s smallest posi
 
 A small-account mode exists and is off by default. It needs a typed confirmation, raises the limits for the minimum position only, and makes a suspension much more likely.
 
-## Limitations of version 0.1
+**Backtesting** can simulate an account you describe (deposit, contract size, minimum lot, leverage, spread and the risk rules) and, with **Account fit** ticked, shows how each strategy would have ended over many separate periods. Run it again when the balance changes materially.
+
+## Daily profit target
+
+An optional stopping rule under **Settings > Daily profit target**. When the day''s realised gain reaches the target, new entries pause and the app asks whether to keep trading; with no answer it stops until the next day. Open positions keep their stop loss and targets. It cannot make a day reach the target, and it never changes a risk limit.
+
+## Limitations of version 0.3
 
 - The strategies are explainable starting points, not a proven edge. Validation on real broker history is not complete.
 - Backtests are technical-only: macro and news are not included.
@@ -137,7 +146,7 @@ A small-account mode exists and is off by default. It needs a typed confirmation
 ## No guarantee
 
 Market outcomes are uncertain. Nothing in LSI Gold Digger is financial advice, and nothing in it guarantees a return.
-', '2026-10-06', 'published')
+', '2026-10-08', 'published')
 on conflict (product_slug, slug) do update set
   title = excluded.title,
   summary = excluded.summary,
@@ -148,7 +157,7 @@ on conflict (product_slug, slug) do update set
   status = excluded.status;
 
 insert into lsicorp.doc_pages (product_slug, slug, title, summary, audience, sort_order, body, last_reviewed, status)
-values ('gold-digger', 'getting-started', 'Getting started with LSI Gold Digger', 'Install the Windows app, check your download, and take a first look on simulated data.', 'Users', 1, 'LSI Gold Digger is a research terminal, analysis engine and risk engine for gold (XAU/USD). Version 0.1 for Windows is available from the [Downloads page](/downloads).
+values ('gold-digger', 'getting-started', 'Getting started with LSI Gold Digger', 'Install the Windows app, check your download, and take a first look on simulated data.', 'Users', 1, 'LSI Gold Digger is a research terminal, analysis engine and risk engine for gold (XAU/USD). Version 0.3 for Windows is available from the [Downloads page](/downloads).
 
 ## Before you use it
 
@@ -162,9 +171,13 @@ Trading leveraged products can lose all the money in the account. Nothing in thi
 ## Install
 
 1. Download the installer from the [Downloads page](/downloads).
-2. Check the download. Compare the file''s SHA-256 checksum with the one shown on the release page. In PowerShell: `Get-FileHash GoldDigger-0.1.0-Setup.exe`. If the two differ, do not run the file.
+2. Check the download. Compare the file''s SHA-256 checksum with the one shown on the release page. In PowerShell: `Get-FileHash GoldDigger-0.3.0-Setup.exe`. If the two differ, do not run the file.
 3. Run the installer. Windows may warn that the publisher is unknown, because the installer is not yet code-signed: choose **More info**, then **Run anyway**.
 4. Read the risk notice the installer shows, and continue. The app installs for your user account only.
+
+## Upgrading from an earlier version
+
+Run the new installer; it upgrades the existing copy in place. Your settings, trade journal and paper account are kept.
 
 ## First run
 
@@ -184,7 +197,7 @@ Settings, the trade journal and the paper account are in `%APPDATA%\GoldDigger`.
 ## Next
 
 Read [Analysis and strategies](/docs/gold-digger/analysis-views) to understand what the app shows, and [Data, limitations and risk](/docs/gold-digger/data-and-risk) before relying on any of it.
-', '2026-10-06', 'published')
+', '2026-10-08', 'published')
 on conflict (product_slug, slug) do update set
   title = excluded.title,
   summary = excluded.summary,
@@ -261,9 +274,9 @@ values ('gold-digger', 'Where does the market data come from?', 'Prices come fro
 insert into lsicorp.faqs (product_slug, question, answer, category, escalation, visible, sort_order)
 values ('gold-digger', 'Can the AI assistant trade for me?', 'No. The AI Gold Analyst can only read the app''s data. It has no ability to place, change or close an order.', 'Safety', null, true, 7);
 
--- gold-digger-windows-0.1.0.json
-insert into lsicorp.releases (product_slug, platform, version, channel, status, release_date, destination_type, destination_url, artifact_filename, artifact_file_type, artifact_size_bytes, artifact_sha256, compat_minimum, compat_device_class, compat_dependencies, steps, notes, known_issues, licence, support_route)
-values ('gold-digger', 'windows', '0.1.0', 'preview', 'available', '2026-10-06', 'file', 'https://hipomusjocacncjsvgfa.supabase.co/storage/v1/object/public/lsicorp-release-files/gold-digger/GoldDigger-0.1.0-Setup.exe', 'GoldDigger-0.1.0-Setup.exe', 'Windows installer', 17340160, '32e552427518831b1fdd244d7c65a4feb4ba482fc08dbe645c3a7a295e952fa8', 'Windows 10 or 11, 64-bit', 'Desktop and laptop PCs', array['MetaTrader 5 terminal (only to connect a broker)', 'Python 3.10 or newer (only to connect a broker)']::text[], array['Download GoldDigger-0.1.0-Setup.exe.', 'Check the download: its SHA-256 checksum must match the one shown on this page. In PowerShell, run Get-FileHash GoldDigger-0.1.0-Setup.exe. If it differs, do not run the file.', 'Run the installer. Windows may warn that the publisher is unknown, because the installer is not yet code-signed: choose More info, then Run anyway.', 'Read the risk notice the installer shows, and continue. It installs for your user account only and does not need administrator rights.', 'Start LSI Gold Digger from the Start Menu. It opens on simulated data with a paper account, so no broker is needed.', 'To connect MetaTrader 5 later, follow the documentation. Use a demo account first.']::text[], array['First public release: the foundation of the research terminal, analysis engines, risk engine and gated execution.', 'Runs on simulated data or a live MetaTrader 5 feed, and trades on the paper account by default.', 'Live-account trading is locked behind several explicit opt-ins.']::text[], array['The installer is not code-signed, so Windows shows an unknown-publisher warning.', 'The strategies are not a proven edge. Validation on real broker history is not complete.', 'Backtests are technical-only: macro and news are not included.', 'The economic calendar comes from an unofficial public export and may be missing values.', 'The simulator replays the same price path on each launch.']::text[], 'Proprietary software, copyright LSI Corp. No separate licence document is included with this release.', 'See the Support page on this website. Trading leveraged products can lose all the money in the account; nothing in this software is financial advice.')
+-- gold-digger-windows-0.3.0.json
+insert into lsicorp.releases (product_slug, platform, version, channel, status, release_date, destination_type, destination_url, artifact_filename, artifact_file_type, artifact_size_bytes, artifact_sha256, compat_minimum, compat_device_class, compat_dependencies, steps, notes, known_issues, licence, support_route, superseded_by, withdrawn_reason)
+values ('gold-digger', 'windows', '0.3.0', 'preview', 'available', '2026-10-07', 'file', 'https://hipomusjocacncjsvgfa.supabase.co/storage/v1/object/public/lsicorp-release-files/gold-digger/GoldDigger-0.3.0-Setup.exe', 'GoldDigger-0.3.0-Setup.exe', 'Windows installer', 17374348, 'c65ed03dddd768bcddeb1b9cb59eb3ad9e57c51d6e184cfb304ea1dc0027d7c7', 'Windows 10 or 11, 64-bit', 'Desktop and laptop PCs', array['MetaTrader 5 terminal (only to connect a broker)', 'Python 3.10 or newer (only to connect a broker)']::text[], array['Download GoldDigger-0.3.0-Setup.exe.', 'Check the download: its SHA-256 checksum must match the one shown on this page. In PowerShell, run Get-FileHash GoldDigger-0.3.0-Setup.exe. If it differs, do not run the file.', 'Run the installer. Windows may warn that the publisher is unknown, because the installer is not yet code-signed: choose More info, then Run anyway.', 'Read the risk notice the installer shows, and continue. It installs for your user account only and does not need administrator rights.', 'If an earlier version is installed, the installer upgrades it in place. Your settings, journal and paper account are kept.', 'Start LSI Gold Digger from the Start Menu. It opens on simulated data with a paper account, so no broker is needed.', 'To connect MetaTrader 5 later, follow the documentation. Use a demo account first.']::text[], array['Replaces version 0.1.0, which is no longer offered.', 'Five strategies share the same risk engine: trend pullback, confluence, ensemble, adaptive and sniper.', 'Confluence is the Champion. Ensemble, Adaptive and Sniper are Challengers: paper and demo accounts only, until an operator promotes one with a typed confirmation on held-out evidence.', 'Backtesting can simulate an account you describe (deposit, contract size, minimum lot, leverage, spread and risk rules) and report which strategy fits it.', 'A daily profit target can pause new entries once the day''s realised gain reaches it. It never changes a risk limit.', 'Runs on simulated data or a live MetaTrader 5 feed, and trades on the paper account by default. Live-account trading is locked behind several explicit opt-ins.']::text[], array['The installer is not code-signed, so Windows shows an unknown-publisher warning.', 'The strategies are not a proven edge. On two years of broker history the ensemble roughly breaks even on data it had not seen, and no Challenger has earned promotion.', 'Backtests are technical-only: macro and news are not included.', 'The economic calendar comes from an unofficial public export and may be missing values.', 'The simulator replays the same price path on each launch.']::text[], 'Proprietary software, copyright LSI Corp. No separate licence document is included with this release.', 'See the Support page on this website. Trading leveraged products can lose all the money in the account; nothing in this software is financial advice.', null, null)
 on conflict (product_slug, platform, version) do update set
   channel = excluded.channel,
   status = excluded.status,
@@ -281,6 +294,32 @@ on conflict (product_slug, platform, version) do update set
   notes = excluded.notes,
   known_issues = excluded.known_issues,
   licence = excluded.licence,
-  support_route = excluded.support_route;
+  support_route = excluded.support_route,
+  superseded_by = excluded.superseded_by,
+  withdrawn_reason = excluded.withdrawn_reason;
+
+-- gold-digger-windows-0.1.0.json
+insert into lsicorp.releases (product_slug, platform, version, channel, status, release_date, destination_type, destination_url, artifact_filename, artifact_file_type, artifact_size_bytes, artifact_sha256, compat_minimum, compat_device_class, compat_dependencies, steps, notes, known_issues, licence, support_route, superseded_by, withdrawn_reason)
+values ('gold-digger', 'windows', '0.1.0', 'preview', 'superseded', '2026-10-06', 'file', 'https://hipomusjocacncjsvgfa.supabase.co/storage/v1/object/public/lsicorp-release-files/gold-digger/GoldDigger-0.1.0-Setup.exe', 'GoldDigger-0.1.0-Setup.exe', 'Windows installer', 17340160, '32e552427518831b1fdd244d7c65a4feb4ba482fc08dbe645c3a7a295e952fa8', 'Windows 10 or 11, 64-bit', 'Desktop and laptop PCs', array['MetaTrader 5 terminal (only to connect a broker)', 'Python 3.10 or newer (only to connect a broker)']::text[], array['Download GoldDigger-0.1.0-Setup.exe.', 'Check the download: its SHA-256 checksum must match the one shown on this page. In PowerShell, run Get-FileHash GoldDigger-0.1.0-Setup.exe. If it differs, do not run the file.', 'Run the installer. Windows may warn that the publisher is unknown, because the installer is not yet code-signed: choose More info, then Run anyway.', 'Read the risk notice the installer shows, and continue. It installs for your user account only and does not need administrator rights.', 'Start LSI Gold Digger from the Start Menu. It opens on simulated data with a paper account, so no broker is needed.', 'To connect MetaTrader 5 later, follow the documentation. Use a demo account first.']::text[], array['First public release: the foundation of the research terminal, analysis engines, risk engine and gated execution.', 'Runs on simulated data or a live MetaTrader 5 feed, and trades on the paper account by default.', 'Live-account trading is locked behind several explicit opt-ins.']::text[], array['The installer is not code-signed, so Windows shows an unknown-publisher warning.', 'The strategies are not a proven edge. Validation on real broker history is not complete.', 'Backtests are technical-only: macro and news are not included.', 'The economic calendar comes from an unofficial public export and may be missing values.', 'The simulator replays the same price path on each launch.']::text[], 'Proprietary software, copyright LSI Corp. No separate licence document is included with this release.', 'See the Support page on this website. Trading leveraged products can lose all the money in the account; nothing in this software is financial advice.', '0.3.0', null)
+on conflict (product_slug, platform, version) do update set
+  channel = excluded.channel,
+  status = excluded.status,
+  release_date = excluded.release_date,
+  destination_type = excluded.destination_type,
+  destination_url = excluded.destination_url,
+  artifact_filename = excluded.artifact_filename,
+  artifact_file_type = excluded.artifact_file_type,
+  artifact_size_bytes = excluded.artifact_size_bytes,
+  artifact_sha256 = excluded.artifact_sha256,
+  compat_minimum = excluded.compat_minimum,
+  compat_device_class = excluded.compat_device_class,
+  compat_dependencies = excluded.compat_dependencies,
+  steps = excluded.steps,
+  notes = excluded.notes,
+  known_issues = excluded.known_issues,
+  licence = excluded.licence,
+  support_route = excluded.support_route,
+  superseded_by = excluded.superseded_by,
+  withdrawn_reason = excluded.withdrawn_reason;
 
 commit;

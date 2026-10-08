@@ -98,7 +98,12 @@ files in `download/`. This is how LSI Gold Digger 0.1.0 was published on 6 Octob
    npm run seed
    node scripts/build-sync-sql.mjs <product>     # checks the file against the record
    npm test
+   node scripts/rehearse-sync.mjs <product>      # applies it on top of what is live now
    ```
+
+   When the build replaces an earlier version, keep the earlier record: set its `status` to
+   `superseded` and `superseded_by` to the new version, and remove its `local_file`. Give the new
+   release the same `channel`, or both will be offered side by side.
 
 4. **Upload the file**, from the folder that holds it, under the name in the record:
 

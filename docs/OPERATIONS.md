@@ -68,7 +68,7 @@ WebAssembly application, as later requested, means these criteria are **not met*
 
 | Specification item | Status | Why |
 | --- | --- | --- |
-| WCAG 2.2 AA | Partly. Keyboard operation, visible focus, contrast, text status labels and no motion are in place. Screen-reader support is limited and unverified. | The interface is drawn on a canvas. Qt exposes an accessibility tree to browsers, but coverage varies and it has not been tested with a screen reader. Browser zoom, find-in-page and reader mode do not behave as on normal pages. |
+| WCAG 2.2 AA | Partly. Keyboard operation, focus return, visible focus, contrast, text status labels, field-level form errors, announcements of results and outcomes, and reduced motion are in place (see [INTERACTION.md](INTERACTION.md)). Screen-reader support is limited and unverified. | The interface is drawn on a canvas. Qt exposes an accessibility tree to browsers, but coverage varies and it has not been tested with a screen reader. Browser zoom, find-in-page and reader mode do not behave as on normal pages. |
 | Search: page titles, descriptions, canonical URLs, sitemap, structured product metadata | Not met. The page title updates per page and the host page has a description; nothing else. | Search engines see one HTML page with no content. Pages are addressed by URL fragment (`/#/products/1145`), which cannot have canonical URLs or a meaningful sitemap. |
 | Lightweight pages | Not met. | A first visit downloads the whole application: about 9 MB compressed, cached for a year afterwards. |
 | Clean routes (`/products/1145`) | Fragment routes (`/#/products/1145`). | Works on any static host without rewrite rules; see above for the cost. |
@@ -85,7 +85,8 @@ application for the staff area.
   tested in an in-process Postgres with Supabase's auth and storage pieces stubbed
   (`npm test`), and the app was tested against `scripts/mock-supabase.mjs`.
 - No deployment, backup restore or rollback has been rehearsed on a real host.
-- The WebAssembly build was checked in headless Chrome only. Test current Firefox, Safari
+- The WebAssembly build was checked in headless Chrome only (`scripts/wheel-check.mjs`,
+  `scripts/interaction-check.mjs`). Test current Firefox, Safari
   (including iOS) and Edge, real phones, and at least one screen reader before launch.
 - Product statuses and target platforms in the starting content are conservative guesses from
   the specification and need confirming by each product owner.

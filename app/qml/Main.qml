@@ -90,7 +90,9 @@ ApplicationWindow {
     Component.onCompleted: {
         Platform.setTitle(title);
         if (Platform.devAction === "search")
-            search.open();
+            search.show(null);
+        else if (Platform.devAction === "menu")
+            menu.open();
     }
 
     Binding {
@@ -107,6 +109,12 @@ ApplicationWindow {
     ]
     /// On a small screen the destinations move into a menu.
     readonly property bool compact: width < 720
+    onCompactChanged: if (!compact) menu.close()
+
+    /// Opens the search panel, remembering what had the keyboard so it can be given back.
+    function openSearch() {
+        search.show(window.activeFocusItem);
+    }
 
     function isCurrent(to) {
         return Nav.path === to || Nav.path.startsWith(to + "/");
@@ -241,8 +249,8 @@ ApplicationWindow {
                 implicitHeight: 44
                 focusPolicy: Qt.StrongFocus
                 Accessible.role: Accessible.Button
-                Accessible.name: "Search the site"
-                onClicked: search.open()
+                Accessible.name: "Search the site, shortcut " + (Platform.apple ? "Command K" : "Control K")
+                onClicked: search.show(searchButton)
                 Keys.onReturnPressed: click()
                 Keys.onEnterPressed: click()
 
@@ -282,7 +290,7 @@ ApplicationWindow {
                         Text {
                             id: hint
                             anchors.centerIn: parent
-                            text: "Ctrl K"
+                            text: Platform.apple ? "⌘ K" : "Ctrl K"
                             color: Theme.muted
                             font.pixelSize: 11
                             font.weight: Font.DemiBold
@@ -296,10 +304,11 @@ ApplicationWindow {
             }
 
             IconButton {
+                id: searchIcon
                 visible: window.compact
                 glyph: "search"
                 label: "Search the site"
-                onClicked: search.open()
+                onClicked: search.show(searchIcon)
             }
 
             IconButton {
@@ -317,7 +326,7 @@ ApplicationWindow {
                 implicitHeight: Theme.touch
                 focusPolicy: Qt.StrongFocus
                 Accessible.role: Accessible.Button
-                Accessible.name: "Menu"
+                Accessible.name: "Menu" + (menu.opened ? ", expanded" : ", collapsed")
                 onClicked: menu.open()
                 Keys.onReturnPressed: click()
                 Keys.onEnterPressed: click()
@@ -362,12 +371,17 @@ ApplicationWindow {
         width: Math.min(340, window.width * 0.86)
         height: window.height
         interactive: window.compact
+        modal: true
+        focus: true
+        closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
 
         background: Rectangle {
             color: Theme.surface
         }
 
         onOpened: firstItem.forceActiveFocus()
+        // Escape, Close or a destination: the keyboard goes back to the button that opened the menu.
+        onClosed: if (window.compact) menuButton.forceActiveFocus()
 
         ColumnLayout {
             anchors.fill: parent
@@ -430,10 +444,26 @@ ApplicationWindow {
         id: search
     }
 
+    /// True while the keyboard is in a text field, where a key press is typing, not a shortcut.
+    readonly property bool typing: !!activeFocusItem && activeFocusItem.cursorPosition !== undefined
+
     Shortcut {
-        sequences: ["Ctrl+K", "/"]
-        enabled: !search.opened && !(window.activeFocusItem && window.activeFocusItem.cursorPosition !== undefined)
-        onActivated: search.open()
+        sequence: "Ctrl+K"
+        enabled: !search.opened && !menu.opened && !window.typing
+        onActivated: window.openSearch()
+    }
+
+    // "/" goes to the search of the page being read when it has one (the
+    // portfolio), and to the site search everywhere else.
+    Shortcut {
+        sequence: "/"
+        enabled: !search.opened && !menu.opened && !window.typing
+        onActivated: {
+            if (pageLoader.item && typeof pageLoader.item.focusSearch === "function")
+                pageLoader.item.focusSearch();
+            else
+                window.openSearch();
+        }
     }
 
     Loader {
@@ -443,33 +473,19 @@ ApplicationWindow {
         source: window.page.file
         focus: true
         onLoaded: arrive.restart()
-
-        transform: Translate {
-            id: shift
-        }
     }
 
-    // Each page fades and rises slightly into place. Skipped under reduced motion.
-    ParallelAnimation {
+    // A new page is there at once and readable from the first frame; a brief
+    // fade only marks that the page changed. Skipped under reduced motion.
+    NumberAnimation {
         id: arrive
 
-        NumberAnimation {
-            target: pageLoader
-            property: "opacity"
-            from: Theme.motion ? 0 : 1
-            to: 1
-            duration: Theme.medium
-            easing.type: Easing.OutCubic
-        }
-
-        NumberAnimation {
-            target: shift
-            property: "y"
-            from: Theme.motion ? 14 : 0
-            to: 0
-            duration: Theme.medium
-            easing.type: Easing.OutCubic
-        }
+        target: pageLoader
+        property: "opacity"
+        from: Theme.motion ? 0.4 : 1
+        to: 1
+        duration: Theme.fast
+        easing.type: Easing.OutCubic
     }
 
     Connections {

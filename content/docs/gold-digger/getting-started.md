@@ -3,11 +3,11 @@ title: Getting started with LSI Gold Digger
 summary: Install the Windows app, check your download, and take a first look on simulated data.
 audience: Users
 order: 1
-lastReviewed: 2026-10-06
+lastReviewed: 2026-10-08
 status: published
 ---
 
-LSI Gold Digger is a research terminal, analysis engine and risk engine for gold (XAU/USD). Version 0.1 for Windows is available from the [Downloads page](/downloads).
+LSI Gold Digger is a research terminal, analysis engine and risk engine for gold (XAU/USD). Version 0.3 for Windows is available from the [Downloads page](/downloads).
 
 ## Before you use it
 
@@ -21,9 +21,13 @@ Trading leveraged products can lose all the money in the account. Nothing in thi
 ## Install
 
 1. Download the installer from the [Downloads page](/downloads).
-2. Check the download. Compare the file's SHA-256 checksum with the one shown on the release page. In PowerShell: `Get-FileHash GoldDigger-0.1.0-Setup.exe`. If the two differ, do not run the file.
+2. Check the download. Compare the file's SHA-256 checksum with the one shown on the release page. In PowerShell: `Get-FileHash GoldDigger-0.3.0-Setup.exe`. If the two differ, do not run the file.
 3. Run the installer. Windows may warn that the publisher is unknown, because the installer is not yet code-signed: choose **More info**, then **Run anyway**.
 4. Read the risk notice the installer shows, and continue. The app installs for your user account only.
+
+## Upgrading from an earlier version
+
+Run the new installer; it upgrades the existing copy in place. Your settings, trade journal and paper account are kept.
 
 ## First run
 

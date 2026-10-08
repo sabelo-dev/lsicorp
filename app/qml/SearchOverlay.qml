@@ -4,12 +4,21 @@ import QtQuick.Layouts
 import QtQuick.Templates as T
 import LsiTools
 
-// Search across the whole site from anywhere (Ctrl+K or "/"): services, work,
-// documentation and pages. Arrow keys move, Enter opens, Escape closes.
+// Search across the whole site from anywhere (Ctrl+K, or Command+K on a Mac):
+// services, work, documentation and pages. Arrow keys move, Enter opens,
+// Escape closes and puts the keyboard back where it was.
 Popup {
     id: root
 
     property int current: 0
+    /// What had the keyboard when the panel opened; it gets it back on close.
+    property Item opener: null
+    property bool leaving: false
+
+    function show(from) {
+        opener = from || null;
+        open();
+    }
 
     /// Everything that can be found, built from the content the site has loaded.
     readonly property var index: {
@@ -48,6 +57,7 @@ Popup {
     }
 
     function go(item) {
+        leaving = Nav.path !== item.to;
         close();
         Nav.go(item.to);
     }
@@ -64,9 +74,27 @@ Popup {
     onOpened: {
         field.text = "";
         current = 0;
+        leaving = false;
         field.forceActiveFocus();
     }
-    onResultsChanged: current = 0
+    onClosed: {
+        // After choosing a destination the new page takes over; otherwise the keyboard returns to where it was.
+        if (opener && !leaving)
+            opener.forceActiveFocus();
+        opener = null;
+    }
+    onResultsChanged: {
+        current = 0;
+        if (opened && field.text.trim() !== "")
+            count.restart();
+    }
+
+    // Reads the number of results out once typing pauses.
+    Timer {
+        id: count
+        interval: 500
+        onTriggered: field.Accessible.announce(root.results.length === 0 ? "No results" : root.results.length === 1 ? "1 result" : root.results.length + " results")
+    }
 
     Overlay.modal: Rectangle {
         color: Theme.scrim
@@ -103,6 +131,8 @@ Popup {
 
     contentItem: ColumnLayout {
         spacing: 0
+        Accessible.role: Accessible.Dialog
+        Accessible.name: "Search the site"
 
         RowLayout {
             Layout.fillWidth: true
@@ -126,6 +156,8 @@ Popup {
                 font.pixelSize: 18
                 background: null
                 Accessible.name: "Search the site"
+
+                Accessible.description: "Results update as you type. Use the up and down arrow keys to choose one, and Enter to open it."
 
                 Keys.onDownPressed: root.current = Math.min(root.results.length - 1, root.current + 1)
                 Keys.onUpPressed: root.current = Math.max(0, root.current - 1)
@@ -177,13 +209,23 @@ Popup {
                     implicitHeight: 56
                     focusPolicy: Qt.NoFocus
                     Accessible.role: Accessible.Link
-                    Accessible.name: entry.title + ", " + entry.kind
+                    Accessible.name: entry.title + ", " + entry.kind + (selected ? ", selected" : "")
                     onClicked: root.go(entry)
                     onHoveredChanged: if (hovered) root.current = index
 
                     background: Rectangle {
                         radius: Theme.controlRadius
                         color: row.selected ? Theme.primarySoft : "transparent"
+
+                        // The chosen row is marked by a bar, not by colour alone.
+                        Rectangle {
+                            visible: row.selected
+                            anchors.verticalCenter: parent.verticalCenter
+                            width: 4
+                            height: 24
+                            radius: 2
+                            color: Theme.dark ? Theme.primary : Theme.navy
+                        }
                     }
 
                     contentItem: RowLayout {

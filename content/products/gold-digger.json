@@ -7,7 +7,7 @@
   "category": "Market research",
   "order": 4,
   "status": "available",
-  "statusNote": "Version 0.1 for Windows is available as a preview. It is a foundation release: it starts on simulated data with a paper account, and live-account trading stays locked until you unlock it yourself.",
+  "statusNote": "Version 0.3 for Windows is available as a preview. It starts on simulated data with a paper account, and live-account trading stays locked until you unlock it yourself.",
   "audiences": [
     {
       "name": "People researching the gold market",
@@ -47,7 +47,13 @@
       "name": "Signals with reasons",
       "group": "Decision support",
       "availability": "available",
-      "description": "Four strategies (trend pullback, confluence, ensemble and adaptive) that output BUY, SELL or WAIT with every condition, reason and risk listed. No AI model produces or edits a score."
+      "description": "Five strategies (trend pullback, confluence, ensemble, adaptive and sniper) that output BUY, SELL or WAIT with every condition, reason and risk listed. No AI model produces or edits a score."
+    },
+    {
+      "name": "Champion and Challenger strategies",
+      "group": "Decision support",
+      "availability": "available",
+      "description": "Confluence is the Champion. Ensemble, Adaptive and Sniper are Challengers, limited to paper and demo accounts until an operator promotes one with a typed confirmation. A promotion is refused unless the strategy beats the Champion on results it had not seen; none has earned it so far."
     },
     {
       "name": "Weekly Focus",
@@ -62,10 +68,16 @@
       "description": "The final authority on every order: a mandatory stop loss, a minimum reward-to-risk of 1:2, one position at a time, no averaging into a loss, daily and weekly loss limits, and drawdown tiers that reduce risk after losses. Hard ceilings cannot be raised by any setting."
     },
     {
+      "name": "Daily profit target",
+      "group": "Risk",
+      "availability": "available",
+      "description": "An optional stopping rule: when the day's realised gain reaches the target, new entries pause and the app asks whether to keep trading. It cannot make a day reach the target and never changes a risk limit."
+    },
+    {
       "name": "Paper trading, backtesting and journal",
       "group": "Testing",
       "availability": "available",
-      "description": "A paper account, bar-by-bar backtests and walk-forward tests that run through the same signal, risk and execution code as live analysis, and a journal of every proposal, rejection and trade with performance statistics."
+      "description": "A paper account, bar-by-bar backtests and walk-forward tests that run through the same signal, risk and execution code as live analysis, and a journal of every proposal, rejection and trade with performance statistics. A backtest can simulate an account you describe (deposit, contract size, minimum lot, leverage, spread and risk rules) and report which strategy fits it."
     },
     {
       "name": "MetaTrader 5 connection and trade execution",

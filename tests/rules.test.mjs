@@ -130,3 +130,51 @@ test('formatting helpers', () => {
   assert.equal(Rules.formatBytes(1572864), '1.5 MB');
   assert.equal(Rules.hostOf('https://Play.Google.com/x'), 'play.google.com');
 });
+
+const catalog = [
+  { slug: 'shop', public_name: 'Shop', internal_name: 'Shop', category: 'Commerce', tagline: 'Buy things', summary: 'A marketplace.', status: 'available', platforms: ['web'], services: ['platforms'] },
+  { slug: 'player', public_name: 'Audio Player', internal_name: 'LSI Player', category: 'Media', tagline: 'Listen', summary: 'Plays music.', status: 'in-development', platforms: [], services: ['platforms'] },
+  { slug: 'charts', public_name: 'Charts', internal_name: 'Charts', category: 'Research', tagline: 'Analyse', summary: 'Market charts.', status: 'available', platforms: ['windows'], services: ['intelligence'] },
+];
+const catalogServices = [{ slug: 'platforms', name: 'Digital platforms' }, { slug: 'intelligence', name: 'Market intelligence' }];
+const catalogReleases = [
+  release({ product_slug: 'charts' }),
+  release({ product_slug: 'shop', platform: 'web', destination_type: 'web-app', destination_url: 'https://downloads.lsi.test/' }),
+];
+const slugs = (state) => Rules.filterCatalog(catalog, catalogReleases, catalogServices, state).map((p) => p.slug);
+
+test('a route splits into its path and query, and builds back', () => {
+  assert.deepEqual(Rules.parseRoute('/work?q=gold%20digger&status=available'), { path: '/work', query: { q: 'gold digger', status: 'available' } });
+  assert.deepEqual(Rules.parseRoute('/work/'), { path: '/work', query: {} });
+  assert.deepEqual(Rules.parseRoute('/work?q=%E0%A4%A&sort=name').query, { sort: 'name' });
+  assert.equal(Rules.buildRoute('/work', { q: 'gold digger', service: '', sort: 'name' }), '/work?q=gold%20digger&sort=name');
+  assert.equal(Rules.buildRoute('/work', { q: '' }), '/work');
+  assert.deepEqual(Rules.parseRoute(Rules.buildRoute('/work', { q: 'a&b=c?d' })).query, { q: 'a&b=c?d' });
+});
+
+test('the catalogue is searched by name, category, status, platform and service', () => {
+  assert.deepEqual(slugs({}), ['shop', 'player', 'charts']);
+  assert.deepEqual(slugs({ q: 'lsi player' }), ['player']);
+  assert.deepEqual(slugs({ q: 'windows' }), ['charts']);
+  assert.deepEqual(slugs({ q: 'market intelligence' }), ['charts']);
+  assert.deepEqual(slugs({ q: 'in development' }), ['player']);
+  assert.deepEqual(slugs({ q: 'web app' }), ['shop']);
+  assert.deepEqual(slugs({ q: 'nothing here' }), []);
+});
+
+test('filters combine, and sorting by name does not disturb the stored order', () => {
+  assert.deepEqual(slugs({ service: 'platforms' }), ['shop', 'player']);
+  assert.deepEqual(slugs({ service: 'platforms', status: 'available' }), ['shop']);
+  assert.deepEqual(slugs({ platform: 'windows' }), ['charts']);
+  assert.deepEqual(slugs({ sort: 'name' }), ['player', 'charts', 'shop']);
+  assert.deepEqual(catalog.map((p) => p.slug), ['shop', 'player', 'charts']);
+  assert.equal(Rules.activeFilterCount({ q: 'x', sort: 'name', service: 'platforms', status: 'available' }), 2);
+});
+
+test('only filter values that occur are offered, and access comes from available releases', () => {
+  assert.deepEqual(Rules.catalogFacets(catalog, catalogReleases), { platforms: ['web', 'windows'], statuses: ['available', 'in-development'] });
+  assert.deepEqual(Rules.accessFor(catalog[2], catalogReleases), ['Windows download']);
+  assert.deepEqual(Rules.accessFor(catalog[0], catalogReleases), ['Web app']);
+  assert.deepEqual(Rules.accessFor(catalog[2], [release({ product_slug: 'charts', status: 'withdrawn' })]), []);
+});
+

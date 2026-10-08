@@ -4,31 +4,53 @@ import QtQuick.Layouts
 import LsiTools
 
 // How to reach LSI Corp: published contact details and an enquiry form.
+// Problems are shown next to the field they belong to, what was typed is
+// always kept, and the outcome of sending is stated in words.
 PageScroll {
     id: page
 
     property bool busy: false
     property bool sent: false
+    /// Why the last attempt to send failed, when the cause was not something the visitor entered.
     property string message: ""
+    /// Problems with what was entered, by field. Each clears when its field is edited.
+    property var errors: ({})
 
     readonly property bool hasDetails: !!Store.site.contact_email || !!Store.site.contact_phone || !!Store.site.location
 
+    function clearError(field) {
+        if (!errors[field])
+            return;
+        const rest = Object.assign({}, errors);
+        delete rest[field];
+        errors = rest;
+    }
+
     function send() {
-        const problems = [];
+        if (busy)
+            return;
+        const found = {};
         const email = emailField.text.trim();
         if (nameField.text.trim() === "")
-            problems.push("Enter your name.");
-        if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email))
-            problems.push("Enter an email address we can reply to.");
+            found.name = "Enter your name.";
+        if (email === "")
+            found.email = "Enter an email address we can reply to.";
+        else if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email))
+            found.email = "This does not look like an email address. Check for a missing @ or ending.";
         if (messageField.text.trim().length < 10)
-            problems.push("Tell us a little more in the message (at least 10 characters).");
+            found.message = "Tell us a little more (at least 10 characters).";
         if (!consent.checked)
-            problems.push("Tick the box to agree to us using these details to reply.");
-        if (problems.length > 0) {
-            message = problems.join("\n");
+            found.consent = "Tick the box so that we may use these details to reply.";
+        errors = found;
+        message = "";
+        // The keyboard goes to the first field that needs attention.
+        const first = found.name ? nameField : found.email ? emailField : found.message ? messageField : found.consent ? consent : null;
+        if (first) {
+            first.forceActiveFocus();
+            const count = Object.keys(found).length;
+            page.Accessible.announce("Not sent. " + count + (count === 1 ? " field needs" : " fields need") + " attention.", Accessible.Assertive);
             return;
         }
-        message = "";
         busy = true;
         Store.sendEnquiry({
             name: nameField.text.trim(),
@@ -39,10 +61,13 @@ PageScroll {
             consent: true
         }, function (error) {
             busy = false;
-            if (error)
+            if (error) {
                 message = error.message;
-            else
+                page.Accessible.announce("Your enquiry was not sent.", Accessible.Assertive);
+            } else {
                 sent = true;
+                page.Accessible.announce("Your enquiry has been sent.");
+            }
         });
     }
 
@@ -82,7 +107,14 @@ PageScroll {
         visible: page.sent
         tone: "available"
         title: "Thank you. Your enquiry has been sent."
-        body: "We will reply to the email address you gave."
+        body: "It has gone to the " + Store.site.short_name + " team, who reply by email to the address you gave. Nothing you sent is published."
+    }
+
+    AppButton {
+        visible: page.sent
+        text: "Back to the home page"
+        to: "/"
+        secondary: true
     }
 
     EmptyState {
@@ -96,36 +128,50 @@ PageScroll {
         visible: !page.sent && Supabase.configured
         spacing: Theme.s4
 
+        P {
+            text: "Your enquiry goes to the " + Store.site.short_name + " team, who reply by email. It is not published. Fields are required unless marked optional."
+        }
+
         FieldLabel {
             text: "Your name (required)"
+            error: page.errors.name || ""
 
             Input {
                 id: nameField
-                Accessible.name: "Your name"
+                invalid: !!page.errors.name
+                Accessible.name: "Your name, required"
+                Accessible.description: page.errors.name || ""
+                onTextEdited: page.clearError("name")
             }
         }
 
         FieldLabel {
             text: "Email address (required)"
+            hint: "Used only to reply to you."
+            error: page.errors.email || ""
 
             Input {
                 id: emailField
+                invalid: !!page.errors.email
+                placeholderText: "name@example.com"
                 inputMethodHints: Qt.ImhEmailCharactersOnly | Qt.ImhNoAutoUppercase
-                Accessible.name: "Email address"
+                Accessible.name: "Email address, required"
+                Accessible.description: page.errors.email || ""
+                onTextEdited: page.clearError("email")
             }
         }
 
         FieldLabel {
-            text: "Organisation"
+            text: "Organisation (optional)"
 
             Input {
                 id: organisationField
-                Accessible.name: "Organisation"
+                Accessible.name: "Organisation, optional"
             }
         }
 
         FieldLabel {
-            text: "What is it about?"
+            text: "What is it about? (optional)"
 
             ChipRow {
                 id: topic
@@ -137,6 +183,7 @@ PageScroll {
         FieldLabel {
             text: "Message (required)"
             hint: "Please do not include passwords, payment details or other sensitive information."
+            error: page.errors.message || ""
 
             TextArea {
                 id: messageField
@@ -147,24 +194,37 @@ PageScroll {
                 wrapMode: TextArea.Wrap
                 selectByMouse: true
                 font.pixelSize: Theme.body
-                Accessible.name: "Message"
+                Accessible.name: "Message, required"
+                Accessible.description: page.errors.message || ""
                 onActiveFocusChanged: if (activeFocus) Theme.reveal(messageField)
+                onTextChanged: page.clearError("message")
+                // Tab moves on to the next control instead of typing a tab into the message.
+                KeyNavigation.priority: KeyNavigation.BeforeItem
+                KeyNavigation.tab: consent
 
                 background: Rectangle {
                     color: Theme.surface
-                    border.color: messageField.activeFocus ? Theme.focus : Theme.muted
-                    border.width: messageField.activeFocus ? 2 : 1
+                    border.color: messageField.activeFocus ? Theme.focus : page.errors.message ? Theme.danger : Theme.muted
+                    border.width: messageField.activeFocus || page.errors.message ? 2 : 1
                     radius: Theme.controlRadius
                 }
             }
         }
 
-        CheckBox {
-            id: consent
-            Layout.fillWidth: true
-            text: "I agree that " + Store.site.short_name + " may use these details to reply to my enquiry."
-            font.pixelSize: Theme.body
-            Accessible.name: text
+        FieldLabel {
+            text: "Your agreement (required)"
+            error: page.errors.consent || ""
+
+            CheckBox {
+                id: consent
+                Layout.fillWidth: true
+                text: "I agree that " + Store.site.short_name + " may use these details to reply to my enquiry."
+                font.pixelSize: Theme.body
+                Accessible.name: text
+                Accessible.description: page.errors.consent || ""
+                onToggled: page.clearError("consent")
+                onActiveFocusChanged: if (activeFocus) Theme.reveal(consent)
+            }
         }
 
         LinkText {
@@ -173,16 +233,17 @@ PageScroll {
             font.pixelSize: Theme.small
         }
 
-        P {
+        // Stays until the next attempt: a failure to send must not be missed.
+        Notice {
             visible: page.message !== ""
-            color: Theme.danger
-            text: page.message
-            Accessible.role: Accessible.AlertMessage
+            tone: "withdrawn"
+            title: "Your enquiry was not sent"
+            body: page.message + " What you typed is still here, and it is safe to try again."
         }
 
         AppButton {
-            text: page.busy ? "Sending…" : "Send enquiry"
-            enabled: !page.busy
+            text: page.busy ? "Sending…" : page.message !== "" ? "Try again" : "Send enquiry"
+            busy: page.busy
             onClicked: page.send()
         }
     }

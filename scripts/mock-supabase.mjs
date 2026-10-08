@@ -35,6 +35,11 @@ for (const [id, email, name, role] of USERS) {
   await db.query('insert into auth.users (id, email) values ($1, $2)', [id, email]);
   await db.query('insert into lsicorp.staff (user_id, display_name, role) values ($1, $2, $3)', [id, name, role]);
 }
+// WITH_SYNC=1 also applies supabase/sync/*.sql, so the stand-in has the published
+// releases of the live site and the download and launch buttons can be tried.
+if (process.env.WITH_SYNC) {
+  for (const file of readdirSync(join(root, 'supabase/sync')).sort()) await db.exec(sql(`supabase/sync/${file}`));
+}
 // A host that release files can be "served" from in local testing.
 await db.exec(`update lsicorp.site_settings set allowed_external_domains = array_append(allowed_external_domains, 'downloads.lsi.test')`);
 

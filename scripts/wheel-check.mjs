@@ -23,7 +23,7 @@ const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const chrome = spawn(chromePath, [
   '--headless=new', '--enable-unsafe-swiftshader', '--use-angle=swiftshader', '--no-first-run',
   `--user-data-dir=${mkdtempSync(join(tmpdir(), 'wheel-profile-'))}`, `--remote-debugging-port=${port}`,
-  '--window-size=1100,800', 'about:blank',
+  '--window-size=1100,800', ...(process.env.SCALE ? [`--force-device-scale-factor=${process.env.SCALE}`] : []), 'about:blank',
 ], { stdio: 'ignore' });
 
 try {

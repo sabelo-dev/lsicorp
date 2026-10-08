@@ -1,9 +1,9 @@
 ---
 title: Analysis, strategies and connecting MetaTrader 5
-summary: What each view shows, how the four strategies decide, and how to connect a broker safely.
+summary: What each view shows, how the five strategies decide, and how to connect a broker safely.
 audience: Users
 order: 2
-lastReviewed: 2026-10-06
+lastReviewed: 2026-10-08
 status: published
 ---
 
@@ -22,14 +22,17 @@ Chart overlays for Double Bollinger Bands, the regression channel, structure lab
 
 ## Strategies
 
-Four strategies share the same risk engine and backtester. Choose one under **Settings > Strategy**.
+Five strategies share the same risk engine and backtester. Choose one under **Settings > Strategy**.
 
 - **Trend pullback** (the default). Trades with the higher-timeframe trend after a pullback, on a 15-minute break of structure.
 - **Confluence.** Scores regression, Double Bollinger Bands, market structure, liquidity, macro and daily bias from 0 to 100, and needs a high score with agreement between engines.
 - **Ensemble.** Seven independent modules combined by a transparent weighted score. Any failed gate gives no trade.
 - **Adaptive.** Evolves its own rules from recent market behaviour and retires them when they stop working. It often has nothing to trade; that is by design.
+- **Sniper.** One entry on a strong 15-minute burst that agrees with the 1-hour trend, scored from 0 to 100 and taken only within minutes of the bar closing.
 
-Each outputs **BUY**, **SELL** or **WAIT**, with every condition and risk listed. Ensemble and Adaptive are limited to paper and demo accounts until an operator promotes one with a typed confirmation.
+Each outputs **BUY**, **SELL** or **WAIT**, with every condition and risk listed.
+
+Confluence is the **Champion**. Ensemble, Adaptive and Sniper are **Challengers**: limited to paper and demo accounts until an operator promotes one with a typed confirmation, which is recorded and can be rolled back. A promotion is refused unless the strategy beats the Champion on results it had not seen. None has earned it so far.
 
 Compare them on the same history under **Backtesting > Compare strategies**.
 

@@ -7,6 +7,9 @@ import LsiTools
 TextField {
     id: control
 
+    /// Set when the value was refused; the reason is shown by the FieldLabel around it.
+    property bool invalid: false
+
     Layout.fillWidth: true
     implicitHeight: Theme.touch
     leftPadding: Theme.s4
@@ -20,7 +23,7 @@ TextField {
     background: Rectangle {
         radius: Theme.controlRadius
         color: control.readOnly ? Theme.surfaceAlt : Theme.surface
-        border.width: control.activeFocus ? 2 : 1
-        border.color: control.activeFocus ? Theme.focus : Theme.muted
+        border.width: control.activeFocus || control.invalid ? 2 : 1
+        border.color: control.activeFocus ? Theme.focus : control.invalid ? Theme.danger : Theme.muted
     }
 }

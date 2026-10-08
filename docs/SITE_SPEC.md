@@ -34,7 +34,7 @@ technology, logistics and finance; a mission to simplify and enable commerce.
 | --- | --- | --- |
 | Home | `/` | Positioning statement, the services, how LSI creates value, selected work, call to enquire. |
 | Services | `/services` | Each service: what it is, what it includes, and the portfolio work that demonstrates it. |
-| Work | `/work` | The portfolio, filterable by service. Each item shows its true status. |
+| Work | `/work` | The portfolio: searchable, and filterable by service, status and platform. The address carries the view (`/work?q=gold&status=available`). Each item shows its true status. |
 | Work item | `/work/{slug}` | One product as a piece of work: overview, audiences, capabilities, requirements, getting started, help, release history. |
 | About | `/about` | Company profile, mission, how LSI creates value, key facts. |
 | Contact | `/contact` | Published contact details and an enquiry form. |

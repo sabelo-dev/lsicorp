@@ -4,10 +4,13 @@ import LsiTools
 import "rules.mjs" as Rules
 
 // The whole card opens the product; the name is also a link for keyboard users.
+// It says what the product is, its status, and how it can be used today.
 Card {
     id: card
 
     property var product
+    /// "Web app", "Windows download": only from releases that are published.
+    readonly property var access: Rules.accessFor(product, Store.releases)
 
     to: "/work/" + product.slug
     Layout.fillHeight: true
@@ -51,6 +54,13 @@ Card {
         text: card.product.summary
     }
 
+    P {
+        visible: card.access.length > 0
+        small: true
+        muted: true
+        text: "Available as: " + card.access.join(", ")
+    }
+
     Item {
         Layout.fillHeight: true
     }
@@ -69,7 +79,7 @@ Card {
         }
 
         Text {
-            text: "View ›"
+            text: "View project ›"
             color: Theme.accent
             font.pixelSize: Theme.small
             font.weight: Font.DemiBold

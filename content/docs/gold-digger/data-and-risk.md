@@ -3,7 +3,7 @@ title: Data, limitations and risk
 summary: Where the data comes from, what the risk engine enforces, and what this version cannot do.
 audience: Users
 order: 3
-lastReviewed: 2026-10-06
+lastReviewed: 2026-10-08
 status: published
 ---
 
@@ -35,7 +35,13 @@ Whether a small balance can trade gold is decided by the broker's smallest posit
 
 A small-account mode exists and is off by default. It needs a typed confirmation, raises the limits for the minimum position only, and makes a suspension much more likely.
 
-## Limitations of version 0.1
+**Backtesting** can simulate an account you describe (deposit, contract size, minimum lot, leverage, spread and the risk rules) and, with **Account fit** ticked, shows how each strategy would have ended over many separate periods. Run it again when the balance changes materially.
+
+## Daily profit target
+
+An optional stopping rule under **Settings > Daily profit target**. When the day's realised gain reaches the target, new entries pause and the app asks whether to keep trading; with no answer it stops until the next day. Open positions keep their stop loss and targets. It cannot make a day reach the target, and it never changes a risk limit.
+
+## Limitations of version 0.3
 
 - The strategies are explainable starting points, not a proven edge. Validation on real broker history is not complete.
 - Backtests are technical-only: macro and news are not included.
