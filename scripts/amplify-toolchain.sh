@@ -65,7 +65,16 @@ for tool in xz tar git python3; do
   fi
 done
 
-if [ ! -x "$tools/venv/bin/ninja" ]; then
+# A Python environment cannot be moved: its programs start with the full path
+# of the folder it was created in. A build machine may restore the cache into a
+# differently named folder, so the programs are run here, and the environment
+# is made again if they no longer start. It is small and takes seconds.
+venv_works() {
+  "$tools/venv/bin/cmake" --version >/dev/null 2>&1 \
+    && "$tools/venv/bin/ninja" --version >/dev/null 2>&1 \
+    && "$tools/venv/bin/python" -c "import aqt" >/dev/null 2>&1
+}
+if ! venv_works; then
   rm -rf "$tools/venv"
   python3 -m venv "$tools/venv"
   "$tools/venv/bin/pip" install --quiet aqtinstall cmake ninja
